@@ -2544,6 +2544,7 @@ output {
 }
 .form-control {
   display: block;
+  left:25%;
   width: 100%;
   height: 34px;
   padding: 6px 12px;
@@ -2576,6 +2577,7 @@ output {
 .form-control::-webkit-input-placeholder {
   color: #999;
 }
+
 .form-control[disabled],
 .form-control[readonly],
 fieldset[disabled] .form-control {
