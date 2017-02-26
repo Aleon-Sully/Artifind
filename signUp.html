@@ -48,11 +48,10 @@ http://www.tooplate.com/view/2079-garage
 		</div>
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
-		<li class="active"><a href="home.html"  style="margin-left: 50px;">HOME</a> </li>
+				<li class="active"><a href="home.html"  style="margin-left: 50px;">HOME</a> </li>
 				</li>
 				<li>
 						<a href="signUp.html"></signUp>Artisan? Sign Up</a>			
-
 				</li>
 				<li>
 					<a href="Sign_in.html">Sign In</a>
@@ -64,8 +63,6 @@ http://www.tooplate.com/view/2079-garage
 				</li>
 				<li>
 					<a>Contact Us</a>
-
-				</li>
 			</ul>
 		</div>
 	</nav>
@@ -80,6 +77,7 @@ http://www.tooplate.com/view/2079-garage
 	<input type="password" id="passwordField" class="form-control name-form" name="passwd" placeholder="Password" style="border: none; border-bottom: 2px solid darkred;"><br>
 	<input type="password" id="verpasswdField" class="form-control name-form" name="verpasswd" placeholder="Verify Password" style="border: none; border-bottom: 2px solid darkred;"><br>
 	<input type="text" id="emailField" class="form-control name-form" name="email" placeholder="Email" style="border: none; border-bottom: 2px solid darkred;"><br>
+	<input type="text" id="prof" class="form-control name-form" name="prof" placeholder="Profession" style="border: none; border-bottom: 2px solid darkred;"><br>
 	<input type="button" href="index.html" value="Cancel" name="btnCancel" id="btnCancel" 
 	style="font-size: 16px; background-color: white; color:black; border: 2px solid red; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<input type="button" href="profile.html" value="Sign Up" name="btnSignUp" id="btnSignUp" href="profile.html" onclick="validate()"
@@ -95,19 +93,19 @@ http://www.tooplate.com/view/2079-garage
 	var passwd = document.getElementById("passwordField");
 	var verpasswd = document.getElementById("verpasswdField");
 	var email = document.getElementById("emailField");
+	var pr
 
 	//Validate function
 	function validate(){
-		if(fName.value != "" && lName != "" && username.value != "" && passwd.value == verpasswd && !email.includes("@") && !email.includes(".com")){
-			alert("Welcome to Artifind");
+		if(fName.value != "" && lName != "" && email.value.includes("@") && email.value.includes(".com") && username.value != ""){
+			location.href = "profile.html";
 		}else{
 			
-			alert("Invalid details");
+		alert("Invalid credentials");
 		}
 	}
 
 </script>
-
 
 
 <script type="text/javascript" src="source/bootstrap-3.3.6-dist/js/jquery.js"></script>
