@@ -51,7 +51,7 @@ http://www.tooplate.com/view/2079-garage
 				<li class="active"><a style="left: 50px;" href="#">HOME</a> </li>
 				</li>
 				<li>
-						<a style="left: 50px;" href="signUp.html">Artisan? Sign Up</a>			
+						<a style="left: 50px;" href="signUp.html"></signUp>Artisan? Sign Up</a>			
 				</li>
 				<li>
 					<a style="left: 50px;" href="Sign_in.html">Sign In</a>
@@ -71,19 +71,32 @@ http://www.tooplate.com/view/2079-garage
 </div>
 
 <br><br><br><br>
-<form style=" position: absolute; margin-top:-2%; left: 30%;  height: 59%;
+<form style=" position: absolute; margin-top:-1%; left: 30%;  height: 59%;
     width: 45%; padding-top: 15px;  text-align: center;">
-	<input type="text" class="form-control name-form" name="fName" placeholder="First Name" style="border: none; border-bottom: 2px solid darkred;"  ><br>
-	<input type="text" class="form-control name-form" name="lName" placeholder="Last Name" style="border: none; border-bottom: 2px solid darkred;"><br>
-	<input type="text" class="form-control name-form" name="username" placeholder="Username" style="border: none; border-bottom: 2px solid darkred;"><br>
-	<input type="password" class="form-control name-form" name="passwd" placeholder="Password" style="border: none; border-bottom: 2px solid darkred;"><br>
-	<input type="password" class="form-control name-form" name="verpasswd" placeholder="Verify Password" style="border: none; border-bottom: 2px solid darkred;"><br>
-	<input type="text" class="form-control name-form" name="email" placeholder="Email" style="border: none; border-bottom: 2px solid darkred;"><br>
-	<input type="button" href="index.html" value="Cancel" name="btnCancel" id="btnCancel" 
+	<input type="text" id="fNameField" class="form-control name-form" name="fName" placeholder="First Name" style="border: none; border-bottom: 2px solid darkred;"  ><br>
+	<input type="text" id="lNameField" class="form-control name-form" name="lName" placeholder="Last Name" style="border: none; border-bottom: 2px solid darkred;"><br>
+	<input type="text" id="usNameField" class="form-control name-form" name="username" placeholder="Username" style="border: none; border-bottom: 2px solid darkred;"><br>
+	<input type="password" id="passwordField" class="form-control name-form" name="passwd" placeholder="Password" style="border: none; border-bottom: 2px solid darkred;"><br>
+	<input type="password" id="verpasswdField" class="form-control name-form" name="verpasswd" placeholder="Verify Password" style="border: none; border-bottom: 2px solid darkred;"><br>
+	<input type="text" id="emailField" class="form-control name-form" name="email" placeholder="Email" style="border: none; border-bottom: 2px solid darkred;"><br>
+	<input type="submit" href="index.html" value="Cancel" name="btnCancel" id="btnCancel" 
 	style="font-size: 16px; background-color: white; color:black; border: 2px solid red; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<input type="button" href="profile.html" value="Sign Up" name="btnSignUp" id="btnSignUp"
+	<input type="button" href="profile.html" value="Sign Up" name="btnSignUp" id="btnSignUp" href="profile.html"
 	 style="font-size: 16px; background-color: white; color:black; border: 2px solid limegreen">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </form>
+
+<script>
+
+	var fName = document.getElementById("fNameField");
+	var lName = document.getElementById("lNameField");
+	var username = document.getElementById("usNameField");
+	var 
+	
+	function validate(){
+		if()
+	}
+
+</script>
 
 
 <script type="text/javascript" src="source/bootstrap-3.3.6-dist/js/jquery.js"></script>
