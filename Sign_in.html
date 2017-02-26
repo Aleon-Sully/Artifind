@@ -33,10 +33,6 @@ http://www.tooplate.com/view/2079-garage
 			<ul class="givusacall">
 				<li>Give us a call : +66666666 </li>
 			</ul>
-			<ul class="logreg">
-				<li><a href="#">Login </a> </li>
-				<li><a href="#"><span class="register">Register</span></a></li>
-			</ul>
 	</div>
 	<!-- Navbar Up -->
 	<nav class="topnavbar navbar-default topnav">
@@ -48,44 +44,46 @@ http://www.tooplate.com/view/2079-garage
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
+				<a class="navbar-brand logo" href="#"><img src="image/Logo.jpg" alt="logo"></a>
 			</div>	 
 		</div>
+
+		
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
-				<li class="active"><a href="index.html">HOME</a> </li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle"	data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CATEGORIES <span class="caret"></span></a>
-					<ul class="dropdown-menu dropdowncostume">
-						<li><a href="#">Sport</a></li>
-						<li><a href="#">Old</a></li>
-						<li><a href="#">New</a></li>
-					</ul>
+
+					<li  class="active"><a style="margin-right: 10px;" href="home.html" >HOME</a>
+				 </li>
+				<li>
+						<a href="signUp.html">Artisan?Sign Up</a>			
 				</li>
-				<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DEALERS <span class="caret"></span></a>
-						<ul class="dropdown-menu dropdowncostume">
-							<li><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="3">3</a></li>
-						</ul>
+				<li>
+					<a href="Sign_in.html">Sign In</a>
+
 				</li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SIGN IN</a>
+				<li>
+					<a>About Us</a>
+
 				</li>
-				<button><span class="postnewcar">ARTISIAN? CLICK HERE</span></button>
+				<li>
+					<a>Contact Us</a>
+
+				</li>
 			</ul>
 		</div>
 	</nav>
 </div>
+
 <!--_______________________________________ Carousel__________________________________ -->
-<<<<<<< HEAD
+
+
 <div align="center">
 	<form style="margin-top:15%; left: 30%; position: absolute; width: 45%;">
 			<h1>SIGN IN</h1>
+
 				<input type="text" class="form-control name-form" placeholder="Username" style="border:none; border-bottom:2px solid red;">
 				<input type="text" class="form-control email-form" placeholder="Password" style="border:none; border-bottom:2px solid red;">
 				<button type="submit" class="btn btn-default btn-submit">Submit</button>
-=======
 <div class="allcontain">
 	<div class="contact">
 		<div class="newslettercontent">
@@ -101,7 +99,6 @@ http://www.tooplate.com/view/2079-garage
 					</div>
 			</div>
 		
->>>>>>> 77fb22d15c103f98ce034364d57b6e60077a7bc1
 		</div>
 </div>
 
@@ -116,53 +113,31 @@ http://www.tooplate.com/view/2079-garage
 	</div>
 </div>
 
+				<input type="text" id="uname" class="form-control name-form" placeholder="Username" style="border:none; border-bottom:2px solid red;">
+				<input type="text" id="pword" class="form-control email-form" placeholder="Password" style="border:none; border-bottom:2px solid red;">
+				<input type="button" href="profile.html" value="Submit" name="btnSubmit" id="btnSubmit" onclick="validate()" href="profile.html" style="font-size: 16px; background-color: white; color:black; border: 2px solid limegreen">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	 </form>
+	 </div>
 
+<br><br><br>
 
-<script src="http://maps.googleapis.com/maps/api/js"></script>
 <script>
 
-var myCenter=new google.maps.LatLng(41.567197,14.681526);
+//Capturing desired elements in variables
+	var username = document.getElementById("uname");
+	var password = document.getElementById("pword");
 
-function initialize()
-{
-var mapProp = {
-  center:myCenter,
-  zoom:16,
-  mapTypeId:google.maps.MapTypeId.ROADMAP
-  };
-
-var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-
-var marker=new google.maps.Marker({
-  position:myCenter,
-  });
-
-marker.setMap(map);
-}
-
-
+	//Validate function
+	function validate(){
+		if(username.value != "" && password != ""){
+			alert(username.value + " : Welcome to Artifind");
+		}else{
+			alert("Invalid details");
+		}
+	}
 
 </script>
 
-<script type="text/javascript" src="source/bootstrap-3.3.6-dist/js/jquery.js"></script>
-<script type="text/javascript" src="source/js/myscript.js"></script> <script type="text/javascript" src="source/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
 
-<script>
-	$(window).resize(function(){
-		var new_height = $("#image_border").height();
-		console.log(new_height);
-		$("#googleMap").height(new_height);
-	});
-
-	$(window).load(function(){
-		var new_height = $("#image_border").height();
-		console.log(new_height);
-		$("#googleMap").height(new_height);
-		google.maps.event.addDomListener(window, 'load', initialize());
-	});
-	
-</script>
-<script type="text/javascript" src="source/js/myscript.js"></script>
-<script type="text/javascript" src="source/bootstrap-3.3.6-dist/js/jquery.1.11.js"></script>
 </body>
 </html>
