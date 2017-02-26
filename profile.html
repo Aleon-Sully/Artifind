@@ -15,6 +15,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="style/mystyle.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!--fonts-->
 <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -48,30 +49,31 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<li><a href="#">Login </a> </li>
 				<li><a href="#"><span class="register">Sign Up</span></a></li>
 			</ul>
-		<div class="navigation">
-			<nav class="navbar navbar-default">
-				<div class="navbar-header">
-					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"> </span>
-						<span class="icon-bar"> </span>
-						<span class="icon-bar"> </span>
-					  </button>
-					</div>
-					<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
-						<nav class="cl-effect-7" id="cl-effect-7">
-					  <ul class="nav navbar-nav">
-						<li class="active"><a class="scroll" href="#home">Home <span class="sr-only">(current)</span></a></li>
-						<li><a class="scroll" href="#about">About</a></li>
-						<li><a class="scroll" href="#skills">Skills</a></li>
-						<li><a class="scroll" href="#portfolio">Portfolio</a></li>
-						<li><a class="scroll" href="#contact">Contact</a></li>
-					  </ul>
-					  </nav>
-			  <div class="clearfix"> </div>
-			</div><!-- /.navbar-collapse -->
-		</nav>
-	</div>
+			</div>
+	<nav class="topnavbar navbar-default topnav">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed toggle-costume" data-toggle="collapse" data-target="#upmenu" aria-expanded="false">
+					<span class="sr-only"> Toggle navigaion</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand logo" href="#"><img src="image/Logo.jpg" alt="logo"></a>
+			</div>	 
+		</div>
+		<div class="collapse navbar-collapse" id="upmenu">
+			<ul class="nav navbar-nav" id="navbarontop">
+				<li class="active"><a href="#">HOME</a> </li>
+				</li>
+				<li>
+					<a href="contact.html">CONTACT US</a>
+ 
+				</li>
+			</ul>
+		</div>
+	</nav>
+</div>
 	<div class="search-bar">
 			<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
 			<input type="submit" value="">
@@ -89,6 +91,29 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 	</div>
 </div>
+<div class="navigation">
+			<nav class="navbar navbar-default">
+				<div class="navbar-header">
+					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"> </span>
+						<span class="icon-bar"> </span>
+						<span class="icon-bar"> </span>
+					  </button>
+					</div>
+					<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+						<nav class="cl-effect-7" id="cl-effect-7">
+					  <ul class="nav navbar-nav">
+						<li><a class="scroll" href="#about">About</a></li>
+						<li><a class="scroll" href="#skills">Skills</a></li>
+						<li><a class="scroll" href="#portfolio">Portfolio</a></li>
+						<li><a class="scroll" href="#contact">Contact</a></li>
+					  </ul>
+					  </nav>
+			  <div class="clearfix"> </div>
+			</div><!-- /.navbar-collapse -->
+		</nav>
+	</div>
 <!--about-->
 <div id="about" class="about">
 			<div class="container">
@@ -265,11 +290,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="contact-info text-center">
 			<h3>CONTACT</h3>
 			<span> </span>
-		</div>
-		<div class="contact-grids">
-			<div class="col-md-5 contact-left">
-				<h3>Say hi to me</h3>
-				<div class="stripb"> </div>
 				<ul>
 					<li>Orchard Park, Long Bennington, </li>
 					<li>Newark, Lincolnshire </li>
@@ -281,14 +301,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 			<div class="clearfix"> </div>
 		</div>
+		</div>
+
 	</div>
 </div>
 <!--/contact-->
-<div class="footer">
-	<div class="copy">
-		<div class="container">
-		<p>Copyright © 2015 Mungo. All Rights Reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
-   </div>
+	<div class="bottommenu">
+
+			<div class="footer">
+				<div class="copyright">
+				  &copy; Copy right 2016 | <a href="#">Privacy </a>| <a href="#">Policy</a>
+				</div>
+				<div class="atisda">
+					 Designed by <a href="http://www.webdomus.net/">Web Domus Italia - Web Agency </a> 
+				</div>
+			</div>
+	</div>
 </div>
    <script type="text/javascript">
 						$(document).ready(function() {
