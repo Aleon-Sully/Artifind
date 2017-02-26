@@ -31,7 +31,7 @@ http://www.tooplate.com/view/2079-garage
 				<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
 			</ul>
 			<ul class="givusacall">
-				<li>Give us a call : +66666666 </li>
+				<li>Give us a call : +233 50 121 2329 </li>
 			</ul>
 	</div>
 	<!-- Navbar Up -->
@@ -74,48 +74,13 @@ http://www.tooplate.com/view/2079-garage
 	</nav>
 </div>
 
-<!--_______________________________________ Carousel__________________________________ -->
-
 
 <div align="center">
 	<form style="margin-top:15%; left: 30%; position: absolute; width: 45%;">
 			<h1>SIGN IN</h1>
-
-				<input type="text" class="form-control name-form" placeholder="Username" style="border:none; border-bottom:2px solid red;">
-				<input type="text" class="form-control email-form" placeholder="Password" style="border:none; border-bottom:2px solid red;">
-				<button type="submit" class="btn btn-default btn-submit">Submit</button>
-<div class="allcontain">
-	<div class="contact">
-		<div class="newslettercontent">
-			<div class="leftside">
-				<img id="image_border" src="image/border.png" alt="border">
-					<div class="contact-form">
-						<h1>SIGN IN</h1>
-							<div class="form-group group-coustume">
-								<input type="text" class="form-control name-form" placeholder="Username">
-								<input type="text" class="form-control email-form" placeholder="Password">
-								<button type="submit" class="btn btn-default btn-submit">Submit</button>
-							</div>
-					</div>
-			</div>
-		
-		</div>
-</div>
-
-	</div>
-</div>
-<div class="footer">
-	<div class="copyright">
-		&copy; Copy right 2016 | <a href="#">Privacy </a>| <a href="#">Policy</a>
-	</div>
-	<div class="atisda">
-		 Designed by <a href="http://www.webdomus.net/">Web Domus Italia - Web Agency </a> 
-	</div>
-</div>
-
 				<input type="text" id="uname" class="form-control name-form" placeholder="Username" style="border:none; border-bottom:2px solid red;">
 				<input type="text" id="pword" class="form-control email-form" placeholder="Password" style="border:none; border-bottom:2px solid red;">
-				<input type="button" href="profile.html" value="Submit" name="btnSubmit" id="btnSubmit" onclick="validate()" href="profile.html" style="font-size: 16px; background-color: white; color:black; border: 2px solid limegreen">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="button" href="profile.html" value="Submit" name="btnSubmit" id="btnSubmit" onclick="validate()" style="font-size: 16px; background-color: white; color:black; border: 2px solid limegreen">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	 </form>
 	 </div>
 
@@ -130,7 +95,8 @@ http://www.tooplate.com/view/2079-garage
 	//Validate function
 	function validate(){
 		if(username.value != "" && password != ""){
-			alert(username.value + " : Welcome to Artifind");
+			alert("Welcome back " + username.value);
+			location.href = "profile.php"
 		}else{
 			alert("Invalid details");
 		}
