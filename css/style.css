@@ -409,6 +409,14 @@ font-size: 2.6em;
     display: block;
     height: 7px;
 }
+.skills-info ul {
+  color: #595959;
+  font-size: 22px;
+  font-weight: 400
+  margin: 0;
+  padding: 0 0 .5em;
+}
+}
 .skills {
      margin: 6em 0 5em;
 }
