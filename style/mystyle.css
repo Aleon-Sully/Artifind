@@ -529,7 +529,11 @@ font-size: 10pt;
 	border-radius: 0px;
 }
 
- 
+
+.signin{
+	width: 100%
+	padding-top: 20px;
+} 
 
 @media only screen and (min-width: 1366px){
 	.li-category{
@@ -733,3 +737,13 @@ font-weight: bold;
 }
 
  
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+ 
+>>>>>>> cbd67abccdb23768b5ed30c2d188825c1ae722cb
