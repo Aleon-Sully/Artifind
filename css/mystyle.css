@@ -723,16 +723,8 @@ font-weight: bold;
 }
 
 }
-.footer{
-background-color: #191919;
-color: #fff;
-font-family: "Roboto Light";
-font-size: 12px;
 
-width: 100%;
-height: 30px;
  
-<<<<<<< HEAD
 /*   ---------------------------   fetured cars   ---------------------------------    */
 @font-face{
 	font-family: "OpenSans-Light";
@@ -1626,63 +1618,6 @@ left: 0%;
 @font-face{
 	font-family: "Roboto Light";
 	src: url(../source/fonts/Roboto-Light.ttf) format("truetype");
-=======
-}
-.copyright{
-	float:left;
-	padding-left: 10%;
-	padding-top: 5px;
-}
-.atisda{
-	float: right;
-	padding-right: 10%;
-	padding-top: 5px;
-	text-decoration: none;
-}
-.copyright>a{
-	color: #fff;
-	border: 0px;
-}
-.copyright>a:hover{
- text-decoration: none;
-}
-.atisda>a{
-	color: #d99735;
-	border: 0px;
-}
-.atisda>a:hover{
-	text-decoration: none;
-}
- 
-@media screen and (max-width:600px){
-	.footer{
-		margin-top: 15px;
-	}
-	.copyright{
-		float: none;
-	text-align: center;
-	padding: 0;
-	padding-top: 5px;
-	margin-bottom: 7px;
-}
-.atisda{
-	float: none;
-	text-align: center;
-	padding: 0;
-}
-	 
-	.footer>a:hover{
-		color: #F97906;
-	}
-	.footer{
- 
-		height: 55px;
- 
-}
-}
-
- 
->>>>>>> ebcfc5ea4f40c0a3a2cf8d17f10b14521509b10d
 
 }
 .footer{
@@ -1691,7 +1626,6 @@ color: #fff;
 font-family: "Roboto Light";
 font-size: 12px;
 
-<<<<<<< HEAD
 width: 100%;
 height: 30px;
  
@@ -1762,5 +1696,3 @@ height: 30px;
 
 
  
-=======
->>>>>>> ebcfc5ea4f40c0a3a2cf8d17f10b14521509b10d
