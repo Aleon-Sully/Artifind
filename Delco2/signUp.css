@@ -1,3 +1,63 @@
+.allcontain{
+	max-width: 1366px;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+header{
+	background-color: #191919;
+	
+}
+.header .container{
+	padding: 0px;
+}
+
+.givusacall{
+	list-style-type: none;
+	display: inline-block;
+	letter-spacing: 1px;
+	font-family: 'BebasNeue Regular';
+	font-size: 12.7px;	
+	color: #E7E7E7;
+	margin-bottom: 0px;
+	padding-left: 26.1%;
+}
+.givusacall>li{
+		float: right;
+}
+ .logreg{
+ 	list-style-type: none;
+ 	display: inline-block;
+ 	
+	font-family: 'BebasNeue Regular';
+	font-size: 12pt;
+	color: #E7E7E7;
+	margin-bottom: 0px;
+	padding-left: 23%;
+}
+.logreg>li{
+float: left;
+
+}
+.logreg>li>a{
+	text-decoration: none;
+	color: #E7E7E7;
+	padding-right: 6px;
+}
+.logreg>li>a:hover{
+	color:#C59E47;
+}
+.logreg .register{
+	border-left: 1px solid #E7E7E7;
+	padding-left: 6px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+    
+    }
+
+    
+
 body{
     margin: 0;
     padding: 0;
@@ -24,6 +84,10 @@ nav ul {
     padding: 0;
     text-align: center;
     margin: 0;
+    -webkit-transition: max-height 0.4s;
+    -ms-transition: max-height 0.4s;
+    -moz-transition: max-height 0.4s;
+    -o-transition: max-height 0.4s;
 }
 
 nav ul li {
@@ -43,11 +107,25 @@ section{
     margin: 0 auto;
 }
 
+
 @media screen and (max-width: 580px){
     nav ul li{
         box-sizing: border-box;
         width:100%;
         padding: 15%;
         text-align: left;
+
     }
+    
+}
+
+form{
+    position: absolute;
+    text-align: center;
+    margin-top: -3%;
+    left: 30%;
+    border: solid;
+    height: 50%;
+    width: 40%;
+    padding-top: 20px;
 }
