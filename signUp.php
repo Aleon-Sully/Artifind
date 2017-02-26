@@ -58,11 +58,11 @@ http://www.tooplate.com/view/2079-garage
 
 				</li>
 				<li>
-					<a href="about.php">About Us</a>
+					<a href="About.php">About Us</a>
 
 				</li>
 				<li>
-					<a href="Contact.php">Contact Us</a>
+					<a href="contactUs.php">Contact Us</a>
 			</ul>
 		</div>
 	</nav>

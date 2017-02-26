@@ -51,11 +51,11 @@ http://www.tooplate.com/view/2079-garage
 
 				</li>
 				<li>
-					<a>About Us</a>
+					<a href="About.php">About Us</a>
 
 				</li>
 				<li>
-					<a>Contact Us</a>
+					<a href="contactUs.php">Contact Us</a>
 
 				</li>
 			</ul>
@@ -69,26 +69,25 @@ http://www.tooplate.com/view/2079-garage
 			<div class="item active">
 				<img src="image/electrician.jpg" alt="oldcar">
 				<div class="carousel-caption">
-					<h2>Electricians registered with Artifind</h2>
-					<p>Explore our wide collection of skilled Artisians<br>
-					</p>
-						
+					<h2>Porsche 356</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur ,<br>
+						sed do eiusmod tempor incididunt ut labore </p>
 				</div>
 			</div>
 			<div class="item">
 				<img src="image/carpenter.jpg" alt="porche">
 				<div class="carousel-caption">
-					<h2>A Carpenter at work</h2>
-						<p>Explore our wide collection of skilled Artisians<br>
-						 </p>
+					<h2>Porche</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur ,<br>
+						sed do eiusmod tempor incididunt ut labore </p>
 				</div>
 			</div>
 			<div class="item">
 				<img src="image/tailor.jpg" alt="benz">
 				<div class="carousel-caption">
-					<h2>We boast of a wide range of Artisians from Electricians, plumpers to carpenters</h2>
-					<p>Contact an artisian today and solve your problems<br>
-						 </p>
+					<h2>Car</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur ,<br>
+						sed do eiusmod tempor incididunt ut labore </p>
 				</div>
 			</div>
 		</div>

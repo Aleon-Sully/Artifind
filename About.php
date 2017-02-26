@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Sign Up</title>
+	<title>About Us</title>
 	<meta name="description" content="">
 <!--
 
@@ -70,7 +70,7 @@ http://www.tooplate.com/view/2079-garage
 
 <br><br><br><br><br><br><br><br><br><br><br>
 
-    <section style="left: 150px;">
+    <section style="margin-left: 380px;">
         Have you ever needed a carpenter to fix your windows and doors? Have you <br> 
         ever wanted to find a professional plumber to fix all your water issues? If your mind <br>
         has ever been boggled about these questions and more, we have a <br>
