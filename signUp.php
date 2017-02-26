@@ -48,6 +48,7 @@ http://www.tooplate.com/view/2079-garage
 		</div>
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
+<<<<<<< HEAD:signUp.html
 				<li class="active"><a style="left: 50px;" href="#">HOME</a> </li>
 				</li>
 				<li>
@@ -65,6 +66,23 @@ http://www.tooplate.com/view/2079-garage
 					<a style="left: 50px;">Contact Us</a>
 					</li>
 				
+=======
+				<li class="active"><a href="home.php"  style="margin-left: 50px;">HOME</a> </li>
+				</li>
+				<li>
+						<a href="signUp.php"></signUp>Artisan? Sign Up</a>			
+				</li>
+				<li>
+					<a href="Sign_in.php">Sign In</a>
+
+				</li>
+				<li>
+					<a href="About.php">About Us</a>
+
+				</li>
+				<li>
+					<a href="contactUs.php">Contact Us</a>
+>>>>>>> 3d8ae294231abba69faaa55c15f688db0bfca474:signUp.php
 			</ul>
 		</div>
 	</nav>

@@ -52,13 +52,13 @@ http://www.tooplate.com/view/2079-garage
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
 
-					<li  class="active"><a style="margin-right: 10px;" href="home.html" >HOME</a>
+					<li  class="active"><a style="margin-right: 10px;" href="home.php" >HOME</a>
 				 </li>
 				<li>
-						<a href="signUp.html">Artisan?Sign Up</a>			
+						<a href="signUp.php">Artisan?Sign Up</a>			
 				</li>
 				<li>
-					<a href="Sign_in.html">Sign In</a>
+					<a href="Sign_in.php">Sign In</a>
 
 				</li>
 				<li>
