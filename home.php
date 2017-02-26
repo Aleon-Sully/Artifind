@@ -41,13 +41,13 @@ http://www.tooplate.com/view/2079-garage
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
 
-					<li  class="active"><a style="margin-right: 10px;" href="home.html" >HOME</a>
+					<li  class="active"><a style="margin-right: 10px;" href="home.php" >HOME</a>
 				 </li>
 				<li>
-						<a href="signUp.html">Artisan?Sign Up</a>			
+						<a href="signUp.php">Artisan?Sign Up</a>			
 				</li>
 				<li>
-					<a href="Sign_in.html">Sign In</a>
+					<a href="Sign_in.php">Sign In</a>
 
 				</li>
 				<li>
@@ -69,25 +69,26 @@ http://www.tooplate.com/view/2079-garage
 			<div class="item active">
 				<img src="image/electrician.jpg" alt="oldcar">
 				<div class="carousel-caption">
-					<h2>Porsche 356</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur ,<br>
-						sed do eiusmod tempor incididunt ut labore </p>
+					<h2>Electricians registered with Artifind</h2>
+					<p>Explore our wide collection of skilled Artisians<br>
+					</p>
+						
 				</div>
 			</div>
 			<div class="item">
 				<img src="image/carpenter.jpg" alt="porche">
 				<div class="carousel-caption">
-					<h2>Porche</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur ,<br>
-						sed do eiusmod tempor incididunt ut labore </p>
+					<h2>A Carpenter at work</h2>
+						<p>Explore our wide collection of skilled Artisians<br>
+						 </p>
 				</div>
 			</div>
 			<div class="item">
 				<img src="image/tailor.jpg" alt="benz">
 				<div class="carousel-caption">
-					<h2>Car</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur ,<br>
-						sed do eiusmod tempor incididunt ut labore </p>
+					<h2>We boast of a wide range of Artisians from Electricians, plumpers to carpenters</h2>
+					<p>Contact an artisian today and solve your problems<br>
+						 </p>
 				</div>
 			</div>
 		</div>

@@ -31,7 +31,7 @@ http://www.tooplate.com/view/2079-garage
 				<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
 			</ul>
 			<ul class="givusacall">
-				<li>Give us a call : +66666666 </li>
+				<li>Give us a call : +233 50 121 2329 </li>
 			</ul>
 	</div>
 	<!-- Navbar Up -->
@@ -95,7 +95,8 @@ http://www.tooplate.com/view/2079-garage
 	//Validate function
 	function validate(){
 		if(username.value != "" && password != ""){
-			location.href = "profile.php>"
+			alert("Welcome back " + username.value);
+			location.href = "profile.php"
 		}else{
 			alert("Invalid details");
 		}
