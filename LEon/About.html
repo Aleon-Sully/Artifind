@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Contact Us</title>
+	<title>About Us</title>
 	<meta name="description" content="">
 <!--
 
@@ -48,7 +48,7 @@ http://www.tooplate.com/view/2079-garage
 		</div>
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
-				<li class="active"><a href="home.php"  style="margin-left: 50px;">HOME</a> </li>
+				<li class="active"><a href="index.php"  style="margin-left: 50px;">HOME</a> </li>
 				</li>
 				<li>
 						<a href="signUp.php"></signUp>Artisan? Sign Up</a>			
@@ -68,36 +68,15 @@ http://www.tooplate.com/view/2079-garage
 	</nav>
 </div>
 
-<br><br><br><br>
-<form style=" position: absolute; margin-top:-1%; left: 30%;  height: 59%;
-    width: 45%; padding-top: 15px;  text-align: center;">
-	<input type="text" id="fNameField" class="form-control name-form" name="fName" placeholder="First Name" style="border: none; border-bottom: 2px solid darkred;"  ><br>
-	<input type="text" id="lNameField" class="form-control name-form" name="lName" placeholder="Last Name" style="border: none; border-bottom: 2px solid darkred;"><br>
-	<input type="text" id="email" class="form-control name-form" name="email" placeholder="Email Address" style="border: none; border-bottom: 2px solid darkred;"><br>
-    <textarea rows="4" cols="50" name="msg" ></textarea><br>
+<br><br><br><br><br><br><br><br><br><br><br>
 
-	<input type="button" value="Submit" name="btnSignUp" id="btnSignUp" onclick="validate()"
-	 style="font-size: 16px; background-color: white; color:black; border: 2px solid limegreen">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</form>
-
-<script>
-
-//Capturing desired elements in variables
-	var fName = document.getElementById("fNameField");
-	var lName = document.getElementById("lNameField");
-	var email = document.getElementById("email");
-
-	//Validate function
-	function validate(){
-		if(fName.value != "" && lName != "" && email.value.includes("@") && email.value.includes(".com")){
-			location.href = "home.html";
-		}else{
-			
-		alert("Invalid credentials");
-		}
-	}
-
-</script>
+    <section style="margin-left: 380px;">
+        Have you ever needed a carpenter to fix your windows and doors? Have you <br> 
+        ever wanted to find a professional plumber to fix all your water issues? If your mind <br>
+        has ever been boggled about these questions and more, we have a <br>
+         solution for you. We are DELCO and we present ourselves to you. We are all <br> 
+         about linking qualified personnel and artisans to your doorstep.<br>
+    </section>
 
 
 <script type="text/javascript" src="source/bootstrap-3.3.6-dist/js/jquery.js"></script>

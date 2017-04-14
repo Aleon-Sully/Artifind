@@ -14,10 +14,10 @@ http://www.tooplate.com/view/2079-garage
 	<meta name="author" content="Web Domus Italia">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="source/bootstrap-3.3.6-dist/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="source/font-awesome-4.5.0/css/font-awesome.css">
-	<link rel="stylesheet" type="text/css" href="style/slider.css">
-	<link rel="stylesheet" type="text/css" href="style/mystyle.css">
+	<link rel="stylesheet" type="text/css" href="../source/bootstrap-3.3.6-dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../source/font-awesome-4.5.0/css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="../style/slider.css">
+	<link rel="stylesheet" type="text/css" href="../style/mystyle.css">
 </head>
 <body>
 <!-- Header -->
@@ -43,26 +43,26 @@ http://www.tooplate.com/view/2079-garage
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand logo" href="#"><img src="image/Logo.jpg" alt="logo"></a>
+				<a class="navbar-brand logo" href="#"><img src="../image/Logo.jpg" alt="logo"></a>
 			</div>	 
 		</div>
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
-				<li class="active"><a href="home.html"  style="margin-left: 50px;">HOME</a> </li>
+				<li class="active"><a href="../index.php"  style="margin-left: 50px;">HOME</a> </li>
 				</li>
 				<li>
-						<a href="signUp.html"></signUp>Artisan? Sign Up</a>			
+						<a href="../Register/signUp.php"></signUp>Artisan? Sign Up</a>			
 				</li>
 				<li>
-					<a href="Sign_in.html">Sign In</a>
+					<a href="../Login/Sign_in.php">Sign In</a>
 
 				</li>
 				<li>
-					<a href="About.html">About Us</a>
+					<a href="About.php">About Us</a>
 
 				</li>
 				<li>
-					<a href="contactUs.html"> Contact Us</a>
+					<a href="../Contact_us/contactUs.php"> Contact Us</a>
 			</ul>
 		</div>
 	</nav>

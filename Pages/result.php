@@ -7,10 +7,10 @@
 	<meta name="author" content="cynthia Gouanfo, Template from: Web Domus Italia">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="source/bootstrap-3.3.6-dist/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="source/font-awesome-4.5.0/css/font-awesome.css">
-	<link rel="stylesheet" type="text/css" href="style/slider.css">
-	<link rel="stylesheet" type="text/css" href="style/mystyle.css">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.5.0/css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="../css/slider.css">
+	<link rel="stylesheet" type="text/css" href="../css/mystyle.css">
 </head>
 <body>
 <!-- Header -->
@@ -35,16 +35,16 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand logo" href="#"><img src="image/Logo.jpg" alt="logo"></a>
+				<a class="navbar-brand logo" href="#"><img src="../image/Logo.jpg" alt="logo"></a>
 			</div>	 
 		</div>
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
-				<li class="active"><a href="home.php">HOME</a> </li>
-				<li class="active"><a href="signUp.php">ARTISAN? SIGN UP</a> </li>
-				<li class="active"><a href="Sign_in.php">SIGN IN</a> </li>
-				<li class="active"><a href="About.php">ABOUT US</a> </li>
-				<li class="active"><a href="contactUs.php">CONTACT US</a> </li>
+				<li class="active"><a href="../index.php">HOME</a> </li>
+				<li class="active"><a href="../Register/signUp.php">ARTISAN? SIGN UP</a> </li>
+				<li class="active"><a href="../Login/Sign_in.php">SIGN IN</a> </li>
+				<li class="active"><a href="../Pages/About.php">ABOUT US</a> </li>
+				<li class="active"><a href="../Contact_us/contactUs.php">CONTACT US</a> </li>
 			</ul>
 		</div>
 	</nav>
@@ -68,7 +68,7 @@
 		<div class="row">
 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 				<div class="txthover">
-					<img src="image/patrick.jpg" alt="patrick.jpg">
+					<img src="../image/patrick.jpg" alt="patrick.jpg">
 						<div class="txtcontent">
 							<div class="stars">
 								<div class="glyphicon glyphicon-star"></div>
@@ -91,7 +91,7 @@
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 ">
 				<div class="txthover">
-					<img src="image/alapa.jpg" alt="alapa">
+					<img src="../image/alapa2.jpg" alt="alapa2">
 						<div class="txtcontent">
 							<div class="stars">
 								<div class="glyphicon glyphicon-star"></div>
@@ -114,7 +114,7 @@
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 				<div class="txthover">
-					<img src="image/tailor1.jpg" alt="tailor1">
+					<img src="../image/tailor1.jpg" alt="tailor1">
 						<div class="txtcontent">
 							<div class="stars">
 								<div class="glyphicon glyphicon-star"></div>
@@ -137,7 +137,7 @@
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 				<div class="txthover">
-					<img src="image/francis.jpeg" alt="francis">
+					<img src="../image/francis.jpeg" alt="francis">
 						<div class="txtcontent">
 							<div class="stars">
 								<div class="glyphicon glyphicon-star"></div>
@@ -160,7 +160,7 @@
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 				<div class="txthover">
-					<img src="image/lionel.png" alt="lionel">
+					<img src="../image/lionel.png" alt="lionel">
 						<div class="txtcontent">
 							<div class="stars">
 								<div class="glyphicon glyphicon-star"></div>
@@ -183,7 +183,7 @@
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 				<div class="txthover">
-					<img src="image/Von.jpeg" alt="Von">
+					<img src="../image/von.jpeg" alt="von">
 						<div class="txtcontent">
 							<div class="stars">
 								<div class="glyphicon glyphicon-star"></div>
@@ -206,7 +206,7 @@
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 				<div class="txthover">
-					<img src="image/sarah.jpeg" alt="sarah">
+					<img src="../image/sarah.jpeg" alt="sarah">
 						<div class="txtcontent">
 							<div class="stars">
 								<div class="glyphicon glyphicon-star"></div>
@@ -229,7 +229,7 @@
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 				<div class="txthover">
-					<img src="image/lilian.jpeg" alt="lilian">
+					<img src="../image/lilian.jpeg" alt="lilian">
 						<div class="txtcontent">
 							<div class="stars">
 								<div class="glyphicon glyphicon-star"></div>
@@ -255,14 +255,14 @@
 <!-- _______________________________News Letter ____________________-->
 	<div class="newslettercontent">
 		<div class="leftside">
-			<img src="image/border.png" alt="border">
+			<img src="../image/border.png" alt="border">
 			<h1>NEWSLETTER</h1>
 			<p>Subscribe to the mailing list to <br>
 				receive updates on new artisans, special offers <br>
 				and other discount information.</p>
 		</div>
 		<div class="rightside">
-			<img class="newsimage" src="image/newsletter.jpeg" alt="newsletter">
+			<img class="newsimage" src="../image/newsletter.jpeg" alt="newsletter">
 			<input type="text" class="form-control" id="subemail" placeholder="EMAIL">
 			<button>SUBSCRIBE</button>
 		</div>
@@ -270,14 +270,14 @@
 	<!-- ______________________________________________________Bottom Menu ______________________________-->
 	<div class="bottommenu">
 		<div class="bottomlogo">
-		<span class="dotlogo">&bullet;</span><img src="image/Logo.jpg" alt="Logo"><span class="dotlogo">&bullet;;</span>
+		<span class="dotlogo">&bullet;</span><img src="../image/Logo.jpg" alt="Logo"><span class="dotlogo">&bullet;;</span>
 		</div>
 		<ul class="nav nav-tabs bottomlinks">
 			<li role="presentation" ><a href="About.php" role="button" style="left: 300px">ABOUT US</a></li>
-			<li role="presentation"><a href="contactUs.php"  role="button" style="left: 300px">CONTACT US</a></li>
+			<li role="presentation"><a href="../Contact_us/contactUs.php"  role="button" style="left: 300px">CONTACT US</a></li>
 		</ul>
 		<p>"We link you to the best artisans around"</p>
-		 <img src="image/line.png" alt="line"> <br>
+		 <img src="../image/line.png" alt="line"> <br>
 		 <div class="bottomsocial">
 		 	<a href="#"><i class="fa fa-facebook"></i></a>
 			<a href="#"><i class="fa fa-twitter"></i></a>
@@ -295,10 +295,10 @@
 	</div>
 </div>
 
-<script type="text/javascript" src="source/bootstrap-3.3.6-dist/js/jquery.js"></script>
-<script type="text/javascript" src="source/js/isotope.js"></script>
-<script type="text/javascript" src="source/js/myscript.js"></script> 
-<script type="text/javascript" src="source/bootstrap-3.3.6-dist/js/jquery.1.11.js"></script>
-<script type="text/javascript" src="source/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="../source/bootstrap-3.3.6-dist/js/jquery.js"></script>
+<script type="text/javascript" src="../source/js/isotope.js"></script>
+<script type="text/javascript" src="../source/js/myscript.js"></script> 
+<script type="text/javascript" src="../source/bootstrap-3.3.6-dist/js/jquery.1.11.js"></script>
+<script type="text/javascript" src="../source/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
 </body>
 </html>

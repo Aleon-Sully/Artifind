@@ -14,20 +14,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta name="keywords" content="Mungo Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="style/mystyle.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../style/mystyle.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!--fonts-->
 <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>
 <!--/fonts-->
 <!-- js -->
-<script src="js/jquery.min.js"> </script>
-<script src="js/bootstrap.js"></script>
+<script src="../js/jquery.min.js"> </script>
+<script src="../js/bootstrap.js"></script>
 <!-- //js -->
 <!-- start-smoth-scrolling -->
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript" src="../js/move-top.js"></script>
+<script type="text/javascript" src="../js/easing.js"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event){		
@@ -62,15 +62,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand logo" href="#"><img src="image/Logo.jpg" alt="logo"></a>
+				<a class="navbar-brand logo" href="#"><img src="../image/Logo.jpg" alt="logo"></a>
 			</div>	 
 		</div>
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
-				<li class="active"><a style="margin-left: 50px;" href="home.php">HOME</a> </li>
+				<li class="active">
+				<a  " href="../index.php">HOME</a>
 				</li>
 				<li>
-					<a style="left: 50px;" href="home.php">Sign Out</a>
+					<a style="left: 50px;" href="../index.php">Sign Out</a>
 
 				</li>
 
@@ -136,8 +137,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="clearfix"> </div>
 		</div>
 		<!---pop-up-box---->  
-				<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
-				<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+				<link href="../css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
+				<script src="../js/jquery.magnific-popup.js" type="text/javascript"></script>
 				<!---//pop-up-box---->
 				<div id="small-dialog" class="mfp-hide">
 					<iframe src="//player.vimeo.com/video/38584262"> </iframe>
@@ -179,8 +180,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!--/skills-->
 <!--portfolio-->
 <!--light-box-js -->
-				<script src="js/jquery.chocolat.js"></script>
-				<link rel="stylesheet" href="css/chocolat.css" type="text/css" media="screen" charset="utf-8" />
+				<script src="../js/jquery.chocolat.js"></script>
+				<link rel="stylesheet" href="../css/chocolat.css" type="text/css" media="screen" charset="utf-8" />
 				<!--light-box-files -->
 				<script type="text/javascript" charset="utf-8">
 				$(function() {
@@ -194,91 +195,91 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<span> </span>
         <div class="gallery-info">
 				<div class="col-md-4 galry-grids moments-bottom">
-					<a class="b-link-stripe b-animate-go" href="image/img9.jpg">
-						<img src="image/port1.jpeg" class="img-responsive" alt="">
+					<a class="b-link-stripe b-animate-go" href="../image/img9.jpg">
+						<img src="../image/port1.jpeg" class="img-responsive" alt="">
 						<div class="b-wrapper">
 							<span class="b-animate b-from-left    b-delay03 ">
-								<img class="img-responsive" src="image/e.png" alt=""/>
+								<img class="img-responsive" src="../image/e.png" alt=""/>
 							</span>					
 						</div>
 					</a>				
 				</div>
 				<div class="col-md-4 galry-grids moments-bottom">
-					<a class="b-link-stripe b-animate-go" href="image/img10.jpg">
-						<img src="image/port2.jpeg" class="img-responsive" alt="">
+					<a class="b-link-stripe b-animate-go" href="../image/img10.jpg">
+						<img src="../image/port2.jpeg" class="img-responsive" alt="">
 						<div class="b-wrapper">
 							<span class="b-animate b-from-left b-delay03 ">
-								<img class="img-responsive" src="image/e.png" alt=""/>
+								<img class="img-responsive" src="../image/e.png" alt=""/>
 							</span>					
 						</div>
 					</a>				
 				</div>
 				<div class="col-md-4 galry-grids moments-bottom">
-					<a class="b-link-stripe b-animate-go" href="image/img11.jpg">
-						<img src="image/port3.jpg" class="img-responsive" alt="">
+					<a class="b-link-stripe b-animate-go" href="../image/img11.jpg">
+						<img src="../image/port3.jpg" class="img-responsive" alt="">
 						<div class="b-wrapper">
 							<span class="b-animate b-from-left    b-delay03 ">
-								<img class="img-responsive" src="image/e.png" alt=""/>
+								<img class="img-responsive" src="../image/e.png" alt=""/>
 							</span>					
 						</div>
 					</a>				
 				</div>				
 				<div class="col-md-4 galry-grids moments-bottom">
-					<a class="b-link-stripe b-animate-go" href="image/img12.jpg">
-						<img src="image/port4.jpeg" class="img-responsive" alt="">
+					<a class="b-link-stripe b-animate-go" href="../image/img12.jpg">
+						<img src="../image/port4.jpeg" class="img-responsive" alt="">
 						<div class="b-wrapper">
 							<span class="b-animate b-from-left    b-delay03 ">
-								<img class="img-responsive" src="image/e.png" alt=""/>
+								<img class="img-responsive" src="../image/e.png" alt=""/>
 							</span>					
 						</div>
 					</a>				
 				</div>
 				<div class="col-md-4 galry-grids moments-bottom">
-					<a class="b-link-stripe b-animate-go" href="image/img13.jpg">
-						<img src="image/port5.jpeg" class="img-responsive" alt="">
+					<a class="b-link-stripe b-animate-go" href="../image/img13.jpg">
+						<img src="../image/port5.jpeg" class="img-responsive" alt="">
 						<div class="b-wrapper">
 							<span class="b-animate b-from-left    b-delay03 ">
-								<img class="img-responsive" src="image/e.png" alt=""/>
+								<img class="img-responsive" src="../image/e.png" alt=""/>
 							</span>					
 						</div>
 					</a>				
 				</div>
 				<div class="col-md-4 galry-grids moments-bottom">
-					<a class="b-link-stripe b-animate-go" href="image/img14.jpg">
-						<img src="image/port6.jpeg" class="img-responsive" alt="">
+					<a class="b-link-stripe b-animate-go" href="../image/img14.jpg">
+						<img src="../image/port6.jpeg" class="img-responsive" alt="">
 						<div class="b-wrapper">
 							<span class="b-animate b-from-left    b-delay03 ">
-								<img class="img-responsive" src="image/e.png" alt=""/>
+								<img class="img-responsive" src="../image/e.png" alt=""/>
 							</span>					
 						</div>
 					</a>				
 				</div>
 				<div class="col-md-4 galry-grids moments-bottom">
-					<a class="b-link-stripe b-animate-go" href="image/img15.jpg">
-						<img src="image/port7.jpg" class="img-responsive" alt="">
+					<a class="b-link-stripe b-animate-go" href="../image/img15.jpg">
+						<img src="../image/port7.jpg" class="img-responsive" alt="">
 						<div class="b-wrapper">
 							<span class="b-animate b-from-left    b-delay03 ">
-								<img class="img-responsive" src="image/e.png" alt=""/>
+								<img class="img-responsive" src="../image/e.png" alt=""/>
 							</span>					
 						</div>
 					</a>				
 				</div>
 				<div class="col-md-4 galry-grids moments-bottom">
-					<a class="b-link-stripe b-animate-go" href="image/img16.jpg">
-						<img src="image/port8.jpeg" class="img-responsive" alt="">
+					<a class="b-link-stripe b-animate-go" href="../image/img16.jpg">
+						<img src="../image/port8.jpeg" class="img-responsive" alt="">
 						<div class="b-wrapper">
 							<span class="b-animate b-from-left    b-delay03 ">
-								<img class="img-responsive" src="image/e.png" alt=""/>
+								<img class="img-responsive" src="../image/e.png" alt=""/>
 							</span>					
 						</div>
 					</a>				
 				</div>
 				<div class="col-md-4 galry-grids moments-bottom">
-					<a class="b-link-stripe b-animate-go" href="image/img17.jpg" >
-						<img src="image/port9.jpeg" class="img-responsive" alt="">
+					<a class="b-link-stripe b-animate-go" href="../image/img17.jpg" >
+						<img src="../image/port9.jpeg" class="img-responsive" alt="">
 						<div class="b-wrapper">
 							<span class="b-animate b-from-left    b-delay03 ">
-								<img class="img-responsive" src="images/e.png" alt=""/>
+								<img class="img-responsive" src="../images/e.png" alt=""/>
 							</span>					
 						</div>
 					</a>				
