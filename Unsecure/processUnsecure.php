@@ -1,25 +1,14 @@
 <?php
      require_once('../Database/dbConnectionClass.php');
 
+     if(isset($_POST['btnSignUp'])){
+         validContactUs();
+     }
+
 /*
-*Declaring variables to capture form elements
+*Function to validate email
 */
-$fName = $lName = $uName = $pwd = $vPwd = $em = $prof = "";
-
-function validRegister(){
-
-    $GLOBALS['fName'] = $_POST['fName'];
-    $GLOBALS['lName'] = $_POST['lName'];
-    $GLOBALS['uName'] = $_POST['username'];
-    $GLOBALS['pwd'] = $_POST['passwd'];
-    $GLOBALS['vPwd'] = $_POST['verpasswd'];
-    $GLOBALS['em'] = $_POST['email'];
-    $GLOBALS['prof'] = $_POST['prof'];
-}
-
-
-
-      function checkEmail($em){
+     function checkEmail($em){
 			if(!filter_var($em, FILTER_VALIDATE_EMAIL)){
                 echo "Invalid email";
 				return false;
@@ -27,4 +16,45 @@ function validRegister(){
 			else
 				return true;
 		}
+
+/*
+*Declaring variables to capture form elements
+*/
+$fName = $lName = $em = $msg = "";
+
+function validContactUs(){
+
+    $GLOBALS['fName'] = $_POST['fName'];
+    $GLOBALS['lName'] = $_POST['lName'];
+    $GLOBALS['em'] = $_POST['email'];
+    $GLOBALS['msg'] = $_POST['msg'];
+
+
+    if(isset($GLOBALS['fName']) && isset( $GLOBALS['lName']) && isset( $GLOBALS['em']) && checkEmail( $GLOBALS['em']) && isset( $GLOBALS['msg'])){
+        sentContactRequest();
+    }
+} 
+
+function sentContactRequest(){
+
+    //Creating am instance of the Database Connection Class
+    $sendContactReq = new dbconnection;
+
+    //Write sql
+    $sql = "INSERT INTO `feedback` (FName, LName, Email, message) VALUES
+     (\"".$GLOBALS['fName']."\", \"". $GLOBALS['lName']."\", \"".$GLOBALS['em']."\", \"". $GLOBALS['msg']."\")";
+
+     if($sendContactReq->query($sql) == true){
+         echo "New record created succesfully";
+           header('Location: ../index.php');
+     }else{
+         echo "Error: " . $sql . "<br>";
+     }
+
+     $sendContactReq->close();
+}
+
+
+
+      
 ?>
