@@ -9,6 +9,26 @@ Template gotten from:
 Template 2079 Garage
 http://www.tooplate.com/view/2079-garage
 -->
+<?php
+
+// include the database
+include "Database/dbConnectionClass.php";
+
+$obj = new dbconnection;
+function getLocation()
+{
+ global $obj;	
+$obj->query("Select address from artisan");
+$data = array();
+while($row = $obj->fetch())
+{
+   $data[] = $row;
+
+}
+
+	return $data;
+}
+?>
 
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.5.0/css/font-awesome.css">
@@ -109,27 +129,18 @@ http://www.tooplate.com/view/2079-garage
 				</form>
 				<ul class="nav navbar-nav navbarborder">
 					<li class="li-category">
-						<a class="btn  dropdown-toggle btn-costume"  id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> Job Category<span class="glyphicon glyphicon-chevron-down downicon"></span></a>
+						<a class="btn  dropdown-toggle btn-costume"  id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Location<span class="glyphicon glyphicon-chevron-down downicon"></span></a>
 						<ul class="dropdown-menu" id="mydd">
-							<li><a href="#">Carpenter</a></li>
-							<li><a href="#">Plumber</a></li>
-							<li><a href="#">Continue list</a></li>
+						<?php if(getLocation()) :?>
+							<?php foreach(getLocation() as  $value):	?>
+								<li><?php echo $value["address"]	?></li>
+							<?php endforeach;	?>
+						<?php else: ?>
+
+						<?php endif;	?>
 						</ul>
 					</li>
-					<li class="li-minyear"><a class="btn  dropdown-toggle btn-costume"  id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Min Year <span class="glyphicon glyphicon-chevron-down downicon"></span></a>
-						<ul class="dropdown-menu" id="mydd2">
-							<li><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-						</ul>
-					</li>
-					<li class="li-maxyear"><a class="btn dropdown-toggle btn-costume"  id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Max Year <span class="glyphicon glyphicon-chevron-down downicon"></span></a>
-						<ul class="dropdown-menu" id="mydd3">
-							<li><a href="#">1900</a></li>
-							<li><a href="#">2000</a></li>
-							<li><a href="#">2016</a></li>
-						</ul>
-					</li>
+					
 					</li>
 					<li class="li-search"> <button class="searchbutton" onclick="result()"><span class="glyphicon glyphicon-search "></span></button></li>
 				</ul>
