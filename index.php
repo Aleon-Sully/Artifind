@@ -5,11 +5,9 @@
 	<title>Delcosite</title>
 	<meta name="description" content="">
 <!--
-
+Template gotten from: 
 Template 2079 Garage
-
 http://www.tooplate.com/view/2079-garage
-
 -->
 
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
@@ -146,10 +144,10 @@ http://www.tooplate.com/view/2079-garage
 		location.href = "Pages/result.php"
 	}
 </script>
-<script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/isotope.js"></script>
-<script type="text/javascript" src="../js/myscript.js"></script>
-<script type="text/javascript" src="../js/jquery.1.11.js"></script>
-<script type="text/javascript" src="../js/bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/isotope.js"></script>
+<script type="text/javascript" src="js/myscript.js"></script>
+<script type="text/javascript" src="js/jquery.1.11.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
 </body>
 </html>
