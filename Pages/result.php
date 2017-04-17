@@ -11,6 +11,27 @@
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.5.0/css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="../css/slider.css">
 	<link rel="stylesheet" type="text/css" href="../css/mystyle.css">
+
+<?php
+
+// include the database
+include "../Database/dbConnectionClass.php";
+
+$obj = new dbconnection;
+function getResults()
+{
+ global $obj;	
+$obj->query("Select address from artisan");
+$data = array();
+while($row = $obj->fetch())
+{
+   $data[] = $row;
+
+}
+
+	return $data;
+}
+?>
 </head>
 <body>
 <!-- Header -->

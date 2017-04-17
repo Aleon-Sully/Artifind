@@ -122,28 +122,24 @@ while($row = $obj->fetch())
 				<div class="searchtxt">
 					<h1>SEARCH</h1>
 				</div>
-				<form class="navbar-form navbar-left searchformmargin" role="search">
+				<form class="navbar-form navbar-left searchformmargin" role="search" action="Pages/result.php" method = "GET">
 					<div class="form-group">
-						<input type="text" class="form-control searchform" placeholder="Enter Keyword">
+						<input type="text" class="form-control searchform" name = "key" placeholder="Enter Keyword">
 					</div>
-				</form>
-				<ul class="nav navbar-nav navbarborder">
-					<li class="li-category">
-						<a class="btn  dropdown-toggle btn-costume"  id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Location<span class="glyphicon glyphicon-chevron-down downicon"></span></a>
-						<ul class="dropdown-menu" id="mydd">
-						<?php if(getLocation()) :?>
+					<div class="form-group">
+					<select class="form-control searchform placeholder" name = "place">
+					<option>Location</option>
+					<?php if(getLocation()) :?>
 							<?php foreach(getLocation() as  $value):	?>
-								<li><?php echo $value["address"]	?></li>
+								<option value = "<?php echo $value["address"]	?>"><?php echo $value["address"]	?></option>
+								<li></li>
 							<?php endforeach;	?>
 						<?php else: ?>
-
 						<?php endif;	?>
-						</ul>
-					</li>
-					
-					</li>
-					<li class="li-search"> <button class="searchbutton" onclick="result()"><span class="glyphicon glyphicon-search "></span></button></li>
-				</ul>
+					</select>
+					</div>
+				<button style="margin-left:10px" class="searchbutton" onclick="result()" name = "submit" type="submit"><span class="glyphicon glyphicon-search "></span></button>
+				</form>
 
 			</div>
 		</nav>
