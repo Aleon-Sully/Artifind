@@ -5,6 +5,10 @@
          validContactUs();
      }
 
+     if (isset($_POST['btnSubmit'])){
+        validatelogin();
+     }
+
 /*
 *Function to validate email
 */
