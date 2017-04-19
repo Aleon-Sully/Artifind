@@ -16,6 +16,7 @@ if (isset($_POST['SignUpBtn'])){
 /*
 *Function to validate email
 */
+
 function checkEmail($em){
  if(!filter_var($em, FILTER_VALIDATE_EMAIL)){
     echo "Invalid email";
@@ -25,9 +26,19 @@ else
     return true;
 }
 
+     function checkEmail($em){
+			if(!filter_var($em, FILTER_VALIDATE_EMAIL)){
+                echo "Invalid email";
+				return false;
+            }
+			else
+				return true;
+		}
+
 /*
 *Declaring variables to capture form elements
 */
+
 $uName = $pwd = $fName = $lName = $em = $msg = "";
 
 function validContactUs(){
