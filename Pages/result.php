@@ -11,6 +11,34 @@
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.5.0/css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="../css/slider.css">
 	<link rel="stylesheet" type="text/css" href="../css/mystyle.css">
+
+<?php
+
+// include the database
+include "../Database/dbConnectionClass.php";
+
+$obj = new dbconnection;
+function getResults()
+{
+if(isset($_GET["key"]) && isset($_GET["place"])){
+	$place =$_GET["place"] ;
+	$key =$_GET["key"] ;
+ global $obj;	
+$obj->query("SELECT artisan.*, review.ratings FROM artisan 
+	INNER  JOIN review ON artisan.artisan_id = review.au_ID
+	WHERE artisan.address = '$place'
+	ORDER BY review.ratings");
+$data = array();
+while($row = $obj->fetch())
+{
+   $data[] = $row;
+
+}
+
+	return $data;
+}
+}
+?>
 </head>
 <body>
 <!-- Header -->
@@ -56,6 +84,7 @@
 <!-- ________________________Artisans Thumbnail________________-->
 	<div class="grid">
 		<div class="row">
+<<<<<<< HEAD
 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 				<div class="txthover">
 					<img src="../image/patrick.jpg" alt="patrick.jpg">
@@ -126,6 +155,11 @@
 				</div>	 
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+=======
+			<?php if(getResults()) :?>
+			 <?php foreach(getResults() as  $value):	?>
+				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+>>>>>>> 209b013cf8ff1fdf9ec1a1c90d2530ded2a50ee4
 				<div class="txthover">
 					<img src="../image/francis.jpeg" alt="francis">
 						<div class="txtcontent">
@@ -135,9 +169,8 @@
 								<div class="glyphicon glyphicon-star"></div>
 							</div>
 							<div class="simpletxt">
-								<h3 class="name">Francis Good</h3>
-								<p>"Very good at fixing all your plumbing<br>
-	 							issues, at every corner of your house" </p>
+								<h3 class="name"><?php echo $value["first_name"]  .  " " . $value["last_name"]?></h3>
+								<p><?php echo $value["about_me"]?></p>
 	 							<a href="profile.php"><button>READ MORE</button></a><br>
 							</div>
 							<div class="stars2">
@@ -148,98 +181,9 @@
 						</div>
 				</div>	 
 			</div>
-			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-				<div class="txthover">
-					<img src="../image/lionel.png" alt="lionel">
-						<div class="txtcontent">
-							<div class="stars">
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-							</div>
-							<div class="simpletxt">
-								<h3 class="name">Lionel Price</h3>
-								<p>"Want to repaint your house and give it the<br>
-	 							colour of your dream, Look no further. I am the man" </p>
-	 							<a href="profile.php"><button>READ MORE</button></a><br>
-							</div>
-							<div class="stars2">
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-							</div>
-						</div>
-				</div>	 
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-				<div class="txthover">
-					<img src="../image/von.jpeg" alt="von">
-						<div class="txtcontent">
-							<div class="stars">
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-							</div>
-							<div class="simpletxt">
-								<h3 class="name">Von Groof</h3>
-								<p>"I am the best at what I do, better and<br>
-	 							stronger houses. My reviews testify" </p>
-	 							<a href="profile.php"><button>READ MORE</button></a><br>
-							</div>
-							<div class="stars2">
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-							</div>
-						</div>
-				</div>	 
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-				<div class="txthover">
-					<img src="../image/sarah.jpeg" alt="sarah">
-						<div class="txtcontent">
-							<div class="stars">
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-							</div>
-							<div class="simpletxt">
-								<h3 class="name">Sarah Pius</h3>
-								<p>"Tire problem, Engine problem,<br>
-	 							look no further and Run to me :)" </p>
-	 							<a href="profile.php"><button>READ MORE</button></a><br>
-							</div>
-							<div class="stars2">
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-							</div>
-						</div>
-				</div>	 
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-				<div class="txthover">
-					<img src="../image/lilian.jpeg" alt="lilian">
-						<div class="txtcontent">
-							<div class="stars">
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-							</div>
-							<div class="simpletxt">
-								<h3 class="name">Lilian Pire</h3>
-								<p>"I am all about making your house,<br>
-	 							and its surrounding beautiful" </p>
-	 							<a href="profile.php"><button>READ MORE</button></a><br>
-							</div>
-							<div class="stars2">
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-							</div>
-						</div>
-				</div>	 
-			</div>	
+				<?php endforeach;	?>
+				<?php else: ?>
+			<?php endif;	?>
 		</div>
 	</div>
 

@@ -5,6 +5,10 @@
          validContactUs();
      }
 
+     if (isset($_POST['btnSubmit'])){
+        validatelogin();
+     }
+
 /*
 *Function to validate email
 */
@@ -19,7 +23,7 @@
 /*
 *Declaring variables to capture form elements
 */
-$fName = $lName = $em = $msg = "";
+$uName = $pwd = $fName = $lName = $em = $msg = "";
 
 function validContactUs(){
 
@@ -52,6 +56,19 @@ function sentContactRequest(){
 
      $sendContactReq->close();
 }
+
+function validatelogin(){
+    $ok = true;
+
+    if (empty($_POST['uName'])){
+        echo "Please enter a username".<br>;
+        $ok= false;
+    }
+
+    if (empty($_POST['pwd'])){
+        echo "Please Enter a Password".<br>;
+        $ok = false;
+    }
 
 
 

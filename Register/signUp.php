@@ -98,7 +98,7 @@ http://www.tooplate.com/view/2079-garage
 
 	//Validate function
 	function validate(){
-		if(fName.value != "" && lName != "" && email.value.includes("@") && email.value.includes(".com") && username.value != ""){
+		if(fName.value != "" && lName.value != "" && email.value.includes("@") && email.value.includes(".com") && username.value != ""){
 			location.href = "../Pages/profile.php";
 		}else{
 			
