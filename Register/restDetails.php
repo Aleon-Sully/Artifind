@@ -70,6 +70,8 @@ http://www.tooplate.com/view/2079-garage
 	</div>
 
 	<br><br><br><br>
+	 <?php  require_once('../Database/dbConnectionClass.php'); ?>
+
 	<form style=" position: absolute; margin-top:-1%; left: 30%;  height: 59%;
 	width: 45%; padding-top: 15px;  text-align: center;" form id="reg" action="" method="post">
 	<fieldset>
@@ -80,6 +82,9 @@ http://www.tooplate.com/view/2079-garage
 	</fieldset>
 	<fieldset>
 		<input placeholder="Date Of Birth" id= "birth" type="text" tabindex="5" name="birth">
+	</fieldset>
+	<fieldset>
+		<input placeholder="status" id= "status" type="text" tabindex="5" name="status">
 	</fieldset>
 	<fieldset>
 		Gender: 
