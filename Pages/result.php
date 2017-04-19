@@ -16,15 +16,11 @@
 <!-- Header -->
 <div class="allcontain">
 	<div class="header">
-			<ul class="socialicon">
-				<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-				<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-				<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-				<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+			<ul class="givusacall" >
+				<li >Give us a call : +233 50 121 2329 </li>
 			</ul>
-			<ul class="givusacall">
-				<li>Give us a call : +233 50 121 2329 </li>
 	</div>
+</div>
 	<!-- Navbar Up -->
 	<nav class="topnavbar navbar-default topnav">
 		<div class="container">
@@ -50,18 +46,12 @@
 	</nav>
 </div>
 
-<!-- ________________________SEARCH RESULTS _______________________-->
-<div class="latestcars">
-	<h1 class="text-center">&bullet;SEARCH RESULTS&bullet;</h1>
-	<ul class="nav nav-tabs navbar-left latest-navleft">
-		<li role="presentation" class="li-sortby"><span class="sortby">SORT BY: </span></li>
-		<li data-filter=".RECENT" role="presentation"><a href="#mostrecent" class="prcBtnR" role="button" style="left: 150px">MOST RECENT </a></li>
-		<li data-filter=".POPULAR" role="presentation"><a href="#mostpopular" class="prcBtnR" role="button" style="left: 150px">MOST POPULAR </a></li>
-		<li  role="presentation"><a href="#" class="alphSort" role="button" style="left: 150px">ALPHABETICAL </a></li>
-		<li id="hideonmobile">
-	</ul>
-</div>
+
 <br>
+<br>
+<br>
+<br>
+<br><br>
 <br>
 <!-- ________________________Artisans Thumbnail________________-->
 	<div class="grid">
@@ -91,7 +81,7 @@
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 ">
 				<div class="txthover">
-					<img src="../image/alapa2.jpg" alt="alapa2">
+					<img src="../image/alapa2.jpg" alt="alapa2">	
 						<div class="txtcontent">
 							<div class="stars">
 								<div class="glyphicon glyphicon-star"></div>
@@ -252,32 +242,14 @@
 			</div>	
 		</div>
 	</div>
-<!-- _______________________________News Letter ____________________-->
-	<div class="newslettercontent">
-		<div class="leftside">
-			<img src="../image/border.png" alt="border">
-			<h1>NEWSLETTER</h1>
-			<p>Subscribe to the mailing list to <br>
-				receive updates on new artisans, special offers <br>
-				and other discount information.</p>
-		</div>
-		<div class="rightside">
-			<img class="newsimage" src="../image/newsletter.jpeg" alt="newsletter">
-			<input type="text" class="form-control" id="subemail" placeholder="EMAIL">
-			<button>SUBSCRIBE</button>
-		</div>
-	</div>
+
 	<!-- ______________________________________________________Bottom Menu ______________________________-->
 	<div class="bottommenu">
 		<div class="bottomlogo">
-		<span class="dotlogo">&bullet;</span><img src="../image/Logo.jpg" alt="Logo"><span class="dotlogo">&bullet;;</span>
+		<span class="dotlogo">&bullet;</span><img src="../image/Logo.jpg" alt="Logo" ><span class="dotlogo">&bullet;;</span>
 		</div>
-		<ul class="nav nav-tabs bottomlinks">
-			<li role="presentation" ><a href="About.php" role="button" style="left: 300px">ABOUT US</a></li>
-			<li role="presentation"><a href="../Contact_us/contactUs.php"  role="button" style="left: 300px">CONTACT US</a></li>
-		</ul>
-		<p>"We link you to the best artisans around"</p>
-		 <img src="../image/line.png" alt="line"> <br>
+		<p style="margin-top:-80px;">"We link you to the best artisans around"</p>
+		 <img src="../image/line.png" alt="line" style="margin-top:10px;"> <br>
 		 <div class="bottomsocial">
 		 	<a href="#"><i class="fa fa-facebook"></i></a>
 			<a href="#"><i class="fa fa-twitter"></i></a>
@@ -295,10 +267,10 @@
 	</div>
 </div>
 
-<script type="text/javascript" src="../source/bootstrap-3.3.6-dist/js/jquery.js"></script>
-<script type="text/javascript" src="../source/js/isotope.js"></script>
-<script type="text/javascript" src="../source/js/myscript.js"></script> 
-<script type="text/javascript" src="../source/bootstrap-3.3.6-dist/js/jquery.1.11.js"></script>
-<script type="text/javascript" src="../source/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="../JS/bootstrap-3.3.6-dist/js/jquery.js"></script>
+<script type="text/javascript" src="../JS/js/isotope.js"></script>
+<script type="text/javascript" src="../JS/js/myscript.js"></script> 
+<script type="text/javascript" src="../JS/bootstrap-3.3.6-dist/js/jquery.1.11.js"></script>
+<script type="text/javascript" src="../JS/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
 </body>
 </html>

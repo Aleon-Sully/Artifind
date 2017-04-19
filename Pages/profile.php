@@ -14,20 +14,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta name="keywords" content="Mungo Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
-<link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="../style/mystyle.css" rel="stylesheet" type="text/css" media="all" />
-<link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../CSS/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../CSS/mystyle.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../CSS/style.css" rel="stylesheet" type="text/css" media="all" />
 <!--fonts-->
 <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>
 <!--/fonts-->
 <!-- js -->
-<script src="../js/jquery.min.js"> </script>
-<script src="../js/bootstrap.js"></script>
+<script src="../JS/jquery.min.js"> </script>
+<script src="../JS/bootstrap.js"></script>
 <!-- //js -->
 <!-- start-smoth-scrolling -->
-<script type="text/javascript" src="../js/move-top.js"></script>
-<script type="text/javascript" src="../js/easing.js"></script>
+<script type="text/javascript" src="../JS/move-top.js"></script>
+<script type="text/javascript" src="../JS/easing.js"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event){		
@@ -68,7 +68,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
 				<li class="active">
-				<a  " href="../index.php">HOME</a>
+				<a  href="../index.php">HOME</a>
 				</li>
 				<li>
 					<a style="left: 50px;" href="../index.php">Sign Out</a>
@@ -137,8 +137,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="clearfix"> </div>
 		</div>
 		<!---pop-up-box---->  
-				<link href="../css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
-				<script src="../js/jquery.magnific-popup.js" type="text/javascript"></script>
+				<link href="../CSS/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
+				<script src="../JS/jquery.magnific-popup.js" type="text/javascript"></script>
 				<!---//pop-up-box---->
 				<div id="small-dialog" class="mfp-hide">
 					<iframe src="//player.vimeo.com/video/38584262"> </iframe>
@@ -180,8 +180,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!--/skills-->
 <!--portfolio-->
 <!--light-box-js -->
-				<script src="../js/jquery.chocolat.js"></script>
-				<link rel="stylesheet" href="../css/chocolat.css" type="text/css" media="screen" charset="utf-8" />
+				<script src="../JS/jquery.chocolat.js"></script>
+				<link rel="stylesheet" href="../CSS/chocolat.css" type="text/css" media="screen" charset="utf-8" />
 				<!--light-box-files -->
 				<script type="text/javascript" charset="utf-8">
 				$(function() {

@@ -16,7 +16,6 @@
 			else
 				return true;
 		}
-
 /*
 *Declaring variables to capture form elements
 */
