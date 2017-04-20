@@ -114,6 +114,7 @@ http://www.tooplate.com/view/2079-garage
 //Capturing desired elements in variables
 var address = document.getElementById("address");
 var telephone = document.getElementById("telephone");
+<<<<<<< HEAD
 var location = document.getElementById("location");
 var profession = document.getElementById("profession");
 var aboutme = document.getElementById("aboutme");
@@ -124,6 +125,14 @@ var aboutme = document.getElementById("aboutme");
 	function validate(){
 		if(telephone.value != "" && address.value != "" && location.value != "" || aboutme.value != "" || profession.value != ""){
 			location.href = "../Pages/profile.php";
+=======
+var profession = document.getElementById("profession");
+
+	//Validate function
+	function validate(){
+		if(telephone.value != "" && address.value != "" || profession.value != "" ){
+			header("location: ../Pages/profile.php");
+>>>>>>> fixing
 		}else{
 			alert("Invalid credentials. Please fill out the entire form");
 		}

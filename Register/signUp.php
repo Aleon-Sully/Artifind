@@ -125,7 +125,6 @@ var pr
 	//Validate function
 	function validate(){
 		if(fName.value != "" && lName.value != "" && email.value.includes("@") && email.value.includes(".com") && username.value != ""){
-			location.href = "../Pages/profile.php";
 		}else{
 			
 			alert("Invalid credentials. Make sure all fields are filled with information");
