@@ -73,27 +73,35 @@ http://www.tooplate.com/view/2079-garage
 	 <?php  require_once('../Database/dbConnectionClass.php'); ?>
 
 	<form style=" position: absolute; margin-top:-1%; left: 30%;  height: 59%;
-	width: 45%; padding-top: 15px;  text-align: center;" form id="reg" action="" method="post">
+	width: 45%; padding-top: 15px;  text-align: center;" id="reg" action="" method="post" onsubmit="validate()"> 
 	<fieldset>
-		<input placeholder="Address" id= "address" type="text" tabindex="1" name="address"  autofocus>
+	<input type="text" id="address" class="form-control name-form" name="address" placeholder="Address" style="border: none; border-bottom: 2px solid darkred;"  ><br>
+    </fieldset>
+
+    <fieldset>
+    <input type="text" id="telephone" class="form-control name-form" name="telephone" placeholder="Telephone number" style="border: none; border-bottom: 2px solid darkred;"><br>
 	</fieldset>
-	<fieldset>
-		<input placeholder="Telephone Number" id= "telephone" type="text" tabindex="4" name="telephone" >
+
+    <fieldset>
+	<input type="text" id="About me" class="form-control name-form" name="aboutMe" placeholder="About me" style="border: none; border-bottom: 2px solid darkred;"><br>
 	</fieldset>
-	<fieldset>
-		<input placeholder="Date Of Birth" id= "birth" type="text" tabindex="5" name="birth">
+
+    <fieldset> 
+	<input type="password" id="status" class="form-control name-form" name="status" placeholder="status" style="border: none; border-bottom: 2px solid darkred;"><br>
 	</fieldset>
-	<fieldset>
-		<input placeholder="status" id= "status" type="text" tabindex="5" name="status">
-	</fieldset>
-	<fieldset>
 		Gender: 
-		<input type="radio" name="gender" value="f" id="gender" >female
+		<input type="radio" name="gender" value="f" id="gender">female
 		<input type="radio" name="gender" value="m" id="gender">male
 		<br>
 		</fieldset>
 	<fieldset>
-		<button name="register" type="submit" id="registerSubmit">Submit</button>
+	<input type="button" href="index.html" value="Cancel" name="btnCancel" id="btnCancel" 
+	style="font-size: 16px; background-color: white; color:black; border: 2px solid red; " onclick=" cancel()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</fieldset>
+    
+    <fieldset>
+	<input type="submit" value="Finish" name="finishBtn" id="finishBtn" 
+	style="font-size: 16px; background-color: white; color:black; border: 2px solid limegreen">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	</fieldset>
 </form>
 

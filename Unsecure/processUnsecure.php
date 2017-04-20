@@ -145,7 +145,7 @@ function registeruser()
 {
 
    //variables defined
-    $uname = $_REQUEST['uname'];
+    $uname = $_REQUEST['username'];
     $pword =  $_REQUEST['passwd'];
     $fname =  $_REQUEST['fName'];
     $lname =  $_REQUEST['lName'];
