@@ -26,7 +26,7 @@ if(isset($_GET["key"]) && isset($_GET["place"])){
  global $obj;	
 $obj->query("SELECT artisan.*, review.ratings FROM artisan 
 	INNER  JOIN review ON artisan.artisan_id = review.au_ID
-	WHERE artisan.address = '$place'
+	WHERE artisan.location = '$place'
 	ORDER BY review.ratings");
 $data = array();
 while($row = $obj->fetch())
@@ -115,21 +115,6 @@ while($row = $obj->fetch())
 				<?php else: ?>
 					Sorry, there is no such in our Database. Kindly <a href = "../Contact_us/contactUs.php"> Contact us </a> to recommend it.
 			<?php endif;	?>
-		</div>
-	</div>
-<!-- _______________________________News Letter ____________________-->
-	<div class="newslettercontent">
-		<div class="leftside">
-			<img src="../image/border.png" alt="border">
-			<h1>NEWSLETTER</h1>
-			<p>Subscribe to the mailing list to <br>
-				receive updates on new artisans, special offers <br>
-				and other discount information.</p>
-		</div>
-		<div class="rightside">
-			<img class="newsimage" src="../image/newsletter.jpeg" alt="newsletter">
-			<input type="text" class="form-control" id="subemail" placeholder="EMAIL">
-			<button>SUBSCRIBE</button>
 		</div>
 	</div>
 	<!-- ______________________________________________________Bottom Menu ______________________________-->
