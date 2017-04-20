@@ -26,15 +26,6 @@ else
     return true;
 }
 
-     function checkEmail($em){
-			if(!filter_var($em, FILTER_VALIDATE_EMAIL)){
-                echo "Invalid email";
-				return false;
-            }
-			else
-				return true;
-		}
-
 /*
 *Declaring variables to capture form elements
 */
