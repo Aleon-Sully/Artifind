@@ -5,9 +5,10 @@ if(isset($_POST['btnSignUp'])){
  validContactUs();
 }
 
-if (isset($_POST['btnSubmit'])){
-    validatelogin();
-}
+if (isset($_POST['btnSubmit']))
+     {
+        validatelogin();
+     }
 
 if (isset($_POST['SignUpBtn'])){
     validRegister();
@@ -33,8 +34,10 @@ else
 /*
 *Declaring variables to capture form elements
 */
+ 
+$uname = $pwd = $fName = $lName = $em = $msg = "";
 
-$uName = $pwd = $fName = $lName = $em = $msg = "";
+
 
 function validContactUs(){
 
@@ -71,17 +74,55 @@ function sentContactRequest(){
 function validatelogin(){
     $ok = true;
 
-    if (empty($_POST['uName'])){
-        echo "Please enter a username";
+
+    if (empty($_POST['uname'])){
+        echo 'alert("Please provide your username")';
         $ok= false;
     }
 
     if (empty($_POST['pwd'])){
-        echo "Please Enter a Password";
+       echo 'alert("Please provide your password")';        
         $ok = false;
     }
+    if($ok){
+verifylogin();
+}
+}
 
-}    
+function verifylogin(){
+$username = $_POST['uname'];
+$pwd = $_POST['pwd'];
+
+$sql = "SELECT * FROM  login_details where username = $username";
+
+$login = new databaseconnection;
+$executequery = $login -> query($sql);
+
+
+if ($executequery) {
+$row = $login -> fetch();
+
+if (password_verify($pwd, $row['pwd']))
+{
+    session_start();
+    $_SESSION['userid']=$row['aID'];
+    $_SESSION['uname']=$row['username'];
+
+    header("Location: ../index.php");
+    die();
+} else
+{
+        echo "<br>User can't be logged in";
+
+}
+}
+else{
+
+    die();
+
+}
+}
+   
 
 $erroruname  = "";
 $errorfname  = "";
