@@ -19,8 +19,14 @@ http://www.tooplate.com/view/2079-garage
 	<link rel="stylesheet" type="text/css" href="../style/slider.css">
 	<link rel="stylesheet" type="text/css" href="../style/mystyle.css">
 	<link rel="stylesheet" type="text/css" href="../style/contactstyle.css">
+	<link rel="stylesheet" type="text/css" href="../css/loginstyle.css">
+	include('../Layout/menubar.php');
+
 </head>
 <body>
+<?php
+require_once('../Unsecure/processUnsecure.php');
+?>
 <!-- Header -->
 <div class="allcontain">
 	<div class="header">
@@ -75,32 +81,32 @@ http://www.tooplate.com/view/2079-garage
 </div>
 
 
-<div align="center">
+<div class = "container" align="center">
 	<form style="margin-top:15%; left: 30%; position: absolute; width: 45%;" form id="log" action="" method="post">
 			<h1>SIGN IN</h1>
-				<input type="text" id="uname" class="form-control name-form" name="uname" placeholder="Username" style="border:none; border-bottom:2px solid red;">
-				<input type="text" id="pword" class="form-control email-form" name="pwd" placeholder="Password" style="border:none; border-bottom:2px solid red;">
-				<input type="button" value="Submit" name="btnSubmit" id="btnSubmit" onclick="validate()" style="font-size: 16px; background-color: white; color:black; border: 2px solid limegreen">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="text" id="uname" class="form-control name-form" name="uname" placeholder="Username" style="border:none; border-bottom:2px solid black;">
+				<input type="text" id="pword" class="form-control email-form" name="pwd" placeholder="Password" style="border:none; border-bottom:2px solid black;">
+				<input type="button" value="Login" name="btnSubmit" id="btnSubmit" data-submit="...Sending" onclick="return validatelogin()" style="font-size: 16px; background-color: white; color:black; border: 2px  black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	 </form>
 	 </div>
 
 <br><br><br>
 
-<script>
+<script type="text/javascript" src = "../js/validate.js">
 
-//Capturing desired elements in variables
-	var username = document.getElementById("uname");
-	var password = document.getElementById("pword");
+// //Capturing desired elements in variables
+// 	var username = document.getElementById("uname");
+// 	var password = document.getElementById("pword");
 
-	//Validate function
-	function validate(){
-		if(username.value != "" && password != ""){
-			location.href = "../Pages/profile.php";
-			alert("Welcome back " + username.value);
-		}else{
-			alert("Invalid details");
-		}
-	}
+// 	//Validate function
+// 	function validate(){
+// 		if(username.value != "" && password != ""){
+// 			location.href = "../Pages/profile.php";
+// 			alert("Welcome back " + username.value);
+// 		}else{
+// 			alert("Invalid details");
+// 		}
+// 	}
 
 </script>
 
