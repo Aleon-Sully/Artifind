@@ -11,14 +11,13 @@ Template 2079 Garage
 http://www.tooplate.com/view/2079-garage
 
 -->
-<<<<<<< HEAD
 <meta name="author" content="Web Domus Italia">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="../source/bootstrap-3.3.6-dist/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../js/bootstrap-3.3.6-dist/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.5.0/css/font-awesome.css">
-<link rel="stylesheet" type="text/css" href="../style/slider.css">
-<link rel="stylesheet" type="text/css" href="../style/mystyle.css">
+<link rel="stylesheet" type="text/css" href="../css/slider.css">
+<link rel="stylesheet" type="text/css" href="../css/mystyle.css">
 
 <body>
 	<!-- Header -->
@@ -103,16 +102,12 @@ http://www.tooplate.com/view/2079-garage
     <fieldset>
 	<input type="text" id="emailField" class="form-control name-form" name="email" placeholder="Email" style="border: none; border-bottom: 2px solid darkred;"><br>
     </fieldset>
-    <fieldset>
-	<input type="button" href="index.html" value="Cancel" name="btnCancel" id="btnCancel" 
+    <input type="button" href="index.html" value="Cancel" name="btnCancel" id="btnCancel" 
 	style="font-size: 16px; background-color: white; color:black; border: 2px solid red; " onclick=" cancel()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	</fieldset>
-    
-    <fieldset>
 	<input type="submit" value="Sign Up" name="SignUpBtn" id="btnSignUp" 
 	style="font-size: 16px; background-color: white; color:black; border: 2px solid limegreen">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<span><?php echo $errorregister; ?><br> </span>
-	</fieldset>
+	
 
 </form>
 

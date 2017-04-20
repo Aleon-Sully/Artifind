@@ -14,10 +14,10 @@ http://www.tooplate.com/view/2079-garage
 <meta name="author" content="Web Domus Italia">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="../source/bootstrap-3.3.6-dist/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../js/bootstrap-3.3.6-dist/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.5.0/css/font-awesome.css">
-<link rel="stylesheet" type="text/css" href="../style/slider.css">
-<link rel="stylesheet" type="text/css" href="../style/mystyle.css">
+<link rel="stylesheet" type="text/css" href="../css/slider.css">
+<link rel="stylesheet" type="text/css" href="../css/mystyle.css">
 </head>
 <body>
 	<!-- Header -->
@@ -83,27 +83,31 @@ http://www.tooplate.com/view/2079-garage
 	</fieldset>
 
     <fieldset>
-	<input type="text" id="About me" class="form-control name-form" name="aboutMe" placeholder="About me" style="border: none; border-bottom: 2px solid darkred;"><br>
+	<textarea row="4" id="aboutme" class="form-control name-form" name="aboutMe" placeholder="About me" style="border: none; border-bottom: 2px solid darkred;"></textarea><br>
+	</fieldset>
+	<fieldset>
+    <input type="text" id="location" class="form-control name-form" name="location" placeholder="Location" style="border: none; border-bottom: 2px solid darkred;"><br>
 	</fieldset>
 
-    <fieldset> 
-	<input type="password" id="status" class="form-control name-form" name="status" placeholder="status" style="border: none; border-bottom: 2px solid darkred;"><br>
+	<fieldset>
+    <input type="text" id="Profession" class="form-control name-form" name="profession" placeholder="Profession" style="border: none; border-bottom: 2px solid darkred;"><br>
 	</fieldset>
-		Gender: 
+	<fieldset>
+ 	Gender: 
 		<input type="radio" name="gender" value="f" id="gender">female
 		<input type="radio" name="gender" value="m" id="gender">male
 		<br>
 		</fieldset>
 	<fieldset>
+	<br>
+	Upload your profile pic:
+    <input type="file" id="file" class="form-control name-form" name="pic" placeholder="pic" accept="image/*" style="border: none; border-bottom: 2px solid darkred;"><br>
+	</fieldset>	
 	<input type="button" href="index.html" value="Cancel" name="btnCancel" id="btnCancel" 
 	style="font-size: 16px; background-color: white; color:black; border: 2px solid red; " onclick=" cancel()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	</fieldset>
-    
-    <fieldset>
 	<input type="submit" value="Finish" name="finishBtn" id="finishBtn" 
 	style="font-size: 16px; background-color: white; color:black; border: 2px solid limegreen">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	</fieldset>
-</form>
+	</form>
 
 <script>
 
@@ -124,10 +128,10 @@ var birth = document.getElementById("birth");
 	</script>
 
 
-<script type="text/javascript" src="source/bootstrap-3.3.6-dist/js/jquery.js"></script>
-<script type="text/javascript" src="source/js/isotope.js"></script>
-<script type="text/javascript" src="source/js/myscript.js"></script> 
-<script type="text/javascript" src="source/bootstrap-3.3.6-dist/js/jquery.1.11.js"></script>
-<script type="text/javascript" src="source/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="js/bootstrap-3.3.6-dist/js/jquery.js"></script>
+<script type="text/javascript" src="js/js/isotope.js"></script>
+<script type="text/javascript" src="js/js/myscript.js"></script> 
+<script type="text/javascript" src="js/bootstrap-3.3.6-dist/js/jquery.1.11.js"></script>
+<script type="text/javascript" src="js/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
 </body>
 </html>
