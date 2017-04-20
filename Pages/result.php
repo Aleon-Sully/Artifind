@@ -81,13 +81,6 @@ while($row = $obj->fetch())
 <!-- ________________________SEARCH RESULTS _______________________-->
 <div class="latestcars">
 	<h1 class="text-center">&bullet;SEARCH RESULTS&bullet;</h1>
-	<ul class="nav nav-tabs navbar-left latest-navleft">
-		<li role="presentation" class="li-sortby"><span class="sortby">SORT BY: </span></li>
-		<li data-filter=".RECENT" role="presentation"><a href="#mostrecent" class="prcBtnR" role="button" style="left: 150px">MOST RECENT </a></li>
-		<li data-filter=".POPULAR" role="presentation"><a href="#mostpopular" class="prcBtnR" role="button" style="left: 150px">MOST POPULAR </a></li>
-		<li  role="presentation"><a href="#" class="alphSort" role="button" style="left: 150px">ALPHABETICAL </a></li>
-		<li id="hideonmobile">
-	</ul>
 </div>
 <br>
 <br>
@@ -120,6 +113,7 @@ while($row = $obj->fetch())
 			</div>
 				<?php endforeach;	?>
 				<?php else: ?>
+					Sorry, there is no such in our Database. Kindly <a href = "../Contact_us/contactUs.php"> Contact us </a> to recommend it.
 			<?php endif;	?>
 		</div>
 	</div>
