@@ -5,20 +5,14 @@ if(isset($_POST['btnSignUp'])){
    validContactUs();
 }
 
-<<<<<<< HEAD
-     if (isset($_POST['btnSubmit']))
+if (isset($_POST['btnSubmit']))
      {
         validatelogin();
      }
-=======
-if (isset($_POST['btnSubmit'])){
-    validatelogin();
-}
 
 if (isset($_POST['SignUpBtn'])){
     validRegister();
 }
->>>>>>> 62dc4d346f55dec5e8c47188239ba3e151274558
 
 /*
 *Function to validate email
@@ -33,24 +27,13 @@ else
     return true;
 }
 
-     function checkEmail($em){
-			if(!filter_var($em, FILTER_VALIDATE_EMAIL)){
-                echo "Invalid email";
-				return false;
-            }
-			else
-				return true;
-		}
-
 /*
 *Declaring variables to capture form elements
 */
-<<<<<<< HEAD
+ 
 $uname = $pwd = $fName = $lName = $em = $msg = "";
-=======
 
-$uName = $pwd = $fName = $lName = $em = $msg = "";
->>>>>>> 62dc4d346f55dec5e8c47188239ba3e151274558
+
 
 function validContactUs(){
 
@@ -87,22 +70,14 @@ function sentContactRequest(){
 function validatelogin(){
     $ok = true;
 
-<<<<<<< HEAD
+
     if (empty($_POST['uname'])){
-        echo "Please provide your username";
-=======
-    if (empty($_POST['uName'])){
-        echo "Please enter a username";
->>>>>>> 62dc4d346f55dec5e8c47188239ba3e151274558
+        echo 'alert("Please provide your username")';
         $ok= false;
     }
 
     if (empty($_POST['pwd'])){
-<<<<<<< HEAD
-        echo "<br> Please provide your password";
-=======
-        echo "Please Enter a Password";
->>>>>>> 62dc4d346f55dec5e8c47188239ba3e151274558
+       echo 'alert("Please provide your password")';        
         $ok = false;
     }
     if($ok){
@@ -143,8 +118,7 @@ else{
 
 }
 }
-
-}    
+   
 
     $erroruname  = "";
     $errorfname  = "";
