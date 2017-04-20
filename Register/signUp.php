@@ -11,7 +11,6 @@ Template 2079 Garage
 http://www.tooplate.com/view/2079-garage
 
 -->
-<<<<<<< HEAD
 <meta name="author" content="Web Domus Italia">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +18,6 @@ http://www.tooplate.com/view/2079-garage
 <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.5.0/css/font-awesome.css">
 <link rel="stylesheet" type="text/css" href="../style/slider.css">
 <link rel="stylesheet" type="text/css" href="../style/mystyle.css">
-=======
 	<meta name="author" content="Web Domus Italia">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +25,6 @@ http://www.tooplate.com/view/2079-garage
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.5.0/css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="../CSS/slider.css">
 	<link rel="stylesheet" type="text/css" href="../CSS/mystyle.css">
->>>>>>> 4663e78ea6ad6460b0408c45d99eec64730ab7ac
 </head>
 <body>
 	<!-- Header -->
