@@ -26,7 +26,7 @@ if(isset($_GET["key"]) && isset($_GET["place"])){
  global $obj;	
 $obj->query("SELECT artisan.*, review.ratings FROM artisan 
 	INNER  JOIN review ON artisan.artisan_id = review.au_ID
-	WHERE artisan.address = '$place'
+	WHERE artisan.location = '$place'
 	ORDER BY review.ratings");
 $data = array();
 while($row = $obj->fetch())
@@ -189,7 +189,6 @@ while($row = $obj->fetch())
 			<?php endif;	?>
 		</div>
 	</div>
-
 	<!-- ______________________________________________________Bottom Menu ______________________________-->
 	<div class="bottommenu">
 		<div class="bottomlogo">
