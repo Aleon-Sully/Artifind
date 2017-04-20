@@ -173,7 +173,7 @@ function registeruser()
 
     if($registration)
     {
-        header("Location: ../register/restDetails.php");
+        header("Location: ../Register/restDetails.php");
 
     }  else 
     {
