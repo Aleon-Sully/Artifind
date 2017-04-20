@@ -114,12 +114,12 @@ http://www.tooplate.com/view/2079-garage
 //Capturing desired elements in variables
 var address = document.getElementById("address");
 var telephone = document.getElementById("telephone");
-var birth = document.getElementById("birth");
+var profession = document.getElementById("profession");
 
 	//Validate function
 	function validate(){
-		if(birth.value != "" && address.value != ""){
-			location.href = "../Pages/profile.php";
+		if(telephone.value != "" && address.value != "" || profession.value != "" ){
+			header("location: ../Pages/profile.php");
 		}else{
 			alert("Invalid credentials");
 		}
