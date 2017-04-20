@@ -11,7 +11,7 @@ http://www.tooplate.com/view/2079-garage
 -->
 <?php
 
-// include the database
+// include the database to file
 include "Database/dbConnectionClass.php";
 
 $obj = new dbconnection;
