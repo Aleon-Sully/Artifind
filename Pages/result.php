@@ -74,6 +74,11 @@ while($row = $obj->fetch())
 	</nav>
 </div>
 
+<!-- ________________________SEARCH RESULTS _______________________-->
+<div class="latestcars">
+	<h1 class="text-center">&bullet;SEARCH RESULTS&bullet;</h1>
+</div>
+
 
 <br>
 <br>
@@ -84,7 +89,6 @@ while($row = $obj->fetch())
 <!-- ________________________Artisans Thumbnail________________-->
 	<div class="grid">
 		<div class="row">
-<<<<<<< HEAD
 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 				<div class="txthover">
 					<img src="../image/patrick.jpg" alt="patrick.jpg">
@@ -155,11 +159,9 @@ while($row = $obj->fetch())
 				</div>	 
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-=======
 			<?php if(getResults()) :?>
 			 <?php foreach(getResults() as  $value):	?>
 				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
->>>>>>> 209b013cf8ff1fdf9ec1a1c90d2530ded2a50ee4
 				<div class="txthover">
 					<img src="../image/francis.jpeg" alt="francis">
 						<div class="txtcontent">
@@ -183,6 +185,7 @@ while($row = $obj->fetch())
 			</div>
 				<?php endforeach;	?>
 				<?php else: ?>
+					Sorry, there is no such in our Database. Kindly <a href = "../Contact_us/contactUs.php"> Contact us </a> to recommend it.
 			<?php endif;	?>
 		</div>
 	</div>
