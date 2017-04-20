@@ -18,7 +18,7 @@ $obj = new dbconnection;
 function getLocation()
 {
  global $obj;	
-$obj->query("Select address from artisan");
+$obj->query("Select location from artisan");
 $data = array();
 while($row = $obj->fetch())
 {
@@ -135,7 +135,7 @@ require_once('Unsecure/processUnsecure.php');
 					<option>Location</option>
 					<?php if(getLocation()) :?>
 							<?php foreach(getLocation() as  $value):	?>
-								<option value = "<?php echo $value["address"]	?>"><?php echo $value["address"]	?></option>
+								<option value = "<?php echo $value["location"]	?>"><?php echo $value["location"]	?></option>
 								<li></li>
 							<?php endforeach;	?>
 						<?php else: ?>
