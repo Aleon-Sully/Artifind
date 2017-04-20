@@ -109,26 +109,31 @@ function validRegister()
 
             if(!$validuname == true)  
             { 
+                echo "Check fields again. Username must not have symbols or numbers";
                 $GLOBALS['erroruname'] ='Check fields again. Username must not have symbols or numbers'.'<br>';
                 $okay = false;
             }     
             if(!$validfname == true)
             {
+                 echo "Check fields again. First name must not have symbols or numbers";
                 $GLOBALS['errorfname'] = 'Check fields again. Firstname must not have symbols or numbers'.'<br>';
                 $okay = false;
             } 
             if (!$validlname == true )
             {
+                echo "Check fields again. Last name must not have symbols or numbers";
                 $GLOBALS['errorlname'] = 'Check fields again. Lastname must not have symbols or numbers'.'<br>';
                 $okay = false;
             }   
         if(!$validpword == true) 
         {
+            echo "Password must contain at least one upper case, symbol,number and password length not less than 6 characters";
             $GLOBALS['errorpassword'] = 'Password must contain at least one upper case, symbol,number and password length not less than 6 characters'.'<br>';
             $okay = false;
         }
             if(!$validemail == true)
             {
+                echo "Check email";
             $GLOBALS['errormail'] =  'Check email'.'<br>';
             $okay = false;
             

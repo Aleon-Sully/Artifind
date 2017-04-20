@@ -83,7 +83,7 @@ http://www.tooplate.com/view/2079-garage
 	</fieldset>
 
     <fieldset>
-	<textarea row="4" id="aboutme" class="form-control name-form" name="aboutMe" placeholder="About me" style="border: none; border-bottom: 2px solid darkred;"></textarea><br>
+	<textarea row="4"  col="50" id="aboutme" class="form-control name-form" name="aboutMe" placeholder="About me" style="border: none; border-bottom: 2px solid darkred;"></textarea><br>
 	</fieldset>
 	<fieldset>
     <input type="text" id="location" class="form-control name-form" name="location" placeholder="Location" style="border: none; border-bottom: 2px solid darkred;"><br>
@@ -114,14 +114,18 @@ http://www.tooplate.com/view/2079-garage
 //Capturing desired elements in variables
 var address = document.getElementById("address");
 var telephone = document.getElementById("telephone");
-var birth = document.getElementById("birth");
+var location = document.getElementById("location");
+var profession = document.getElementById("profession");
+var aboutme = document.getElementById("aboutme");
+
+
 
 	//Validate function
 	function validate(){
-		if(birth.value != "" && address.value != ""){
+		if(telephone.value != "" && address.value != "" && location.value != "" || aboutme.value != "" || profession.value != ""){
 			location.href = "../Pages/profile.php";
 		}else{
-			alert("Invalid credentials");
+			alert("Invalid credentials. Please fill out the entire form");
 		}
 	}
 
