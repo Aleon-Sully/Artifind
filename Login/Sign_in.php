@@ -14,6 +14,7 @@ http://www.tooplate.com/view/2079-garage
 	<meta name="author" content="Web Domus Italia">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
 	<link rel="stylesheet" type="text/css" href="../source/bootstrap-3.3.6-dist/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="../source/font-awesome-4.5.0/css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="../style/slider.css">
@@ -22,6 +23,13 @@ http://www.tooplate.com/view/2079-garage
 	<link rel="stylesheet" type="text/css" href="../css/loginstyle.css">
 	include('../Layout/menubar.php');
 
+=======
+	<link rel="stylesheet" type="text/css" href="../JS/bootstrap-3.3.6-dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../JS/font-awesome-4.5.0/css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/slider.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/mystyle.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/contactstyle.css">
+>>>>>>> 62dc4d346f55dec5e8c47188239ba3e151274558
 </head>
 <body>
 <?php
