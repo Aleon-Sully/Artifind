@@ -87,6 +87,10 @@ class dbconnection
         return mysqli_fetch_assoc($this->dbresult);
      }
 
+     public function error(){
+       return mysqli_error($this->dbcon);
+     }
+
      public function close(){
         mysqli_close($this->dbcon);
      }

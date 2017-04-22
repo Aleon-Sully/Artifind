@@ -1,15 +1,30 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/Artifind/Database/dbConnectionClass.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/Delco/Database/dbConnectionClass.php');
+
+require_once($_SERVER['DOCUMENT_ROOT'].'/Delco/Artifind/Database/dbConnectionClass.php');
+
+
 
 if(isset($_POST['btnSignUp'])){
    validContactUs();
 }
 
 if (isset($_POST['btnSubmit']))
+
+     {
+        validatelogin();
+     }
+     /*
+
 {
     validatelogin();
 }
 
+
+     if(isset($_POST['conSub'])){
+         sendMail();
+     }
+*/
 if (isset($_POST['SignUpBtn'])){
     validRegister();
 }
@@ -75,12 +90,26 @@ function validatelogin(){
     $ok = true;
 
 
+    if (empty($_POST['uName'])){
+        echo "Please enter a username";
+
+
     if (empty($_POST['uname'])){
         echo 'alert("Please provide your username")';
+
         $ok= false;
     }
 
     if (empty($_POST['pwd'])){
+        echo "Please Enter a Password";
+       echo 'alert("Please provide your password")';        
+        $ok = false;
+    }
+    if($ok){
+verifylogin();
+         }
+    }
+
      echo 'alert("Please provide your password")';        
      $ok = false;
  }
@@ -88,6 +117,7 @@ function validatelogin(){
     verifylogin();
 }
 }
+
 
 function verifylogin(){
     $username = $_POST['uname'];
@@ -179,18 +209,18 @@ function validRegister()
     }
 } 
 
-$uname  = "";
-$fname  = "";
-$lname  = "";
-$email  = "";
-$pword  = "";
+
+
 /*function to check if username entered is unique*/
 function checkusername()
 {
+    $uname = $_POST['username'];
+    
     //code to check if username already exist
     //if username does not exist run the register function
 
     $uname = $_POST['username'];
+     
 
                 //Write sql query
     $sql = "SELECT * FROM artisan where username = \"$uname\""; 
@@ -207,43 +237,65 @@ function checkusername()
             //compare username in database to what user whats to enter
         if(($row = $user->fetch() ) == null)
         {
-            
-            $GLOBALS['fname'] = $_REQUEST['fName'];
-            $GLOBALS['lname'] = $_REQUEST['lName'];
-            $GLOBALS['uname'] = $_REQUEST['username'];
-            $GLOBALS['email'] = $_REQUEST['email'];
-            $GLOBALS['pword'] = $_REQUEST['passwd'];
 
-
-
-
-            header('location:  ../Register/restDetails.php');
+            registeruser();
         }                
         else
 
-            echo 'Username already exist in the database'; 
 
+/*
+
+function sendMail(){
+    $first = $_POST['Fname'];
+    $last = $_POST['Lname'];
+    $conEM = $_POST['eMVal'];
+    $conMsg = $_POST['message'];
+
+    $myEmail = "ampahleon@gnail.com";
+
+    $subject = $first." ".$last." Sender Email: ".$conEM ;
+
+    mail($myEmail, $subject, $conMsg);
+}
+
+*/
+            echo 'Username already exist in the database'; 
+            
+        }
+           registeruser();
+       }                
+       else
+       {
+        echo 'Username already exist in the database'; 
     }
 }
 
 
 
 
-/*function registeruser()
+function registeruser()
 {
 
    //variables defined
-    $uname = $_REQUEST['username'];
-    $pword =  $_REQUEST['passwd'];
-    $fname =  $_REQUEST['fName'];
-    $lname =  $_REQUEST['lName'];
-    $email =  $_REQUEST['email'];
+    session_start();
+
+    $_SESSION['uname'] = $_REQUEST['username'];
+    $_SESSION['pword'] =  $_REQUEST['passwd'];
+    $_SESSION['fname'] =  $_REQUEST['fName'];
+    $_SESSION['lname'] =  $_REQUEST['lName'];
+    $_SESSION['email'] =  $_REQUEST['email'];
+
+    $f1 = $_SESSION['uname'];
+    $f2 = $_SESSION['pword'];
+    $f3 =  $_SESSION['fname'];
+    $f4 =   $_SESSION['lname'];
+    $f5 = $_SESSION['email'];
 
     $pword = password_hash($_POST['pword'],PASSWORD_DEFAULT);
 
 
               //write query
-    $sql = "INSERT INTO artisan (first_name, last_name, email, password, username) VALUES ('$fname','$lname','$email','$pword','$uname')";
+    $sql = "INSERT INTO artisan (first_name, last_name, email, password, username) VALUES (\"".$f3."\", \"".$f4."\", \"".$f5."\", \"".$f2."\", \"".$f1."\")";
 
     //create instance of a database class
     $reguser = new dbconnection;
@@ -259,10 +311,10 @@ function checkusername()
 
     }  else 
     {
-        $GLOBALS['errorregister'] = "User cant be registered";
+        $GLOBALS['errorregister'] = "User cant be registered" ;
     } 
 
-}*/
+}
 
 function validrestDetails(){
     $ok = true;
@@ -290,15 +342,14 @@ function validrestDetails(){
         $ok = false;
     }
 
-    if($ok= true){
+    if($ok== true){
         addUserDetails();
     }
 }
 
+
 function addUserDetails(){
 
-    
-    
     $address = $_REQUEST['address'];
     $telephone =  $_REQUEST['telephone'];
     $loc =  $_REQUEST['location'];
@@ -306,32 +357,35 @@ function addUserDetails(){
     $prof =  $_REQUEST['profession'];
     $gender =  $_REQUEST['gender'];
 
-   
+    session_start();
 
-    $pword = password_hash($_POST['pword'],PASSWORD_DEFAULT);
+    $user = $_SESSION['uname'];
+    session_destroy();
 
+    echo $user;
+//write query
 
-              //write query
-    $sql = "INSERT INTO artisan (first_name, last_name,
-    gender, telephone_Number, address, about_me, email, password, username,profession,location) VALUES ('$fname','$lname','$gender','$telephone','$address','$aboutMe','$email','$pword','$uname','$prof','$loc')";
+    $sql = "UPDATE artisan SET address = '$address', telephone_Number = '$telephone', gender = '$gender', location = '$loc', about_me = '$about', profession = '$prof' WHERE username ='$user'";
 
-    //create instance of a database class
+//create instance of a database class
+
     $reguser = new dbconnection;
 
-    
-                //execute query 
+
     $registration = $reguser->query($sql);
 
 
     if($registration)
     {
+      
         header("Location: ../Pages/profile.php");
 
-    }  else 
+    }else
     {
-        echo "User can't be registered";
-        $GLOBALS['errorregister'] = "User cant be registered";
+
+       echo $reguser->error();
     } 
+}
 }
 
 
