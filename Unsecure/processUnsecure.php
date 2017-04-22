@@ -1,5 +1,5 @@
 <?php
-require_once('../Database/dbConnectionClass.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/Artifind/Database/dbConnectionClass.php');
 
 if(isset($_POST['btnSignUp'])){
  validContactUs();
@@ -206,7 +206,6 @@ function checkusername()
             
         }
     }
-}
 
 
 
