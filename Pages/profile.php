@@ -68,7 +68,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
 				<li class="active">
-				<a  href="../index.php">HOME</a>
+				<a  href="../index.php">Home</a>
 				</li>
 				<li>
 					<a style="left: 50px;" href="../index.php">Sign Out</a>
