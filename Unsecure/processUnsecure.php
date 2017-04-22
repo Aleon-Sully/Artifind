@@ -95,7 +95,7 @@ function verifylogin(){
 
     $sql = "SELECT * FROM  login_details where username = $username";
 
-    $login = new databaseconnection;
+    $login = new dbconnection;
     $executequery = $login -> query($sql);
 
 
@@ -224,6 +224,7 @@ function checkusername()
             echo 'Username already exist in the database'; 
 
     }
+}
 
 
 
@@ -332,5 +333,6 @@ function addUserDetails(){
         $GLOBALS['errorregister'] = "User cant be registered";
     } 
 }
+
 
 ?>
