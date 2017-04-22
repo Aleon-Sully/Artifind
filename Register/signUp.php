@@ -119,7 +119,6 @@ var username = document.getElementById("usNameField");
 var passwd = document.getElementById("passwordField");
 var verpasswd = document.getElementById("verpasswdField");
 var email = document.getElementById("emailField");
-var pr
 
 	//Validate function
 	function validate(){
