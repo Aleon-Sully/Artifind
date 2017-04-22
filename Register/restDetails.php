@@ -59,10 +59,10 @@ http://www.tooplate.com/view/2079-garage
 	</div>
 
 	<br><br><br><br>
-	 <?php  require_once('../Database/dbConnectionClass.php'); ?>
+	 <?php  require_once('../Unsecure/processUnsecure.php'); ?>
 
 	<form style=" position: absolute; margin-top:-1%; left: 30%;  height: 59%;
-	width: 45%; padding-top: 15px;  text-align: center;" id="reg" action="" method="post" onsubmit="validate()"> 
+	width: 45%; padding-top: 15px;  text-align: center;" id="reg" action="" method="post" > 
 	<fieldset>
 	<input type="text" id="address" class="form-control name-form" name="address" placeholder="Address" style="border: none; border-bottom: 2px solid darkred;"  ><br>
     </fieldset>
@@ -101,31 +101,25 @@ http://www.tooplate.com/view/2079-garage
 <script>
 
 //Capturing desired elements in variables
-var address = document.getElementById("address");
+/*var address = document.getElementById("address");
 var telephone = document.getElementById("telephone");
-<<<<<<< HEAD
 var location = document.getElementById("location");
 var profession = document.getElementById("profession");
 var aboutme = document.getElementById("aboutme");
+var gender = document.getElementById("gender");
+*/
 
 
 
 	//Validate function
-	function validate(){
-		if(telephone.value != "" && address.value != "" && location.value != "" || aboutme.value != "" || profession.value != ""){
+	/*function validate(){
+		if(telephone.value != "" && address.value != "" && location.value != "" || aboutme.value != "" || profession.value != "" || gender.checked != ""){
 			location.href = "../Pages/profile.php";
-=======
-var profession = document.getElementById("profession");
 
-	//Validate function
-	function validate(){
-		if(telephone.value != "" && address.value != "" || profession.value != "" ){
-			header("location: ../Pages/profile.php");
->>>>>>> fixing
 		}else{
 			alert("Invalid credentials. Please fill out the entire form");
 		}
-	}
+	}*/
 
 	</script>
 
