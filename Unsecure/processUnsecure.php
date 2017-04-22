@@ -94,7 +94,7 @@ function verifylogin(){
     $username = $_POST['uname'];
     $pwd = $_POST['pwd'];
 
-    $sql = "SELECT * FROM  login_details where username = $username";
+    $sql = "SELECT * FROM  artisan where username = $username";
 
     $login = new dbconnection;
     $executequery = $login -> query($sql);
@@ -109,7 +109,7 @@ function verifylogin(){
             $_SESSION['userid']=$row['aID'];
             $_SESSION['uname']=$row['username'];
 
-            header("Location: ../index.php");
+            header("Location: ../Pages/profile.php");
             die();
         } else
         {
@@ -213,9 +213,9 @@ function checkusername()
        else
        {
         echo 'Username already exist in the database'; 
+       }
     }
 }
-
 
 
 
