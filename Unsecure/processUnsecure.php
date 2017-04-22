@@ -1,15 +1,25 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'].'/Delco/Database/dbConnectionClass.php');
 
+require_once($_SERVER['DOCUMENT_ROOT'].'/Delco/Artifind/Database/dbConnectionClass.php');
+
+
+
 if(isset($_POST['btnSignUp'])){
- validContactUs();
+   validContactUs();
 }
 
 if (isset($_POST['btnSubmit']))
+
      {
         validatelogin();
      }
      /*
+
+{
+    validatelogin();
+}
+
 
      if(isset($_POST['conSub'])){
          sendMail();
@@ -19,7 +29,7 @@ if (isset($_POST['SignUpBtn'])){
     validRegister();
 }
 
-if(isset($_Post['finishBtn'])){
+if(isset($_POST['finishBtn'])){
     validrestDetails();
 }
 
@@ -28,7 +38,7 @@ if(isset($_Post['finishBtn'])){
 */
 
 function checkEmail($em){
-   if(!filter_var($em, FILTER_VALIDATE_EMAIL)){
+ if(!filter_var($em, FILTER_VALIDATE_EMAIL)){
     echo "Invalid email";
     return false;
 }
@@ -39,7 +49,7 @@ else
 /*
 *Declaring variables to capture form elements
 */
- 
+
 $uname = $pwd = $fName = $lName = $em = $msg = "";
 
 
@@ -67,13 +77,13 @@ function sentContactRequest(){
     (\"".$GLOBALS['fName']."\", \"". $GLOBALS['lName']."\", \"".$GLOBALS['em']."\", \"". $GLOBALS['msg']."\")";
 
     if($sendContactReq->query($sql) == true){
-     echo "New record created succesfully";
-     header('Location: ../index.php');
- }else{
-     echo "Error: " . $sql . "<br>";
- }
+       echo "New record created succesfully";
+       header('Location: ../index.php');
+   }else{
+       echo "Error: " . $sql . "<br>";
+   }
 
- $sendContactReq->close();
+   $sendContactReq->close();
 }
 
 function validatelogin(){
@@ -100,40 +110,49 @@ verifylogin();
          }
     }
 
+     echo 'alert("Please provide your password")';        
+     $ok = false;
+ }
+ if($ok){
+    verifylogin();
+}
+}
+
+
 function verifylogin(){
-$username = $_POST['uname'];
-$pwd = $_POST['pwd'];
+    $username = $_POST['uname'];
+    $pwd = $_POST['pwd'];
 
-$sql = "SELECT * FROM  login_details where username = $username";
+    $sql = "SELECT * FROM  login_details where username = $username";
 
-$login = new databaseconnection;
-$executequery = $login -> query($sql);
+    $login = new dbconnection;
+    $executequery = $login -> query($sql);
 
 
-if ($executequery) {
-$row = $login -> fetch();
+    if ($executequery) {
+        $row = $login -> fetch();
 
-if (password_verify($pwd, $row['pwd']))
-{
-    session_start();
-    $_SESSION['userid']=$row['aID'];
-    $_SESSION['uname']=$row['username'];
+        if (password_verify($pwd, $row['pwd']))
+        {
+            session_start();
+            $_SESSION['userid']=$row['aID'];
+            $_SESSION['uname']=$row['username'];
 
-    header("Location: ../index.php");
-    die();
-} else
-{
-        echo "<br>User can't be logged in";
+            header("Location: ../index.php");
+            die();
+        } else
+        {
+            echo "<br>User can't be logged in";
 
+        }
+    }
+    else{
+
+        die();
+
+    }
 }
-}
-else{
 
-    die();
-
-}
-}
-   
 
 $erroruname  = "";
 $errorfname  = "";
@@ -155,21 +174,25 @@ function validRegister()
 
     if(!$validuname == true)  
     { 
+        echo '<br>'.'Check fields again. Username must not have symbols or numbers'.'<br>';
         $GLOBALS['erroruname'] ='Check fields again. Username must not have symbols or numbers'.'<br>';
         $okay = false;
     }     
     if(!$validfname == true)
     {
+        echo '<br>'.'Check fields again. Firstname must not have symbols or numbers'.'<br>';
         $GLOBALS['errorfname'] = 'Check fields again. Firstname must not have symbols or numbers'.'<br>';
         $okay = false;
     } 
     if (!$validlname == true )
     {
+        echo '<br>'.'Check fields again. Lastname must not have symbols or numbers'.'<br>';
         $GLOBALS['errorlname'] = 'Check fields again. Lastname must not have symbols or numbers'.'<br>';
         $okay = false;
     }   
     if(!$validpword == true) 
     {
+        echo '<br>'.'Password must contain at least one upper case, symbol,number and password length not less than 6 characters'.'<br>';
         $GLOBALS['errorpassword'] = 'Password must contain at least one upper case, symbol,number and password length not less than 6 characters'.'<br>';
         $okay = false;
     }
@@ -186,13 +209,18 @@ function validRegister()
     }
 } 
 
+
+
 /*function to check if username entered is unique*/
 function checkusername()
 {
+    $uname = $_POST['username'];
+    
     //code to check if username already exist
     //if username does not exist run the register function
 
     $uname = $_POST['username'];
+     
 
                 //Write sql query
     $sql = "SELECT * FROM artisan where username = \"$uname\""; 
@@ -205,10 +233,11 @@ function checkusername()
             //check if any results was returned
     if($usercheck)
     {
-        
+
             //compare username in database to what user whats to enter
         if(($row = $user->fetch() ) == null)
         {
+
             registeruser();
         }                
         else
@@ -233,7 +262,14 @@ function sendMail(){
             echo 'Username already exist in the database'; 
             
         }
+           registeruser();
+       }                
+       else
+       {
+        echo 'Username already exist in the database'; 
     }
+}
+
 
 
 
@@ -241,17 +277,25 @@ function registeruser()
 {
 
    //variables defined
-    $uname = $_REQUEST['username'];
-    $pword =  $_REQUEST['passwd'];
-    $fname =  $_REQUEST['fName'];
-    $lname =  $_REQUEST['lName'];
-    $email =  $_REQUEST['email'];
+    session_start();
+
+    $_SESSION['uname'] = $_REQUEST['username'];
+    $_SESSION['pword'] =  $_REQUEST['passwd'];
+    $_SESSION['fname'] =  $_REQUEST['fName'];
+    $_SESSION['lname'] =  $_REQUEST['lName'];
+    $_SESSION['email'] =  $_REQUEST['email'];
+
+    $f1 = $_SESSION['uname'];
+    $f2 = $_SESSION['pword'];
+    $f3 =  $_SESSION['fname'];
+    $f4 =   $_SESSION['lname'];
+    $f5 = $_SESSION['email'];
 
     $pword = password_hash($_POST['pword'],PASSWORD_DEFAULT);
 
 
               //write query
-    $sql = "INSERT INTO artisan (first_name, last_name, email, password, username) VALUES ('$fname','$lname','$email','$pword','$uname')";
+    $sql = "INSERT INTO artisan (first_name, last_name, email, password, username) VALUES (\"".$f3."\", \"".$f4."\", \"".$f5."\", \"".$f2."\", \"".$f1."\")";
 
     //create instance of a database class
     $reguser = new dbconnection;
@@ -267,7 +311,7 @@ function registeruser()
 
     }  else 
     {
-        $GLOBALS['errorregister'] = "User cant be registered";
+        $GLOBALS['errorregister'] = "User cant be registered" ;
     } 
 
 }
@@ -298,42 +342,51 @@ function validrestDetails(){
         $ok = false;
     }
 
-    if($ok= true){
-        addRestDetails();
+    if($ok== true){
+        addUserDetails();
     }
 }
 
-function addRestDetails(){
+
+function addUserDetails(){
+
     $address = $_REQUEST['address'];
     $telephone =  $_REQUEST['telephone'];
     $loc =  $_REQUEST['location'];
     $about =  $_REQUEST['aboutMe'];
     $prof =  $_REQUEST['profession'];
     $gender =  $_REQUEST['gender'];
-    $uname  =  $_REQUEST['username'];
 
-              //write query
-    $sql = "UPDATE artisan SET address = '$address', telephone_Number = '$telephone', gender = '$gender', location = '$loc', about_me = '$about' profession = '$prof' WHERE username ='$uname')";
+    session_start();
 
-    //create instance of a database class
+    $user = $_SESSION['uname'];
+    session_destroy();
+
+    echo $user;
+//write query
+
+    $sql = "UPDATE artisan SET address = '$address', telephone_Number = '$telephone', gender = '$gender', location = '$loc', about_me = '$about', profession = '$prof' WHERE username ='$user'";
+
+//create instance of a database class
+
     $reguser = new dbconnection;
 
-    //$registration = $reguser->escapefn($sql, $uname, $pword, $fname, $lname, $email, $gender, $major, 'ACTIVE', '1');
 
-            //execute query 
     $registration = $reguser->query($sql);
 
 
     if($registration)
     {
+      
         header("Location: ../Pages/profile.php");
 
-    }  else 
+    }else
     {
-        $GLOBALS['errorregister'] = "User cant be registered";
-    } 
 
+       echo $reguser->error();
+    } 
 }
 }
+
 
 ?>
