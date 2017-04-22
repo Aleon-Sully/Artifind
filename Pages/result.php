@@ -20,13 +20,14 @@ include "../Database/dbConnectionClass.php";
 $obj = new dbconnection;
 function getResults()
 {
-if(isset($_GET["key"]) && isset($_GET["place"])){
+if(isset($_GET["key"]) || isset($_GET["place"])){
 	$place =$_GET["place"] ;
 	$key =$_GET["key"] ;
  global $obj;	
-$obj->query("SELECT artisan.*, review.ratings FROM artisan 
+$obj->query("
+	SELECT artisan.*, review.ratings FROM artisan 
 	INNER  JOIN review ON artisan.artisan_id = review.au_ID
-	WHERE artisan.location = '$place'
+	WHERE artisan.location = '$place' OR artisan.first_name LIKE '%$key'  OR artisan.last_name LIKE '%$key'
 	ORDER BY review.ratings");
 $data = array();
 while($row = $obj->fetch())
@@ -90,75 +91,6 @@ while($row = $obj->fetch())
 	<div class="grid">
 		<div class="row">
 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-				<div class="txthover">
-					<img src="../image/patrick.jpg" alt="patrick.jpg">
-						<div class="txtcontent">
-							<div class="stars">
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-							</div>
-							<div class="simpletxt">
-								<h3 class="name">Patrick joyce</h3>
-								<p>"Very good at fixing electric bulbs,<br>
-	 							sockets, and any other electric device" </p>
-	 							<a href="profile.php"><button>READ MORE</button></a><br>
-							</div>
-							<div class="stars2">
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-							</div>
-						</div>
-				</div>	 
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 ">
-				<div class="txthover">
-					<img src="../image/alapa2.jpg" alt="alapa2">	
-						<div class="txtcontent">
-							<div class="stars">
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-							</div>
-							<div class="simpletxt">
-								<h3 class="name">Alapa Cooner</h3>
-								<p>"Very good at fixing tables,<br>
-	 							and making other furniture of your choice" </p>
-	 							<a href="profile.php"><button>READ MORE</button></a><br>
-							</div>
-							<div class="stars2">
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-							</div>
-						</div>
-				</div>	 
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-				<div class="txthover">
-					<img src="../image/tailor1.jpg" alt="tailor1">
-						<div class="txtcontent">
-							<div class="stars">
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-							</div>
-							<div class="simpletxt">
-								<h3 class="name">Hariet Shine</h3>
-								<p>"Very good designer who sows dresses,<br>
-	 							skirts, and any other style" </p>
-	 							<a href="profile.php"><button>READ MORE</button></a><br>
-							</div>
-							<div class="stars2">
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-							</div>
-						</div>
-				</div>	 
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 			<?php if(getResults()) :?>
 			 <?php foreach(getResults() as  $value):	?>
 				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
@@ -185,9 +117,12 @@ while($row = $obj->fetch())
 			</div>
 				<?php endforeach;	?>
 				<?php else: ?>
-					Sorry, there is no such in our Database. Kindly <a href = "../Contact_us/contactUs.php"> Contact us </a> to recommend it.
+					
+	                <p class="text-center">Sorry, there is no such in our Database. Kindly <a href = "../Contact_us/contactUs.php"> Contact us </a> to recommend it.</p>
+                    
 			<?php endif;	?>
 		</div>
+	</div>
 	</div>
 	<!-- ______________________________________________________Bottom Menu ______________________________-->
 	<div class="bottommenu">
@@ -211,8 +146,6 @@ while($row = $obj->fetch())
 				</div>
 			</div>
 	</div>
-</div>
-
 <script type="text/javascript" src="../JS/bootstrap-3.3.6-dist/js/jquery.js"></script>
 <script type="text/javascript" src="../JS/js/isotope.js"></script>
 <script type="text/javascript" src="../JS/js/myscript.js"></script> 

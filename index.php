@@ -15,6 +15,7 @@ http://www.tooplate.com/view/2079-garage
 include "Database/dbConnectionClass.php";
 
 $obj = new dbconnection;
+
 function getLocation()
 {
  global $obj;	
@@ -151,9 +152,7 @@ require_once('Unsecure/processUnsecure.php');
 </div>
 
 <script>
-	function result(){
-		location.href = "Pages/result.php"
-	}
+
 </script>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/isotope.js"></script>
