@@ -5,6 +5,12 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
+<?php
+include($_SERVER['DOCUMENT_ROOT'].'/Delco/classes/profileClass.php');
+session_start();
+$_SESSION['artid'] = '1';
+$id =$_SESSION['artid'];
+?>
 <html>
 <head>
 <title>Delcosite</title>
@@ -14,20 +20,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta name="keywords" content="Mungo Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
-<link href="../CSS/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="../CSS/mystyle.css" rel="stylesheet" type="text/css" media="all" />
-<link href="../CSS/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/mystyle.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!--fonts-->
 <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>
 <!--/fonts-->
 <!-- js -->
-<script src="../JS/jquery.min.js"> </script>
-<script src="../JS/bootstrap.js"></script>
+<script src="js/jquery.min.js"> </script>
+<script src="js/bootstrap.js"></script>
 <!-- //js -->
 <!-- start-smoth-scrolling -->
-<script type="text/javascript" src="../JS/move-top.js"></script>
-<script type="text/javascript" src="../JS/easing.js"></script>
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event){		
@@ -39,6 +45,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- start-smoth-scrolling -->
 </head>
 <body>
+
 <div class="allcontain">
 	<div class="header">
 			<ul class="socialicon">
@@ -62,16 +69,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand logo" href="#"><img src="../image/Logo.jpg" alt="logo"></a>
+				<a class="navbar-brand logo" href="#"><img src="image/Logo.jpg" alt="logo"></a>
 			</div>	 
 		</div>
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
-				<li class="active">
-				<a  href="../index.php">Home</a>
+				<li class="active"><a style="margin-left: 50px;" href="index.php">HOME</a> </li>
 				</li>
+				<li><a href = "">My Profile</a></li>
+				<li><a href = "editProfile.php">Edit Profile</a></li>
 				<li>
-					<a style="left: 50px;" href="../index.php">Sign Out</a>
+					<a  href="index.php">Sign Out</a>
 
 				</li>
 
@@ -86,8 +94,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="container">
 		<div class="banner-info">
 			<div class="banner-text">
-				<h1>Kofi Darko</h1>
-				<h2>Carpenter</h2>
+				<?php
+				$s = new profileClass;
+				$s->loadName($id);
+				$s->loadProfession($id);
+				?>
 			</div>
 		</div>
 	</div>
@@ -127,46 +138,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<!-- about-grids -->
 				<div class="about-grids">
 					<div class="col-md-6 about-left-grid">
-						<h3> Kofi Darko</h3>
-						<span>Carpenter</span>
-						<p>This section will contain a short text giving information about the artisan as provided by the artisan</p>
+						<?php $s->loadName($id); 
+						      $s->loadProfession($id);
+						      $s->loadAboutMe($id);?>
+						<span id="profession2">Carpenter</span>
+						
 				
 					</div>
 				<!-- about-grids -->
 			</div>
 			<div class="clearfix"> </div>
 		</div>
-		<!---pop-up-box---->  
-				<link href="../CSS/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
-				<script src="../JS/jquery.magnific-popup.js" type="text/javascript"></script>
-				<!---//pop-up-box---->
-				<div id="small-dialog" class="mfp-hide">
-					<iframe src="//player.vimeo.com/video/38584262"> </iframe>
-				</div>
-				 <script>
-						$(document).ready(function() {
-						$('.popup-with-zoom-anim').magnificPopup({
-							type: 'inline',
-							fixedContentPos: false,
-							fixedBgPos: true,
-							overflowY: 'auto',
-							closeBtnInside: true,
-							preloader: false,
-							midClick: true,
-							removalDelay: 300,
-							mainClass: 'my-mfp-zoom-in'
-						});
-																						
-						});
-				</script>								  
-			<!----//fea-video---->
 <!--/about-->
 <!--skills-->
 <div class="skills" id="skills">
 	<div class="container">
 		<div class="skills-info">
 			<h3>Skills</h3>
-			<p> This section contains a list of skills the artisan can provide</p> <br>
 			<ul>
 			<li> Skill 1</li>
 			<li> Skill 2</li>
@@ -180,8 +168,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!--/skills-->
 <!--portfolio-->
 <!--light-box-js -->
-				<script src="../JS/jquery.chocolat.js"></script>
-				<link rel="stylesheet" href="../CSS/chocolat.css" type="text/css" media="screen" charset="utf-8" />
+				<script src="js/jquery.chocolat.js"></script>
+				<link rel="stylesheet" href="css/chocolat.css" type="text/css" media="screen" charset="utf-8" />
 				<!--light-box-files -->
 				<script type="text/javascript" charset="utf-8">
 				$(function() {
@@ -194,96 +182,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<h3>Portfolio</h3>
 				<span> </span>
         <div class="gallery-info">
-				<div class="col-md-4 galry-grids moments-bottom">
-					<a class="b-link-stripe b-animate-go" href="../image/img9.jpg">
-						<img src="../image/port1.jpeg" class="img-responsive" alt="">
-						<div class="b-wrapper">
-							<span class="b-animate b-from-left    b-delay03 ">
-								<img class="img-responsive" src="../image/e.png" alt=""/>
-							</span>					
-						</div>
-					</a>				
-				</div>
-				<div class="col-md-4 galry-grids moments-bottom">
-					<a class="b-link-stripe b-animate-go" href="../image/img10.jpg">
-						<img src="../image/port2.jpeg" class="img-responsive" alt="">
-						<div class="b-wrapper">
-							<span class="b-animate b-from-left b-delay03 ">
-								<img class="img-responsive" src="../image/e.png" alt=""/>
-							</span>					
-						</div>
-					</a>				
-				</div>
-				<div class="col-md-4 galry-grids moments-bottom">
-					<a class="b-link-stripe b-animate-go" href="../image/img11.jpg">
-						<img src="../image/port3.jpg" class="img-responsive" alt="">
-						<div class="b-wrapper">
-							<span class="b-animate b-from-left    b-delay03 ">
-								<img class="img-responsive" src="../image/e.png" alt=""/>
-							</span>					
-						</div>
-					</a>				
-				</div>				
-				<div class="col-md-4 galry-grids moments-bottom">
-					<a class="b-link-stripe b-animate-go" href="../image/img12.jpg">
-						<img src="../image/port4.jpeg" class="img-responsive" alt="">
-						<div class="b-wrapper">
-							<span class="b-animate b-from-left    b-delay03 ">
-								<img class="img-responsive" src="../image/e.png" alt=""/>
-							</span>					
-						</div>
-					</a>				
-				</div>
-				<div class="col-md-4 galry-grids moments-bottom">
-					<a class="b-link-stripe b-animate-go" href="../image/img13.jpg">
-						<img src="../image/port5.jpeg" class="img-responsive" alt="">
-						<div class="b-wrapper">
-							<span class="b-animate b-from-left    b-delay03 ">
-								<img class="img-responsive" src="../image/e.png" alt=""/>
-							</span>					
-						</div>
-					</a>				
-				</div>
-				<div class="col-md-4 galry-grids moments-bottom">
-					<a class="b-link-stripe b-animate-go" href="../image/img14.jpg">
-						<img src="../image/port6.jpeg" class="img-responsive" alt="">
-						<div class="b-wrapper">
-							<span class="b-animate b-from-left    b-delay03 ">
-								<img class="img-responsive" src="../image/e.png" alt=""/>
-							</span>					
-						</div>
-					</a>				
-				</div>
-				<div class="col-md-4 galry-grids moments-bottom">
-					<a class="b-link-stripe b-animate-go" href="../image/img15.jpg">
-						<img src="../image/port7.jpg" class="img-responsive" alt="">
-						<div class="b-wrapper">
-							<span class="b-animate b-from-left    b-delay03 ">
-								<img class="img-responsive" src="../image/e.png" alt=""/>
-							</span>					
-						</div>
-					</a>				
-				</div>
-				<div class="col-md-4 galry-grids moments-bottom">
-					<a class="b-link-stripe b-animate-go" href="../image/img16.jpg">
-						<img src="../image/port8.jpeg" class="img-responsive" alt="">
-						<div class="b-wrapper">
-							<span class="b-animate b-from-left    b-delay03 ">
-								<img class="img-responsive" src="../image/e.png" alt=""/>
-							</span>					
-						</div>
-					</a>				
-				</div>
-				<div class="col-md-4 galry-grids moments-bottom">
-					<a class="b-link-stripe b-animate-go" href="../image/img17.jpg" >
-						<img src="../image/port9.jpeg" class="img-responsive" alt="">
-						<div class="b-wrapper">
-							<span class="b-animate b-from-left    b-delay03 ">
-								<img class="img-responsive" src="../images/e.png" alt=""/>
-							</span>					
-						</div>
-					</a>				
-				</div>
+<?php 
+				$s->loadPortfolio($id)?>
 				<div class="clearfix"> </div>
 			</div>
 			</div>
@@ -296,12 +196,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<h3>CONTACT</h3>
 			<span> </span>
 				<ul>
-					<li>Orchard Park, Long Bennington, </li>
-					<li>Newark, Lincolnshire </li>
-					<li>NG23 5DQ, United Kingdom</li>
-					<li>+12 5522 4478 4788</li>
-					<li><a href="mailto:info@example.com">Mungo@mail.com</a></li>
-					<li><a href="#">www.Example.com</a></li>
+				<?php 
+				$s->loadAddress($id);
+				$s->loadEmail($id);
+				$s->loadTel($id); ?>
+					<li></li>
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
@@ -340,5 +239,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</script>
 				<a href="#" id="toTop" style="display: block;"><span id="toTopHover"></span><span id="toTopHover"></span> <span id="toTopHover" style="opacity: 1;"> </span></a>
 </div>
+
 </body>
 </html>

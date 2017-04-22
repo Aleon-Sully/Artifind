@@ -1,5 +1,8 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT'].'/Delco/Database/dbConnectionClass.php');
+
 require_once($_SERVER['DOCUMENT_ROOT'].'/Delco/Artifind/Database/dbConnectionClass.php');
+
 
 
 if(isset($_POST['btnSignUp'])){
@@ -7,10 +10,21 @@ if(isset($_POST['btnSignUp'])){
 }
 
 if (isset($_POST['btnSubmit']))
+
+     {
+        validatelogin();
+     }
+     /*
+
 {
     validatelogin();
 }
 
+
+     if(isset($_POST['conSub'])){
+         sendMail();
+     }
+*/
 if (isset($_POST['SignUpBtn'])){
     validRegister();
 }
@@ -76,12 +90,26 @@ function validatelogin(){
     $ok = true;
 
 
+    if (empty($_POST['uName'])){
+        echo "Please enter a username";
+
+
     if (empty($_POST['uname'])){
         echo 'alert("Please provide your username")';
+
         $ok= false;
     }
 
     if (empty($_POST['pwd'])){
+        echo "Please Enter a Password";
+       echo 'alert("Please provide your password")';        
+        $ok = false;
+    }
+    if($ok){
+verifylogin();
+         }
+    }
+
      echo 'alert("Please provide your password")';        
      $ok = false;
  }
@@ -90,11 +118,12 @@ function validatelogin(){
 }
 }
 
+
 function verifylogin(){
     $username = $_POST['uname'];
     $pwd = $_POST['pwd'];
 
-    $sql = "SELECT * FROM  login_details where username = $username";
+    $sql = "SELECT * FROM  artisan where username = $username";
 
     $login = new dbconnection;
     $executequery = $login -> query($sql);
@@ -109,7 +138,7 @@ function verifylogin(){
             $_SESSION['userid']=$row['aID'];
             $_SESSION['uname']=$row['username'];
 
-            header("Location: ../index.php");
+            header("Location: ../Pages/profile.php");
             die();
         } else
         {
@@ -208,14 +237,39 @@ function checkusername()
             //compare username in database to what user whats to enter
         if(($row = $user->fetch() ) == null)
         {
+
+            registeruser();
+        }                
+        else
+
+
+/*
+
+function sendMail(){
+    $first = $_POST['Fname'];
+    $last = $_POST['Lname'];
+    $conEM = $_POST['eMVal'];
+    $conMsg = $_POST['message'];
+
+    $myEmail = "ampahleon@gnail.com";
+
+    $subject = $first." ".$last." Sender Email: ".$conEM ;
+
+    mail($myEmail, $subject, $conMsg);
+}
+
+*/
+            echo 'Username already exist in the database'; 
+            
+        }
            registeruser();
        }                
        else
        {
         echo 'Username already exist in the database'; 
+       }
     }
 }
-
 
 
 
@@ -331,6 +385,7 @@ function addUserDetails(){
 
        echo $reguser->error();
     } 
+}
 }
 
 
