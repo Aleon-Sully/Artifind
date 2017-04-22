@@ -36,6 +36,10 @@ while($row = $obj->fetch())
 	<link rel="stylesheet" type="text/css" href="css/mystyle.css">
 </head>
 <body>
+
+<?php
+require_once('Unsecure/processUnsecure.php');
+?>
 <!-- Header -->
 <div class="allcontain">
 	<div class="header">
@@ -65,7 +69,7 @@ while($row = $obj->fetch())
 						<a href="Register/signUp.php">Artisan?Sign Up</a>
 				</li>
 				<li>
-					<a href="Login/Sign_in.php">Sign In</a>
+					<a href="Sign_in.php">Sign In</a>
 
 				</li>
 				<li>
