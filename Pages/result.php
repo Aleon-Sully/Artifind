@@ -66,7 +66,18 @@ while($row = $obj->fetch())
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
 				<li class="active"><a href="../index.php">Home</a> </li>
-				<li class="active"><a href="../Pages/category.php">Category</a> </li>
+								<li class="dropdown">
+          			<a href="../Pages/category.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category<span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+			            <li><a href="#">Action</a></li>
+			            <li><a href="#">Another action</a></li>
+			            <li><a href="#">Something else here</a></li>
+			            <li role="separator" class="divider"></li>
+			            <li><a href="#">Separated link</a></li>
+			            <li role="separator" class="divider"></li>
+			            <li><a href="#">One more separated link</a></li>
+			          </ul>
+			        </li>
 				<li class="active"><a href="../Register/signUp.php">Artisan? Sign Up</a> </li>
 				<li class="active"><a href="../Login/Sign_in.php">Sign In</a> </li>
 				<li class="active"><a href="../Pages/About.php">About Us</a> </li>
