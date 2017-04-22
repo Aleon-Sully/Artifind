@@ -70,6 +70,11 @@ class dbconnection
      *@return return true or false
      */
 
+  public function count(){
+
+          $rowNum = mysqli_num_rows($this->dbresult);
+          return $rowNum;  
+       }
      public function fetch()
      {
         //check if results has contents
