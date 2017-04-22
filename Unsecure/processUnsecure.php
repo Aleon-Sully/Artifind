@@ -9,6 +9,12 @@
         validatelogin();
      }
 
+     /*
+
+     if(isset($_POST['conSub'])){
+         sendMail();
+     }
+*/
 /*
 *Function to validate email
 */
@@ -61,16 +67,34 @@ function validatelogin(){
     $ok = true;
 
     if (empty($_POST['uName'])){
-        echo "Please enter a username".<br>;
+        echo "Please enter a username";
         $ok= false;
     }
 
     if (empty($_POST['pwd'])){
-        echo "Please Enter a Password".<br>;
+        echo "Please Enter a Password";
         $ok = false;
     }
 
 
+}
+
+/*
+
+function sendMail(){
+    $first = $_POST['Fname'];
+    $last = $_POST['Lname'];
+    $conEM = $_POST['eMVal'];
+    $conMsg = $_POST['message'];
+
+    $myEmail = "ampahleon@gnail.com";
+
+    $subject = $first." ".$last." Sender Email: ".$conEM ;
+
+    mail($myEmail, $subject, $conMsg);
+}
+
+*/
 
       
 ?>
