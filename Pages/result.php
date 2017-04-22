@@ -125,10 +125,7 @@ while($row = $obj->fetch())
 	</div>
 	</div>
 	<!-- ______________________________________________________Bottom Menu ______________________________-->
-	<div class="bottommenu">
-		<div class="bottomlogo">
-		<span class="dotlogo">&bullet;</span><img src="../image/Logo.jpg" alt="Logo" ><span class="dotlogo">&bullet;;</span>
-		</div>
+	<div class="bottommenu" style="margin-top:150px;">
 		<p style="margin-top:-80px;">"We link you to the best artisans around"</p>
 		 <img src="../image/line.png" alt="line" style="margin-top:10px;"> <br>
 		 <div class="bottomsocial">

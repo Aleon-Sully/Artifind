@@ -123,13 +123,13 @@ require_once('Unsecure/processUnsecure.php');
 					<span class="icon-bar"></span>
 				</button>
 			</div>
-			<div class="collapse navbar-collapse" id="navbarmidle">
+			<div class="collapse navbar-collapse" id="navbarmidle" style="margin-bottom:2%;">
 				<div class="searchtxt">
 					<h1>SEARCH</h1>
 				</div>
 				<form class="navbar-form navbar-left searchformmargin" role="search" action="Pages/result.php" method = "GET">
 					<div class="form-group">
-						<input type="text" class="form-control searchform" name = "key" placeholder="Enter Keyword">
+						<input type="text" class="form-control searchform" required name = "key" placeholder="Enter Keyword">
 					</div>
 					<div class="form-group">
 					<select class="form-control searchform placeholder" name = "place">
