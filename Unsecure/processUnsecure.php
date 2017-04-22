@@ -215,10 +215,6 @@ function checkusername()
         echo 'Username already exist in the database'; 
     }
 }
-<<<<<<< HEAD
-}
-=======
->>>>>>> 2378a80cc80405efc5496da712f34ead94c401de
 
 
 
