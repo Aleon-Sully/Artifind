@@ -20,13 +20,14 @@ include "../Database/dbConnectionClass.php";
 $obj = new dbconnection;
 function getResults()
 {
-if(isset($_GET["key"]) && isset($_GET["place"])){
+if(isset($_GET["key"]) || isset($_GET["place"])){
 	$place =$_GET["place"] ;
 	$key =$_GET["key"] ;
  global $obj;	
-$obj->query("SELECT artisan.*, review.ratings FROM artisan 
+$obj->query("
+	SELECT artisan.*, review.ratings FROM artisan 
 	INNER  JOIN review ON artisan.artisan_id = review.au_ID
-	WHERE artisan.location = '$place'
+	WHERE artisan.location = '$place' OR artisan.first_name LIKE '%$key'  OR artisan.last_name LIKE '%$key'
 	ORDER BY review.ratings");
 $data = array();
 while($row = $obj->fetch())
@@ -64,11 +65,11 @@ while($row = $obj->fetch())
 		</div>
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
-				<li class="active"><a href="../index.php">HOME</a> </li>
-				<li class="active"><a href="../Register/signUp.php">ARTISAN? SIGN UP</a> </li>
-				<li class="active"><a href="../Login/Sign_in.php">SIGN IN</a> </li>
-				<li class="active"><a href="../Pages/About.php">ABOUT US</a> </li>
-				<li class="active"><a href="../Contact_us/contactUs.php">CONTACT US</a> </li>
+				<li class="active"><a href="../index.php">Home</a> </li>
+				<li class="active"><a href="../Register/signUp.php">Artisan? Sign Up</a> </li>
+				<li class="active"><a href="../Login/Sign_in.php">Sign In</a> </li>
+				<li class="active"><a href="../Pages/About.php">About Us</a> </li>
+				<li class="active"><a href="../Contact_us/contactUs.php">Contact Us</a> </li>
 			</ul>
 		</div>
 	</nav>
@@ -89,75 +90,6 @@ while($row = $obj->fetch())
 <!-- ________________________Artisans Thumbnail________________-->
 	<div class="grid">
 		<div class="row">
-			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-				<div class="txthover">
-					<img src="../image/patrick.jpg" alt="patrick.jpg">
-						<div class="txtcontent">
-							<div class="stars">
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-							</div>
-							<div class="simpletxt">
-								<h3 class="name">Patrick joyce</h3>
-								<p>"Very good at fixing electric bulbs,<br>
-	 							sockets, and any other electric device" </p>
-	 							<a href="profile.php"><button>READ MORE</button></a><br>
-							</div>
-							<div class="stars2">
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-							</div>
-						</div>
-				</div>	 
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 ">
-				<div class="txthover">
-					<img src="../image/alapa2.jpg" alt="alapa2">	
-						<div class="txtcontent">
-							<div class="stars">
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-							</div>
-							<div class="simpletxt">
-								<h3 class="name">Alapa Cooner</h3>
-								<p>"Very good at fixing tables,<br>
-	 							and making other furniture of your choice" </p>
-	 							<a href="profile.php"><button>READ MORE</button></a><br>
-							</div>
-							<div class="stars2">
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-							</div>
-						</div>
-				</div>	 
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-				<div class="txthover">
-					<img src="../image/tailor1.jpg" alt="tailor1">
-						<div class="txtcontent">
-							<div class="stars">
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-							</div>
-							<div class="simpletxt">
-								<h3 class="name">Hariet Shine</h3>
-								<p>"Very good designer who sows dresses,<br>
-	 							skirts, and any other style" </p>
-	 							<a href="profile.php"><button>READ MORE</button></a><br>
-							</div>
-							<div class="stars2">
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-							</div>
-						</div>
-				</div>	 
-			</div>
 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 			<?php if(getResults()) :?>
 			 <?php foreach(getResults() as  $value):	?>
@@ -185,15 +117,15 @@ while($row = $obj->fetch())
 			</div>
 				<?php endforeach;	?>
 				<?php else: ?>
-					Sorry, there is no such in our Database. Kindly <a href = "../Contact_us/contactUs.php"> Contact us </a> to recommend it.
+					
+	                <p class="text-center">Sorry, there is no such in our Database. Kindly <a href = "../Contact_us/contactUs.php"> Contact us </a> to recommend it.</p>
+                    
 			<?php endif;	?>
 		</div>
 	</div>
+	</div>
 	<!-- ______________________________________________________Bottom Menu ______________________________-->
-	<div class="bottommenu">
-		<div class="bottomlogo">
-		<span class="dotlogo">&bullet;</span><img src="../image/Logo.jpg" alt="Logo" ><span class="dotlogo">&bullet;;</span>
-		</div>
+	<div class="bottommenu" style="margin-top:150px;">
 		<p style="margin-top:-80px;">"We link you to the best artisans around"</p>
 		 <img src="../image/line.png" alt="line" style="margin-top:10px;"> <br>
 		 <div class="bottomsocial">
@@ -211,8 +143,6 @@ while($row = $obj->fetch())
 				</div>
 			</div>
 	</div>
-</div>
-
 <script type="text/javascript" src="../JS/bootstrap-3.3.6-dist/js/jquery.js"></script>
 <script type="text/javascript" src="../JS/js/isotope.js"></script>
 <script type="text/javascript" src="../JS/js/myscript.js"></script> 

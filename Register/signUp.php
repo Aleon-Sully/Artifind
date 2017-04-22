@@ -16,9 +16,18 @@ http://www.tooplate.com/view/2079-garage
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="../js/bootstrap-3.3.6-dist/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.5.0/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="../style/slider.css">
+<link rel="stylesheet" type="text/css" href="../style/mystyle.css">
+	<meta name="author" content="Web Domus Italia">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../JS/bootstrap-3.3.6-dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.5.0/css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/slider.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/mystyle.css">
+</head>
 <link rel="stylesheet" type="text/css" href="../css/slider.css">
 <link rel="stylesheet" type="text/css" href="../css/mystyle.css">
-
 <body>
 	<!-- Header -->
 	<div class="allcontain">
@@ -47,25 +56,14 @@ http://www.tooplate.com/view/2079-garage
 				</div>	 
 			</div>
 			<div class="collapse navbar-collapse" id="upmenu">
-				<ul class="nav navbar-nav" id="navbarontop">
-
-					<li class="active"><a href="../index.php"  style="margin-left: 50px;">HOME</a> </li>
-				</li>
-				<li>
-					<a href="signUp.php">Artisan? Sign Up</a>			
-				</li>
-				<li>
-					<a href="../Login/Sign_in.php">Sign In</a>
-
-				</li>
-				<li>
-					<a href="../Pages/About.php">About Us</a>
-
-				</li>
-				<li>
-					<a href="../Contact_us/contactUs.php">Contact Us</a>
-				</ul>
-			</div>
+			<ul class="nav navbar-nav" id="navbarontop">
+				<li class="active"><a href="../index.php">Home</a> </li>
+				<li class="active"><a href="../Register/signUp.php">Artisan? Sign Up</a> </li>
+				<li class="active"><a href="../Login/Sign_in.php">Sign In</a> </li>
+				<li class="active"><a href="../Pages/About.php">About Us</a> </li>
+				<li class="active"><a href="../Contact_us/contactUs.php">Contact Us</a> </li>
+			</ul>
+		</div>
 		</nav>
 	</div>
 
