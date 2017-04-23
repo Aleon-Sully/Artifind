@@ -1,5 +1,7 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/Artifind/Artifind/Database/dbConnectionClass.php');
+
+require_once($_SERVER['DOCUMENT_ROOT'].'/Artifind/dbConnectionClass.php');
+
 
 class profileClass extends dbconnection {
 
@@ -99,5 +101,5 @@ public function loadPortfolio ($artid){
 
 }
 }
-
 ?>
+

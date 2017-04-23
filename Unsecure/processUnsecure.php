@@ -1,17 +1,36 @@
 <?php
-require_once('../Database/dbConnectionClass.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/Delco/Database/dbConnectionClass.php');
+
+require_once($_SERVER['DOCUMENT_ROOT'].'/Delco/Artifind/Database/dbConnectionClass.php');
+
+
 
 if(isset($_POST['btnSignUp'])){
    validContactUs();
 }
 
 if (isset($_POST['btnSubmit']))
+
      {
         validatelogin();
      }
+     /*
 
+{
+    validatelogin();
+}
+
+
+     if(isset($_POST['conSub'])){
+         sendMail();
+     }
+*/
 if (isset($_POST['SignUpBtn'])){
     validRegister();
+}
+
+if(isset($_POST['finishBtn'])){
+    validrestDetails();
 }
 
 /*
@@ -30,7 +49,7 @@ else
 /*
 *Declaring variables to capture form elements
 */
- 
+
 $uname = $pwd = $fName = $lName = $em = $msg = "";
 
 
@@ -71,149 +90,236 @@ function validatelogin(){
     $ok = true;
 
 
+    if (empty($_POST['uName'])){
+        echo "Please enter a username";
+
+
     if (empty($_POST['uname'])){
+<<<<<<< HEAD
         echo "Please provide your username";
+=======
+        echo 'alert("Please provide your username")';
+
+>>>>>>> e1e30224f5be1efa169d2ad5af55139499d2d6b3
         $ok= false;
     }
 
     if (empty($_POST['pwd'])){
+<<<<<<< HEAD
        echo "Please provide your password";        
+=======
+        echo "Please Enter a Password";
+       echo 'alert("Please provide your password")';        
+>>>>>>> e1e30224f5be1efa169d2ad5af55139499d2d6b3
         $ok = false;
     }
     if($ok){
 verifylogin();
+         }
+    }
+
+     echo 'alert("Please provide your password")';        
+     $ok = false;
+ }
+ if($ok){
+    verifylogin();
 }
 }
+
 
 function verifylogin(){
-$username = $_POST['uname'];
-$pwd = $_POST['pwd'];
+    $username = $_POST['uname'];
+    $pwd = $_POST['pwd'];
 
-$sql = "SELECT * FROM  login_details where username = $username";
+    $sql = "SELECT * FROM  artisan where username = $username";
 
-$login = new databaseconnection;
-$executequery = $login -> query($sql);
+    $login = new dbconnection;
+    $executequery = $login -> query($sql);
 
 
-if ($executequery) {
-$row = $login -> fetch();
+    if ($executequery) {
+        $row = $login -> fetch();
 
-if (password_verify($pwd, $row['pwd']))
-{
-    session_start();
-    $_SESSION['userid']=$row['aID'];
-    $_SESSION['uname']=$row['username'];
+        if (password_verify($pwd, $row['pwd']))
+        {
+            session_start();
+            $_SESSION['userid']=$row['aID'];
+            $_SESSION['uname']=$row['username'];
 
-    header("Location: ../index.php");
-    die();
-} else
-{
-        echo "<br>User can't be logged in";
+            header("Location: ../Pages/profile.php");
+            die();
+        } else
+        {
+            echo "<br>User can't be logged in";
 
+        }
+    }
+    else{
+
+        die();
+
+    }
 }
-}
-else{
 
-    die();
 
-}
-}
-   
-
-    $erroruname  = "";
-    $errorfname  = "";
-    $errorlname  = "";
-    $errormail  = "";
-    $errorpassword  = "";
-    $errorregister  = "";
-    $errorgeneral = "";
+$erroruname  = "";
+$errorfname  = "";
+$errorlname  = "";
+$errormail  = "";
+$errorpassword  = "";
+$errorregister  = "";
+$errorgeneral = "";
 
 function validRegister()
 {
-        $validuname = preg_match( '/[a-zA-Z]+$/', $_REQUEST['username']);
-        $validfname = preg_match( '/[a-zA-Z]+$/', $_REQUEST['fName']);
-        $validlname = preg_match( '/[a-zA-Z]+$/', $_REQUEST['lName']); 
-        $validpword = preg_match('/^(?=.*?[a-zA-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/', $_REQUEST['passwd']);
-        $validemail = preg_match('/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/', $_REQUEST['email']);
-        $okay = true;
+    $validuname = preg_match( '/[a-zA-Z]+$/', $_REQUEST['username']);
+    $validfname = preg_match( '/[a-zA-Z]+$/', $_REQUEST['fName']);
+    $validlname = preg_match( '/[a-zA-Z]+$/', $_REQUEST['lName']); 
+    $validpword = preg_match('/^(?=.*?[a-zA-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/', $_REQUEST['passwd']);
+    $validemail = preg_match('/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/', $_REQUEST['email']);
+    $okay = true;
 
 
-        /*if(empty($_POST['username']) || (empty($_POST['passwd']) || empty($_POST['fName']) || empty($_POST['lName']) || empty($_POST['email']) || empty($_POST['verpasswd'])))
+    if(!$validuname == true)  
+    { 
+        echo '<br>'.'Check fields again. Username must not have symbols or numbers'.'<br>';
+        $GLOBALS['erroruname'] ='Check fields again. Username must not have symbols or numbers'.'<br>';
+        $okay = false;
+    }     
+    if(!$validfname == true)
+    {
+        echo '<br>'.'Check fields again. Firstname must not have symbols or numbers'.'<br>';
+        $GLOBALS['errorfname'] = 'Check fields again. Firstname must not have symbols or numbers'.'<br>';
+        $okay = false;
+    } 
+    if (!$validlname == true )
+    {
+        echo '<br>'.'Check fields again. Lastname must not have symbols or numbers'.'<br>';
+        $GLOBALS['errorlname'] = 'Check fields again. Lastname must not have symbols or numbers'.'<br>';
+        $okay = false;
+    }   
+    if(!$validpword == true) 
+    {
+        echo '<br>'.'Password must contain at least one upper case, symbol,number and password length not less than 6 characters'.'<br>';
+        $GLOBALS['errorpassword'] = 'Password must contain at least one upper case, symbol,number and password length not less than 6 characters'.'<br>';
+        $okay = false;
+    }
+    if(!$validemail == true)
+    {
+        $GLOBALS['errormail'] =  'Check email'.'<br>';
+        $okay = false;
+
+    }
+
+    if($okay == true)
+    {   
+        checkusername();
+    }
+} 
+
+
+
+/*function to check if username entered is unique*/
+function checkusername()
+{
+    $uname = $_POST['username'];
+    
+    //code to check if username already exist
+    //if username does not exist run the register function
+
+    $uname = $_POST['username'];
+     
+
+                //Write sql query
+    $sql = "SELECT * FROM artisan where username = \"$uname\""; 
+
+            //create instance of a database class
+    $user = new dbconnection;
+
+            //execute query 
+    $usercheck = $user->query($sql);
+            //check if any results was returned
+    if($usercheck)
+    {
+
+            //compare username in database to what user whats to enter
+        if(($row = $user->fetch() ) == null)
         {
-            $GLOBALS['errorgeneral']= 'Check all fields. Please provide information for all fields'.'<br>';
 
-
-        }
-        else
-            
-        {*/
-
-            if(!$validuname == true)  
-            { 
-                $GLOBALS['erroruname'] ='Check fields again. Username must not have symbols or numbers'.'<br>';
-                $okay = false;
-            }     
-            if(!$validfname == true)
-            {
-                $GLOBALS['errorfname'] = 'Check fields again. Firstname must not have symbols or numbers'.'<br>';
-                $okay = false;
-            } 
-            if (!$validlname == true )
-            {
-                $GLOBALS['errorlname'] = 'Check fields again. Lastname must not have symbols or numbers'.'<br>';
-                $okay = false;
-            }   
-        if(!$validpword == true) 
-        {
-            $GLOBALS['errorpassword'] = 'Password must contain at least one upper case, symbol,number and password length not less than 6 characters'.'<br>';
-            $okay = false;
-        }
-            if(!$validemail == true)
-            {
-            $GLOBALS['errormail'] =  'Check email'.'<br>';
-            $okay = false;
-            
-            }
-        
-            if($okay == true)
-            {   
             registeruser();
-            }
-        } 
-/*}*/
+        }                
+        else
+
+
+/*
+
+function sendMail(){
+    $first = $_POST['Fname'];
+    $last = $_POST['Lname'];
+    $conEM = $_POST['eMVal'];
+    $conMsg = $_POST['message'];
+
+    $myEmail = "ampahleon@gnail.com";
+
+    $subject = $first." ".$last." Sender Email: ".$conEM ;
+
+    mail($myEmail, $subject, $conMsg);
+}
+
+*/
+            echo 'Username already exist in the database'; 
+            
+        }
+           registeruser();
+       }                
+       else
+       {
+        echo 'Username already exist in the database'; 
+       }
+    }
+}
+
+
 
 function registeruser()
 {
 
    //variables defined
-    $uname = $_REQUEST['uname'];
-    $pword =  $_REQUEST['passwd'];
-    $fname =  $_REQUEST['fName'];
-    $lname =  $_REQUEST['lName'];
-    $email =  $_REQUEST['email'];
+    session_start();
+
+    $_SESSION['uname'] = $_REQUEST['username'];
+    $_SESSION['pword'] =  $_REQUEST['passwd'];
+    $_SESSION['fname'] =  $_REQUEST['fName'];
+    $_SESSION['lname'] =  $_REQUEST['lName'];
+    $_SESSION['email'] =  $_REQUEST['email'];
+
+    $f1 = $_SESSION['uname'];
+    $f2 = $_SESSION['pword'];
+    $f3 =  $_SESSION['fname'];
+    $f4 =   $_SESSION['lname'];
+    $f5 = $_SESSION['email'];
 
     $pword = password_hash($_POST['pword'],PASSWORD_DEFAULT);
 
 
               //write query
-    $sql = "INSERT INTO artisan (first_name, last_name, email, password, username) VALUES ('$fname','$lname','$email','$pword','$uname')";
+    $sql = "INSERT INTO artisan (first_name, last_name, email, password, username) VALUES (\"".$f3."\", \"".$f4."\", \"".$f5."\", \"".$f2."\", \"".$f1."\")";
 
     //create instance of a database class
     $reguser = new dbconnection;
 
-    //$registration = $reguser->escapefn($sql, $uname, $pword, $fname, $lname, $email, $gender, $major, 'ACTIVE', '1');
-
-            //execute query 
+    
+                //execute query 
     $registration = $reguser->query($sql);
 
 
     if($registration)
     {
-        header("Location: ../register/restDetails.php");
+        header("Location: ../Register/restDetails.php");
 
     }  else 
     {
-        $GLOBALS['errorregister'] = "User cant be registered";
+        $GLOBALS['errorregister'] = "User cant be registered" ;
     } 
 
 }
@@ -230,11 +336,65 @@ function validrestDetails(){
         echo "Please Enter a telephone number";
         $ok = false;
     }
-    if (empty($_POST['birth'])){
-        echo "Please Enter date of birth";
+    if (empty($_POST['profession'])){
+        echo "Please Enter a profession";
         $ok = false;
+    }
+    if (empty($_POST['location'])){
+        echo "Please Enter a location";
+        $ok = false;
+    }
 
+    if (empty($_POST['gender'])){
+        echo "Please select a gender ";
+        $ok = false;
+    }
+
+    if($ok== true){
+        addUserDetails();
     }
 }
-          
+
+
+function addUserDetails(){
+
+    $address = $_REQUEST['address'];
+    $telephone =  $_REQUEST['telephone'];
+    $loc =  $_REQUEST['location'];
+    $about =  $_REQUEST['aboutMe'];
+    $prof =  $_REQUEST['profession'];
+    $gender =  $_REQUEST['gender'];
+
+    session_start();
+
+    $user = $_SESSION['uname'];
+    session_destroy();
+
+    echo $user;
+//write query
+
+    $sql = "UPDATE artisan SET address = '$address', telephone_Number = '$telephone', gender = '$gender', location = '$loc', about_me = '$about', profession = '$prof' WHERE username ='$user'";
+
+//create instance of a database class
+
+    $reguser = new dbconnection;
+
+
+    $registration = $reguser->query($sql);
+
+
+    if($registration)
+    {
+      
+        header("Location: ../Pages/profile.php");
+
+    }else
+    {
+
+       echo $reguser->error();
+    } 
+}
+}
+
+
 ?>
