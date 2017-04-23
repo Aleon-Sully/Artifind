@@ -1,5 +1,7 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/test/Artifind/Database/dbConnectionClass.php');
+
+require_once($_SERVER['DOCUMENT_ROOT'].'/Artifind/Database/dbConnectionClass.php');
+
 
 
 if(isset($_POST['btnSignUp'])){
@@ -32,6 +34,9 @@ if(isset($_POST['finishBtn'])){
     validrestDetails();
 }
 
+if(isset($_POST['btnReview'])){
+    validatereview();
+}
 /*
 *Function to validate email
 */
@@ -85,8 +90,16 @@ function sentContactRequest(){
    $sendContactReq->close();
 }
 
+/*
+a function to validate login. Successful validation leads to verification.
+Validation checks that the user does not leave the username and password fields empty
+@param string $username Ensures that the user enters a username
+@param string $password Ensures that the user enters a password
+*/
 function validatelogin($username, $password){
     $ok = true;
+
+
     if (empty($_POST['uname'])){
         echo "Please provide your username. <br>";
         $ok= false;
@@ -102,6 +115,14 @@ verifylogin($username, $password);
     }
 
 
+
+
+/*
+a function to verify that a users username and password exist
+in the database and match each other.
+@param string $username Takes in the user's username(username should exist in the database) 
+@param string $password Takes in the user's password(password should match username in the database)
+*/
 function verifylogin($username, $password){
  
     $sql = "SELECT * FROM  artisan where username = '$username'";
@@ -116,9 +137,22 @@ function verifylogin($username, $password){
         if (password_verify($password, $row['password']))
         {
             session_start();
-            $_SESSION['userid']=$row['aID'];
+            $_SESSION['userid']=$row['artisan_id'];
             $_SESSION['uname']=$row['username'];
+
             header("Location: ../Pages/profile.php");
+
+
+                if(isset($_REQUEST['redirecturl'])){ 
+
+                $previouspage = $_REQUEST['redirecturl']; // holds url for last page visited.
+                echo($previouspage);
+                }else 
+                {
+                $previouspage = "index.php"; // default page for 
+            }
+                header("Location: $previouspage");
+            
         } else
         {
             echo "<br>User can't be logged in";
@@ -126,7 +160,6 @@ function verifylogin($username, $password){
         }
     }
     else{
-echo "string";
         die();
 
     }
@@ -197,8 +230,6 @@ function checkusername()
     
     //code to check if username already exist
     //if username does not exist run the register function
-
-    $uname = $_POST['username'];
      
 
                 //Write sql query
@@ -241,8 +272,10 @@ function sendMail(){
             echo 'Username already exist in the database'; 
             
         }
-           registeruser();
-       }                
+
+
+    }
+              
     
 
 
@@ -361,7 +394,5 @@ function addUserDetails(){
        echo $reguser->error();
     } 
 }
-
-
 
 ?>

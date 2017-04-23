@@ -18,17 +18,18 @@ http://www.tooplate.com/view/2079-garage
 	<link rel="stylesheet" type="text/css" href="../JS/font-awesome-4.5.0/css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="../CSS/slider.css">
 	<link rel="stylesheet" type="text/css" href="../CSS/mystyle.css">
+
+	<?php  
+		include "../Database/dbConnectionClass.php";
+
+$obj = new dbconnection;
+
+	?>
 </head>
 <body>
 <!-- Header -->
 <div class="allcontain">
 	<div class="header">
-			<ul class="socialicon">
-				<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-				<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-				<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-				<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-			</ul>
 			<ul class="givusacall">
 				<li>Give us a call : +233 50 121 2329  </li>
 			</ul>
@@ -49,7 +50,19 @@ http://www.tooplate.com/view/2079-garage
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
 				<li class="active"><a href="../index.php">Home</a> </li>
-				<li class="active"><a href="../Pages/category.php">Category</a> </li>
+								<li class="dropdown">
+          			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category<span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+			          <?php include "../Pages/profession.php"; ?>
+			          	<?php if(getProfession()) :?>
+						 <?php foreach(getProfession() as  $value):	?>
+						 	<li><a href="#"> <?php echo $value["profession"]?></a></li>
+							
+							<?php endforeach;	?>
+			        <?php endif;	?>
+			            
+			          </ul>
+			        </li>
 				<li class="active"><a href="../Register/signUp.php">Artisan? Sign Up</a> </li>
 				<li class="active"><a href="../Login/Sign_in.php">Sign In</a> </li>
 				<li class="active"><a href="../Pages/About.php">About Us</a> </li>

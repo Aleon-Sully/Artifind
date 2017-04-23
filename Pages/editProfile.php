@@ -54,16 +54,18 @@ http://www.tooplate.com/view/2079-garage
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
 
-				<li  class="active"><a style="margin-right: 10px;" href="home.php" >HOME</a>
+
+					<li  class="active"><a style="margin-right: 10px;" href="../index.php" >Home</a>
+
 				 </li>
-				 <li><a href = "profile.php">My Profile</a></li>
-				 <li><a href = "editProfile.php">Edit Profile</a></li>
+				 <li><a href = "../Pages/profile.php">My Profile</a></li>
+				 <li><a href = "../Pages/editProfile.php">Edit Profile</a></li>
 				<li>
-					<a href="About.php">About Us</a>
+					<a href="../Pages/About.php">About Us</a>
 
 				</li>
 				<li>
-					<a href="contactUs.php">Contact Us</a>
+					<a href="../Contact_us/contactUs.php">Contact Us</a>
 
 				</li>
 			</ul>

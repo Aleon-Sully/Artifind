@@ -26,6 +26,12 @@ http://www.tooplate.com/view/2079-garage
 	<link rel="stylesheet" type="text/css" href="../CSS/slider.css">
 	<link rel="stylesheet" type="text/css" href="../CSS/mystyle.css">
 	<link rel="stylesheet" type="text/css" href="../CSS/contactstyle.css">
+
+	<?php 
+		include "../Database/dbConnectionClass.php";
+
+$obj = new dbconnection;
+	?>
 </head>
 <body>
 
@@ -35,12 +41,6 @@ require_once('../Unsecure/processUnsecure.php');
 <!-- Header -->
 <div class="allcontain">
 	<div class="header">
-			<ul class="socialicon">
-				<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-				<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-				<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-				<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-			</ul>
 			<ul class="givusacall">
 				<li>Give us a call : +233 50 121 2329 </li>
 			</ul>
@@ -62,28 +62,20 @@ require_once('../Unsecure/processUnsecure.php');
 		
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
-
-					<li>
-					<a style="margin-right: 10px;" href="../index.php" >HOME</a>
-				 </li>
-				<li>
-						<a href="../Register/signUp.php">Artisan?Sign Up</a>			
-				</li>
-				<li>
-					<a href="Sign_in.php">Sign In</a>
-
-				</li>
-				<li>
-					<a href="../Pages/About.php">About Us</a>
-
-				</li>
-				<li>
-					<a href="../Contact_us/contactUs.php">Contact Us</a>
-
-				</li>
-
 				<li class="active"><a href="../index.php">Home</a> </li>
-				<li class="active"><a href="../Pages/category.php">Category</a> </li>
+								<li class="dropdown">
+          			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category<span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+			          <?php include "../Pages/profession.php"; ?>
+			          	<?php if(getProfession()) :?>
+						 <?php foreach(getProfession() as  $value):	?>
+						 	<li><a href="#"> <?php echo $value["profession"]?></a></li>
+							
+							<?php endforeach;	?>
+			        <?php endif;	?>
+			            
+			          </ul>
+			        </li>
 				<li class="active"><a href="../Register/signUp.php">Artisan? Sign Up</a> </li>
 				<li class="active"><a href="../Login/Sign_in.php">Sign In</a> </li>
 				<li class="active"><a href="../Pages/About.php">About Us</a> </li>
@@ -100,6 +92,8 @@ require_once('../Unsecure/processUnsecure.php');
 				<input type="text" id="uname" class="form-control name-form" name="uname" placeholder="Username" style="border:none; border-bottom:2px solid black;">
 				<input type="password" id="pword" class="form-control email-form" name="pwd" placeholder="Password" style="border:none; border-bottom:2px solid black;">
 				<input type="submit" value="Login" name="btnSubmit" id="btnSubmit" data-submit="...Sending"  style="font-size: 16px; background-color: white; color:black; border: 2px  black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="hidden" name="redirecturl" value=" <?php echo $_SERVER['HTTP_REFERER']; ?>" >
+
 	 </form>
 	 </div>
 

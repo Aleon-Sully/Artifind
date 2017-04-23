@@ -7,6 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <?php
 include($_SERVER['DOCUMENT_ROOT'].'/Artifind/Classes/profileClass.php');
+
 session_start();
 $id =$_SESSION['artid'];
 $s = new profileClass;
@@ -74,7 +75,7 @@ $s = new profileClass;
 		</div>
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
-				<li class="active"><a style="margin-left: 50px;" href="index.php">HOME</a> </li>
+				<li class="active"><a style="margin-left: 50px;" href="index.php">Home</a> </li>
 				</li>
 				<li><a href = "">My Profile</a></li>
 				<li><a href = "editProfile.php">Edit Profile</a></li>
