@@ -1,7 +1,6 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/Delco/Database/dbConnectionClass.php');
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/Delco/Artifind/Database/dbConnectionClass.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/Artifind/Database/dbConnectionClass.php');
 
 
 
@@ -92,7 +91,7 @@ function validatelogin(){
 
     if (empty($_POST['uName'])){
         echo "Please enter a username";
-
+        }
 
     if (empty($_POST['uname'])){
         echo 'alert("Please provide your username")';
@@ -101,7 +100,6 @@ function validatelogin(){
     }
 
     if (empty($_POST['pwd'])){
-        echo "Please Enter a Password";
        echo 'alert("Please provide your password")';        
         $ok = false;
     }
@@ -110,14 +108,14 @@ verifylogin();
          }
     }
 
-     echo 'alert("Please provide your password")';        
+  /*   echo 'alert("Please provide your password")';        
      $ok = false;
  }
  if($ok){
     verifylogin();
 }
 }
-
+*/
 
 function verifylogin(){
     $username = $_POST['uname'];
@@ -218,8 +216,6 @@ function checkusername()
     
     //code to check if username already exist
     //if username does not exist run the register function
-
-    $uname = $_POST['username'];
      
 
                 //Write sql query
@@ -262,14 +258,9 @@ function sendMail(){
             echo 'Username already exist in the database'; 
             
         }
-           registeruser();
-       }                
-       else
-       {
-        echo 'Username already exist in the database'; 
-       }
+
     }
-}
+
 
 
 
@@ -385,7 +376,6 @@ function addUserDetails(){
 
        echo $reguser->error();
     } 
-}
 }
 
 
