@@ -6,7 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
 <?php
-include($_SERVER['DOCUMENT_ROOT'].'/Delco/classes/profileClass.php');
+include($_SERVER['DOCUMENT_ROOT'].'/test/Artifind/Classes/profileClass.php');
 session_start();
 $_SESSION['artid'] = '1';
 $id =$_SESSION['artid'];
