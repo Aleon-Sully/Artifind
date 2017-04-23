@@ -11,21 +11,31 @@ http://www.tooplate.com/view/2079-garage
 -->
 <?php
 
+
+/*
+ * This file is part of the ArtiFind folder
+ *
+ * (c) Delco developpers
+ * 	@ author Cynthia Gouanfo
+ *
+ */
+
 // include the database to file
 include "Database/dbConnectionClass.php";
 
+//creating an object of the database
 $obj = new dbconnection;
 
 function getLocation()
 {
- global $obj;	
-$obj->query("Select location from artisan");
-$data = array();
-while($row = $obj->fetch())
-{
-   $data[] = $row;
+	global $obj;	
+	$obj->query("Select location from artisan");
+	$data = array();
+	while($row = $obj->fetch())
+	{
+		$data[] = $row;
 
-}
+	}
 
 	return $data;
 }

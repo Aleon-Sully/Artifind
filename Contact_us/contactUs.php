@@ -57,7 +57,7 @@ http://www.tooplate.com/view/2079-garage
 			          <?php include "../Pages/profession.php"; ?>
 			          	<?php if(getProfession()) :?>
 						 <?php foreach(getProfession() as  $value):	?>
-						 	<li><a href="#"> <?php echo $value["profession"]?></a></li>
+						 	<li><a href="../Pages/result.php?profession=<?php echo $value["profession"]?>"> <?php echo $value["profession"]?></a></li>
 							
 							<?php endforeach;	?>
 			        <?php endif;	?>

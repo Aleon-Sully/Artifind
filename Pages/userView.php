@@ -8,9 +8,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <?php
 include($_SERVER['DOCUMENT_ROOT'].'/Artifind/Classes/profileClass.php');
 session_start();
-$id = $_SESSION['userid'];
-
-include "../Database/dbConnectionClass.php";
+$id = $_SESSION['id'];
 
 		$obj = new dbconnection;
 ?>
@@ -84,7 +82,7 @@ include "../Database/dbConnectionClass.php";
 			          <?php include "../Pages/profession.php"; ?>
 			          	<?php if(getProfession()) :?>
 						 <?php foreach(getProfession() as  $value):	?>
-						 	<li><a href="#"> <?php echo $value["profession"]?></a></li>
+						 	<li><a href="../Pages/result.php?profession=<?php echo $value["profession"]?>"> <?php echo $value["profession"]?></a></li>
 							
 							<?php endforeach;	?>
 			        <?php endif;	?>
