@@ -1,5 +1,5 @@
 <?php
-    require '../../PHPMailer/PHPMailerAutoload.php';
+    require '../PHPMailer/PHPMailerAutoload.php';
 
 
 if(isset($_POST['conSub'])){
