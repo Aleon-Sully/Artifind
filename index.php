@@ -11,21 +11,31 @@ http://www.tooplate.com/view/2079-garage
 -->
 <?php
 
+
+/*
+ * This file is part of the ArtiFind folder
+ *
+ * (c) Delco developpers
+ * 	@ author Cynthia Gouanfo
+ *
+ */
+
 // include the database to file
 include "Database/dbConnectionClass.php";
 
+//creating an object of the database
 $obj = new dbconnection;
 
 function getLocation()
 {
- global $obj;	
-$obj->query("Select location from artisan");
-$data = array();
-while($row = $obj->fetch())
-{
-   $data[] = $row;
+	global $obj;	
+	$obj->query("Select location from artisan");
+	$data = array();
+	while($row = $obj->fetch())
+	{
+		$data[] = $row;
 
-}
+	}
 
 	return $data;
 }
@@ -70,7 +80,19 @@ require_once('Unsecure/processUnsecure.php');
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
 				<li class="active"><a href="index.php">Home</a> </li>
-				<li class="active"><a href="Pages/category.php">Category</a> </li>
+				<li class="dropdown">
+          			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category<span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+			          <?php include "Pages/profession.php"; ?>
+			          	<?php if(getProfession()) :?>
+						 <?php foreach(getProfession() as  $value):	?>
+						 	<li><a href="Pages/result.php?profession=<?php echo $value["profession"]?>"> <?php echo $value["profession"]?></a></li>
+							
+							<?php endforeach;	?>
+			        <?php endif;	?>
+			            
+			          </ul>
+			        </li>
 				<li class="active"><a href="Register/signUp.php">Artisan? Sign Up</a> </li>
 				<li class="active"><a href="Login/Sign_in.php">Sign In</a> </li>
 				<li class="active"><a href="Pages/About.php">About Us</a> </li>
@@ -130,7 +152,7 @@ require_once('Unsecure/processUnsecure.php');
 					<option>Location</option>
 					<?php if(getLocation()) :?>
 							<?php foreach(getLocation() as  $value):	?>
-								<option value = "<?php echo $value["location"]	?>"><?php echo $value["location"]	?></option>
+								<option style = "color: black"value = "<?php echo $value["location"]	?>"><?php echo $value["location"]	?></option>
 								<li></li>
 							<?php endforeach;	?>
 						<?php else: ?>

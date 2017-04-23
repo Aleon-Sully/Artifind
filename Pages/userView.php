@@ -8,7 +8,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <?php
 include($_SERVER['DOCUMENT_ROOT'].'/Artifind/Classes/profileClass.php');
 session_start();
-$id = $_SESSION['userid'];
+$id = $_SESSION['id'];
+
+		$obj = new dbconnection;
 ?>
 <html>
 <head>
@@ -73,22 +75,34 @@ $id = $_SESSION['userid'];
 		</div>
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
-				<li class="active"><a style="margin-left: 50px;" href="index.php">HOME</a> </li>
-				</li>
+				<li class="active"><a style="margin-left: 50px;" href="../index.php">Home</a> </li>
+				<li class="dropdown">
+          			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category<span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+			          <?php include "../Pages/profession.php"; ?>
+			          	<?php if(getProfession()) :?>
+						 <?php foreach(getProfession() as  $value):	?>
+						 	<li><a href="../Pages/result.php?profession=<?php echo $value["profession"]?>"> <?php echo $value["profession"]?></a></li>
+							
+							<?php endforeach;	?>
+			        <?php endif;	?>
+			            
+			          </ul>
+			        </li>
 
 				<li>
-						<a href="signUp.php">Artisan?Sign Up</a>
+						<a href="../Register/signUp.php">Artisan?Sign Up</a>
 				</li>
 				<li>
-					<a href="Sign_in.php">Sign In</a>
+					<a href="../Login/Sign_in.php">Sign In</a>
 
 				</li>
 				<li>
-					<a href="About.php">About Us</a>
+					<a href="../Pages/About.php">About Us</a>
 
 				</li>
 				<li>
-					<a href="contactUs.php">Contact Us</a>
+					<a href="../Contact_us/contactUs.php">Contact Us</a>
 
 				</li>
 
@@ -106,8 +120,8 @@ $id = $_SESSION['userid'];
 				<?php
 				$s = new profileClass;
 				$s->loadName($id);
+				$s->loadProfession($id);
 				?>
-				<h2 id="profession">Carpenter</h2>
 			</div>
 		</div>
 	</div>
@@ -150,7 +164,6 @@ $id = $_SESSION['userid'];
 						<?php $s->loadName($id); 
 						      $s->loadProfession($id);
 						      $s->loadAboutMe($id);?>
-						<span id="profession2">Carpenter</span>
 						
 				
 					</div>
@@ -165,10 +178,7 @@ $id = $_SESSION['userid'];
 		<div class="skills-info">
 			<h3>Skills</h3>
 			<ul>
-			<li> Skill 1</li>
-			<li> Skill 2</li>
-			<li> Skill 3</li>
-			<li> Skill 4</li>
+            <?php $s->loadSkills($id);?>
 			</ul>
 			<span> </span>
 			</div>

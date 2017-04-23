@@ -12,44 +12,67 @@
 	<link rel="stylesheet" type="text/css" href="../css/slider.css">
 	<link rel="stylesheet" type="text/css" href="../css/mystyle.css">
 
-<?php
+	<?php
 
-// include the database
-include "../Database/dbConnectionClass.php";
+	// include the database
+	include "../Database/dbConnectionClass.php";
+	session_start();
+	
+	$obj = new dbconnection;
+	function getResults()
+	{
+		if(isset($_GET["key"]) || isset($_GET["place"])){
+			$place =$_GET["place"] ;
+			$key =$_GET["key"] ;
+			global $obj;	
+			$obj->query("
+				SELECT artisan.*, review.ratings FROM artisan 
+				INNER  JOIN review ON artisan.artisan_id = review.au_ID
+				WHERE artisan.location = '$place' OR artisan.first_name LIKE '%$key%'  OR artisan.last_name LIKE '%$key%'
+				ORDER BY review.ratings");
+			$data = array();
+			while($row = $obj->fetch())
+			{
+				$data[] = $row;
 
-$obj = new dbconnection;
-function getResults()
-{
-if(isset($_GET["key"]) || isset($_GET["place"])){
-	$place =$_GET["place"] ;
-	$key =$_GET["key"] ;
- global $obj;	
-$obj->query("
-	SELECT artisan.*, review.ratings FROM artisan 
-	INNER  JOIN review ON artisan.artisan_id = review.au_ID
-	WHERE artisan.location = '$place' OR artisan.first_name LIKE '%$key'  OR artisan.last_name LIKE '%$key'
-	ORDER BY review.ratings");
-$data = array();
-while($row = $obj->fetch())
-{
-   $data[] = $row;
+			}
 
-}
+			return $data;
+		}
+	}
 
-	return $data;
-}
-}
-?>
+
+	function getSearchProfession()
+	{
+		if(isset($_GET["profession"])){
+			$prof =$_GET["profession"] ;
+			global $obj;	
+			$obj->query("
+				SELECT artisan.*, review.ratings FROM artisan 
+				INNER  JOIN review ON artisan.artisan_id = review.au_ID
+				WHERE artisan.profession LIKE '%$prof%'
+				ORDER BY review.ratings");
+			$data = array();
+			while($row = $obj->fetch())
+			{
+				$data[] = $row;
+
+			}
+
+			return $data;
+		}
+	}
+	?>
 </head>
 <body>
-<!-- Header -->
-<div class="allcontain">
-	<div class="header">
+	<!-- Header -->
+	<div class="allcontain">
+		<div class="header">
 			<ul class="givusacall" >
 				<li >Give us a call : +233 50 121 2329 </li>
 			</ul>
+		</div>
 	</div>
-</div>
 	<!-- Navbar Up -->
 	<nav class="topnavbar navbar-default topnav">
 		<div class="container">
@@ -66,7 +89,19 @@ while($row = $obj->fetch())
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
 				<li class="active"><a href="../index.php">Home</a> </li>
-				<li class="active"><a href="../Pages/category.php">Category</a> </li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<?php include "../Pages/profession.php"; ?>
+						<?php if(getProfession())  :?>
+							<?php foreach(getProfession() as  $value):	?>
+								<li><a href="../Pages/result.php?profession=<?php echo $value["profession"]?>"> <?php echo $value["profession"]?></a></li>
+
+							<?php endforeach;	?>
+						<?php endif;	?>
+
+					</ul>
+				</li>
 				<li class="active"><a href="../Register/signUp.php">Artisan? Sign Up</a> </li>
 				<li class="active"><a href="../Login/Sign_in.php">Sign In</a> </li>
 				<li class="active"><a href="../Pages/About.php">About Us</a> </li>
@@ -89,14 +124,48 @@ while($row = $obj->fetch())
 <br><br>
 <br>
 <!-- ________________________Artisans Thumbnail________________-->
-	<div class="grid">
-		<div class="row">
-			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-			<?php if(getResults()) :?>
-			 <?php foreach(getResults() as  $value):	?>
+<div class="grid">
+	<div class="row">
+		<div>
+
+			<?php if(isset($_GET["submit"])) :?>
+				<?php if(getResults()) :?>
+					<?php foreach(getResults() as  $value):	?>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="txthover">
+							<?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $value['profile_pic'] ).'"/>';?>
+								<div class="txtcontent">
+									<div class="stars">
+										<div class="glyphicon glyphicon-star"></div>
+										<div class="glyphicon glyphicon-star"></div>
+										<div class="glyphicon glyphicon-star"></div>
+									</div>
+									<div class="simpletxt">
+										<h3 class="name"><?php echo $value["first_name"]  .  " " . $value["last_name"]?></h3>
+										<p><?php echo $value["about_me"]; $_SESSION['id'] = $value["artisan_id"];?></p>
+										<a href="../Pages/userView.php"><button>READ MORE</button></a><br>
+									</div>
+									<div class="stars2">
+										<div class="glyphicon glyphicon-star"></div>
+										<div class="glyphicon glyphicon-star"></div>
+										<div class="glyphicon glyphicon-star"></div>
+									</div>
+								</div>
+							</div>	 
+						</div>
+					<?php endforeach;	?>
+				<?php else: ?>
+					<div style="text-align: center;">
+						<p style="padding-left: 650;" >Sorry, there is no such in our Database. Kindly recommend by</p> <navbar-brand> <a href = "../Contact_us/contactUs.php"> Contacting us</a>
+					</div>
+				<?php endif;?>
+			<?php endif;?>
+			<!-- <sdiv class="col-xs-12 col-sm-6 col-md-4 col-lg-3"> -->
+		<?php if(getSearchProfession()) :?>
+			<?php foreach(getSearchProfession() as  $value):	?>
 				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-				<div class="txthover">
-					<img src="../image/francis.jpeg" alt="francis">
+					<div class="txthover">
+						<?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $value['profile_pic'] ).'"/>';?>
 						<div class="txtcontent">
 							<div class="stars">
 								<div class="glyphicon glyphicon-star"></div>
@@ -105,8 +174,8 @@ while($row = $obj->fetch())
 							</div>
 							<div class="simpletxt">
 								<h3 class="name"><?php echo $value["first_name"]  .  " " . $value["last_name"]?></h3>
-								<p><?php echo $value["about_me"]?></p>
-	 							<a href="profile.php"><button>READ MORE</button></a><br>
+								<p><?php echo $value["about_me"]; $_SESSION['id'] = $value["artisan_id"];?></p>
+								<a href="../Pages/userView.php"><button>READ MORE</button></a><br>
 							</div>
 							<div class="stars2">
 								<div class="glyphicon glyphicon-star"></div>
@@ -114,36 +183,26 @@ while($row = $obj->fetch())
 								<div class="glyphicon glyphicon-star"></div>
 							</div>
 						</div>
-				</div>	 
-			</div>
-				<?php endforeach;	?>
-				<?php else: ?>
-					<div style="text-align: center;">
-    						<p style="padding-left: 650;" >Sorry, there is no such in our Database. Kindly</p> <navbar-brand> <a href = "../Contact_us/contactUs.php"> Contact us </a>
-					</div>
-			<?php endif;	?>
+					</div>	 
+				</div>
+			<?php endforeach;	?>
+		<?php endif;	?>
+	</div>
+</div>
+</div>
+<!-- ______________________________________________________Bottom Menu ______________________________-->
+<div class="bottommenu" style="margin-top:150px;">
+	<p style="margin-top:-80px;">"We link you to the best artisans around"</p>
+	<img src="../image/line.png" alt="line" style="margin-top:10px;"> <br>
+	<div class="footer">
+		<div class="copyright">
+			&copy; Copy right 2016 | <a href="#">Privacy </a>| <a href="#">Policy</a>
+		</div>
+		<div class="atisda">
+			Designed by <a href="http://www.webdomus.net/">Web Domus Italia - Web Agency </a> 
 		</div>
 	</div>
-	</div>
-	<!-- ______________________________________________________Bottom Menu ______________________________-->
-	<div class="bottommenu" style="margin-top:150px;">
-		<p style="margin-top:-80px;">"We link you to the best artisans around"</p>
-		 <img src="../image/line.png" alt="line" style="margin-top:10px;"> <br>
-		 <div class="bottomsocial">
-		 	<a href="#"><i class="fa fa-facebook"></i></a>
-			<a href="#"><i class="fa fa-twitter"></i></a>
-			<a href="#"><i class="fa fa-google-plus"></i></a>
-			<a href="#"><i class="fa fa-pinterest"></i></a>
-		</div>
-			<div class="footer">
-				<div class="copyright">
-				  &copy; Copy right 2016 | <a href="#">Privacy </a>| <a href="#">Policy</a>
-				</div>
-				<div class="atisda">
-					 Designed by <a href="http://www.webdomus.net/">Web Domus Italia - Web Agency </a> 
-				</div>
-			</div>
-	</div>
+</div>
 <script type="text/javascript" src="../JS/bootstrap-3.3.6-dist/js/jquery.js"></script>
 <script type="text/javascript" src="../JS/js/isotope.js"></script>
 <script type="text/javascript" src="../JS/js/myscript.js"></script> 

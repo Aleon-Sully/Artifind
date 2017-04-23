@@ -7,8 +7,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <?php
 include($_SERVER['DOCUMENT_ROOT'].'/Artifind/Classes/profileClass.php');
+
 session_start();
 $id = $_SESSION['userid'];
+
+
+$id =$_SESSION['artid'];
+$s = new profileClass;
 ?>
 <html>
 <head>
@@ -22,7 +27,7 @@ $id = $_SESSION['userid'];
 <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href="../css/mystyle.css" rel="stylesheet" type="text/css" media="all" />
 <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
-<!--fonts-->
+
 <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>
 <!--/fonts-->
@@ -33,6 +38,12 @@ $id = $_SESSION['userid'];
 <!-- start-smoth-scrolling -->
 <script type="text/javascript" src="../js/move-top.js"></script>
 <script type="text/javascript" src="../js/easing.js"></script>
+<script src="../JS/jquery.min.js"> </script>
+<script src="../JS/bootstrap.js"></script>
+<!-- //js -->
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="JS/move-top.js"></script>
+<script type="text/javascript" src="JS/easing.js"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event){		
@@ -68,12 +79,12 @@ $id = $_SESSION['userid'];
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand logo" href="#"><img src="image/Logo.jpg" alt="logo"></a>
+				<a class="navbar-brand logo" href="#"><img src="../Image/Logo.jpg" alt="logo"></a>
 			</div>	 
 		</div>
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
-				<li class="active"><a style="margin-left: 50px;" href="index.php">HOME</a> </li>
+				<li class="active"><a style="margin-left: 50px;" href="index.php">Home</a> </li>
 				</li>
 				<li><a href = "">My Profile</a></li>
 				<li><a href = "editProfile.php">Edit Profile</a></li>
@@ -91,10 +102,10 @@ $id = $_SESSION['userid'];
 </div>
 <div class="banner">
 	<div class="container">
-		<div class="banner-info">
+		<div class="banner-info" style=" background: url(<?php $s->loadProfilePicture($id) ?>) no-repeat 0px 0px;">
 			<div class="banner-text">
 				<?php
-				$s = new profileClass;
+				
 				$s->loadName($id);
 				$s->loadProfession($id);
 				?>
@@ -140,7 +151,6 @@ $id = $_SESSION['userid'];
 						<?php $s->loadName($id); 
 						      $s->loadProfession($id);
 						      $s->loadAboutMe($id);?>
-						<span id="profession2">Carpenter</span>
 						
 				
 					</div>
@@ -155,10 +165,7 @@ $id = $_SESSION['userid'];
 		<div class="skills-info">
 			<h3>Skills</h3>
 			<ul>
-			<li> Skill 1</li>
-			<li> Skill 2</li>
-			<li> Skill 3</li>
-			<li> Skill 4</li>
+            <?php $s->loadSkills($id);?>
 			</ul>
 			<span> </span>
 			</div>

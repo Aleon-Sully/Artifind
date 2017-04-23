@@ -5,7 +5,9 @@
 	<title>Sign Up</title>
 	<meta name="description" content="">
 <!--
-
+/*
+"@author Dela Acolatse
+*/
 Template 2079 Garage
 
 http://www.tooplate.com/view/2079-garage
@@ -25,6 +27,14 @@ http://www.tooplate.com/view/2079-garage
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.5.0/css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="../CSS/slider.css">
 	<link rel="stylesheet" type="text/css" href="../CSS/mystyle.css">
+
+	<?php 
+
+include "../Database/dbConnectionClass.php";
+
+$obj = new dbconnection;
+
+	?>
 </head>
 <link rel="stylesheet" type="text/css" href="../css/slider.css">
 <link rel="stylesheet" type="text/css" href="../css/mystyle.css">
@@ -58,7 +68,19 @@ http://www.tooplate.com/view/2079-garage
 			<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
 				<li class="active"><a href="../index.php">Home</a> </li>
-				<li class="active"><a href="../Pages/category.php">Category</a> </li>
+				<li class="dropdown">
+          			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category<span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+			          <?php include "../Pages/profession.php"; ?>
+			          	<?php if(getProfession()) :?>
+						 <?php foreach(getProfession() as  $value):	?>
+						 	<li><a href="#"> <?php echo $value["profession"]?></a></li>
+							
+							<?php endforeach;	?>
+			        <?php endif;	?>
+			            
+			          </ul>
+			        </li>
 				<li class="active"><a href="../Register/signUp.php">Artisan? Sign Up</a> </li>
 				<li class="active"><a href="../Login/Sign_in.php">Sign In</a> </li>
 				<li class="active"><a href="../Pages/About.php">About Us</a> </li>
@@ -74,24 +96,19 @@ http://www.tooplate.com/view/2079-garage
 	<form style=" position: absolute; margin-top:-1%; left: 30%;  height: 59%;
 	width: 45%; padding-top: 15px;  text-align: center;" id="reg" action="" method="post" onsubmit="validate()"> 
 	<fieldset>
-	<span><?php echo $errorgeneral; ?><br> </span>
 	<input type="text" id="fNameField" class="form-control name-form" name="fName" placeholder="First Name" style="border: none; border-bottom: 2px solid darkred;"  ><br>
-	<span><?php echo $errorfname; ?><br> </span>
     </fieldset>
 
     <fieldset>
     <input type="text" id="lNameField" class="form-control name-form" name="lName" placeholder="Last Name" style="border: none; border-bottom: 2px solid darkred;"><br>
-	<span><?php echo $errorlname; ?><br> </span>
 	</fieldset>
 
     <fieldset>
 	<input type="text" id="usNameField" class="form-control name-form" name="username" placeholder="Username" style="border: none; border-bottom: 2px solid darkred;"><br>
-	<span><?php echo $erroruname; ?><br> </span>
 	</fieldset>
 
     <fieldset> 
 	<input type="password" id="passwordField" class="form-control name-form" name="passwd" placeholder="Password" style="border: none; border-bottom: 2px solid darkred;"><br>
-	<span><?php echo $errorpassword; ?><br> </span>
 	</fieldset>
 
     <fieldset>
@@ -105,7 +122,6 @@ http://www.tooplate.com/view/2079-garage
 	style="font-size: 16px; background-color: white; color:black; border: 2px solid red; " onclick=" cancel()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<input type="submit" value="Sign Up" name="SignUpBtn" id="btnSignUp" 
 	style="font-size: 16px; background-color: white; color:black; border: 2px solid limegreen">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<span><?php echo $errorregister; ?><br> </span>
 	
 
 </form>

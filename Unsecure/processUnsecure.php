@@ -11,14 +11,22 @@ if(isset($_POST['btnSignUp'])){
 if (isset($_POST['btnSubmit']))
 
 {
-    validatelogin();
+    $username = $_POST['uname'];
+    $pwd = $_POST['pwd'];
+    validatelogin($username, $pwd);
 }
+
+
 if (isset($_POST['SignUpBtn'])){
     validRegister();
 }
 
 if(isset($_POST['finishBtn'])){
     validrestDetails();
+}
+
+if(isset($_POST['btnReview'])){
+    validateReview();
 }
 
 /*
@@ -53,7 +61,57 @@ function validContactUs(){
     if(isset($GLOBALS['fName']) && isset( $GLOBALS['lName']) && isset( $GLOBALS['em']) && checkEmail( $GLOBALS['em']) && isset( $GLOBALS['msg'])){
         sentContactRequest();
     }
+}
+
+
+function reviewArtisan(){
+    $reviewArtisan = new dbconnection;
+
+    //Write sql
+    $sql1 = "INSERT INTO `artisan_client` (first_name, last_name, email) VALUES
+    (\"".$GLOBALS['first_name']."\", \"". $GLOBALS['last_name']."\", \"".$GLOBALS['email']."\")";
+
+    $sql2 = "INSERT INTO `review` (ratings, comments) VALUES (\"".$GLOBALS['ratings']."\", \"". $GLOBALS['comments']."\")";
+    
+
+    if($reviewArtisan->query($sql1) == true && $reviewArtisan->query($sql2)) {
+       echo "Thanks for your review";
+       header('Location: ../index.php');
+   }else
+   {
+       echo "Error: " . $sql1 . "<br>";
+   }
+
+   $sendContactReq->close();
+}
+
+function validateReview(){
+    $fname = $_POST['first_name'];
+    $lname = $_POST['last_name'];
+    $email = $_POST['email'];
+    $rating = $_POST['ratings'];
+    $comments = $_POST['comments'];
+
+
+    if(isset($fname) && isset($lname) && isset($email) && isset($ratings) && isset($comments)) {
+        verifyReview();
+    }
+}
+
+
+
+function verifyReview(){
+    $sql = "SELECT * FROM  artisan_client where last_name = '$lname' && email = '$email'";
+
+    $review = new dbconnection;
+
+    $executequery = $review -> query($sql);
+
+    if ($executequery) {
+        $row = $review -> fetch();
+    }
 } 
+
 
 function sentContactRequest(){
 
@@ -74,20 +132,23 @@ function sentContactRequest(){
  $sendContactReq->close();
 }
 
-function validatelogin(){
+/*
+a function to validate login. Successful validation leads to verification.
+Validation checks that the user does not leave the username and password fields empty
+@param string $username Ensures that the user enters a username
+@param string $password Ensures that the user enters a password
+*/
+function validatelogin($username, $password){
     $ok = true;
 
 
-    
     if (empty($_POST['uname'])){
-        echo 'alert("Please provide your username")';
-
+        echo "Please provide your username. <br>";
         $ok= false;
     }
 
     if (empty($_POST['pwd'])){
         echo "Please Enter a Password";
-        echo 'alert("Please provide your password")';        
         $ok = false;
     }
     if($ok){
@@ -96,28 +157,46 @@ function validatelogin(){
     
 }
 
-function verifylogin(){
 
-    $username = $_POST['uname'];
-    $pwd = $_POST['pwd'];
 
-    $sql = "SELECT * FROM  artisan where username = $username";
+
+/*
+a function to verify that a users username and password exist
+in the database and match each other.
+@param string $username Takes in the user's username(username should exist in the database) 
+@param string $password Takes in the user's password(password should match username in the database)
+*/
+
+function verifylogin($username, $password){
+
+    $sql = "SELECT * FROM  artisan where username = '$username'";
 
     $login = new dbconnection;
-    $executequery = $login -> query($sql);
 
+    $executequery = $login -> query($sql);
 
     if ($executequery) {
         $row = $login -> fetch();
 
-        if (password_verify($pwd, $row['pwd']))
+        if (password_verify($password, $row['password']))
         {
             session_start();
             $_SESSION['userid']=$row['artisan_id'];
             $_SESSION['uname']=$row['username'];
 
             header("Location: ../Pages/profile.php");
-            die();
+
+
+            if(isset($_REQUEST['redirecturl'])){ 
+
+                $previouspage = $_REQUEST['redirecturl']; // holds url for last page visited.
+                echo($previouspage);
+            }else 
+            {
+                $previouspage = "index.php"; // default page for 
+            }
+            header("Location: $previouspage");
+            
         } else
         {
             echo "<br>User can't be logged in";
@@ -125,20 +204,16 @@ function verifylogin(){
         }
     }
     else{
-
         die();
 
     }
 }
 
+/*
+a function to validate registration details for a new artisan seeking to be registered. Successful validation leads to the checkusername function to check if username is unique and odesnt exist in the database.
+Validation checks that the artisan does not leave fields empty and field inputs conform to the respective regualr expressions set for them 
+*/
 
-$erroruname  = "";
-$errorfname  = "";
-$errorlname  = "";
-$errormail  = "";
-$errorpassword  = "";
-$errorregister  = "";
-$errorgeneral = "";
 
 function validRegister()
 {
@@ -153,30 +228,25 @@ function validRegister()
     if(!$validuname == true)  
     { 
         echo '<br>'.'Check fields again. Username must not have symbols or numbers'.'<br>';
-        $GLOBALS['erroruname'] ='Check fields again. Username must not have symbols or numbers'.'<br>';
         $okay = false;
     }     
     if(!$validfname == true)
     {
         echo '<br>'.'Check fields again. Firstname must not have symbols or numbers'.'<br>';
-        $GLOBALS['errorfname'] = 'Check fields again. Firstname must not have symbols or numbers'.'<br>';
         $okay = false;
     } 
     if (!$validlname == true )
     {
         echo '<br>'.'Check fields again. Lastname must not have symbols or numbers'.'<br>';
-        $GLOBALS['errorlname'] = 'Check fields again. Lastname must not have symbols or numbers'.'<br>';
         $okay = false;
     }   
     if(!$validpword == true) 
     {
         echo '<br>'.'Password must contain at least one upper case, symbol,number and password length not less than 6 characters'.'<br>';
-        $GLOBALS['errorpassword'] = 'Password must contain at least one upper case, symbol,number and password length not less than 6 characters'.'<br>';
         $okay = false;
     }
     if(!$validemail == true)
     {
-        $GLOBALS['errormail'] =  'Check email'.'<br>';
         $okay = false;
 
     }
@@ -189,17 +259,19 @@ function validRegister()
 
 
 
-/*function to check if username entered is unique*/
+/*
+*function to check if username entered is unique
+*/
 function checkusername()
 {
 
     //code to check if username already exist
     //if username does not exist run the register function
 
+
     $uname = $_POST['username'];
 
-
-                //Write sql query
+                  //Write sql query
     $sql = "SELECT * FROM artisan where username = \"$uname\""; 
 
             //create instance of a database class
@@ -223,60 +295,71 @@ function checkusername()
             echo 'Username already exist in the database'; 
 
         }
+
         registeruser();
     }                
     else
     {
         echo 'Username already exist in the database'; 
+
     }
-}
+
+    
 
 
+/*
+a function to register a new artisan into the database. 
+*/
 
 
-function registeruser()
-{
+    function registeruser()
+    {
 
    //variables defined
-    session_start();
+        session_start();
 
-    $_SESSION['uname'] = $_REQUEST['username'];
-    $_SESSION['pword'] =  $_REQUEST['passwd'];
-    $_SESSION['fname'] =  $_REQUEST['fName'];
-    $_SESSION['lname'] =  $_REQUEST['lName'];
-    $_SESSION['email'] =  $_REQUEST['email'];
+        $_SESSION['uname'] = $_REQUEST['username'];
+        $_SESSION['pword'] =  $_REQUEST['passwd'];
+        $_SESSION['fname'] =  $_REQUEST['fName'];
+        $_SESSION['lname'] =  $_REQUEST['lName'];
+        $_SESSION['email'] =  $_REQUEST['email'];
 
-    $f1 = $_SESSION['uname'];
-    $f2 = $_SESSION['pword'];
-    $f3 =  $_SESSION['fname'];
-    $f4 =   $_SESSION['lname'];
-    $f5 = $_SESSION['email'];
+        $f1 = $_SESSION['uname'];
+        $f2 = $_SESSION['pword'];
+        $f3 =  $_SESSION['fname'];
+        $f4 =   $_SESSION['lname'];
+        $f5 = $_SESSION['email'];
 
-    $pword = password_hash($_POST['pword'],PASSWORD_DEFAULT);
+        $pword = password_hash($_SESSION['pword'],PASSWORD_DEFAULT);
 
 
               //write query
-    $sql = "INSERT INTO artisan (first_name, last_name, email, password, username) VALUES (\"".$f3."\", \"".$f4."\", \"".$f5."\", \"".$f2."\", \"".$f1."\")";
+        $sql = "INSERT INTO artisan (first_name, last_name, email, password, username) VALUES (\"".$f3."\", \"".$f4."\", \"".$f5."\", \"".$pword."\", \"".$f1."\")";
 
     //create instance of a database class
-    $reguser = new dbconnection;
+        $reguser = new dbconnection;
 
-    
+
                 //execute query 
-    $registration = $reguser->query($sql);
+        $registration = $reguser->query($sql);
 
 
-    if($registration)
-    {
-        header("Location: ../Register/restDetails.php");
+        if($registration)
+        {
+            header("Location: ../Register/restDetails.php");
 
-    }  else 
-    {
-        $GLOBALS['errorregister'] = "User cant be registered" ;
-    } 
+        }  else 
+        {
+            $GLOBALS['errorregister'] = "User cant be registered" ;
+        } 
 
-}
+    }
 
+/*
+a function to validate prefill details for an registered artisan's profile page. Successful validation leads to the addrestdetails that would add the artisans prefill details into te database.
+Validation checks that the artisan does not leave fields empty
+@return boolean 
+*/
 function validrestDetails(){
     $ok = true;
 
@@ -309,6 +392,9 @@ function validrestDetails(){
 }
 
 
+/*
+a function to add prefill details for an registered artisan's profile page into the database. From then on, a redirection is done to the profile page of the respective artisan.
+*/
 function addUserDetails(){
 
     $address = $_REQUEST['address'];
@@ -333,9 +419,10 @@ function addUserDetails(){
     $reguser = new dbconnection;
 
 
+//query database
     $registration = $reguser->query($sql);
 
-
+//if successful redirect to the login page else display error 
     if($registration)
     {
 
@@ -344,10 +431,10 @@ function addUserDetails(){
     }else
     {
 
-     echo $reguser->error();
- } 
-}
 
+        echo $reguser->error();
+    } 
+}
 
 
 ?>

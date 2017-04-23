@@ -18,18 +18,19 @@ http://www.tooplate.com/view/2079-garage
 	<link rel="stylesheet" type="text/css" href="../JS/font-awesome-4.5.0/css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="../CSS/slider.css">
 	<link rel="stylesheet" type="text/css" href="../CSS/mystyle.css">
+
+	<?php 
+		include "../Database/dbConnectionClass.php";
+
+		$obj = new dbconnection;
+
+	?>
 </head>
 <body>
 <!-- Header -->
 <div class="allcontain">
-<?php require_once('phpmail.php'); ?>
+<?php require_once('../Unsecure/processUnsecure.php') ?>
 	<div class="header">
-			<ul class="socialicon">
-				<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-				<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-				<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-				<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-			</ul>
 			<ul class="givusacall">
 				<li>Give us a call : +233 50 121 2329  </li>
 			</ul>
@@ -50,7 +51,19 @@ http://www.tooplate.com/view/2079-garage
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
 				<li class="active"><a href="../index.php">Home</a> </li>
-				<li class="active"><a href="../Pages/category.php">Category</a> </li>
+								<li class="dropdown">
+          			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category<span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+			          <?php include "../Pages/profession.php"; ?>
+			          	<?php if(getProfession()) :?>
+						 <?php foreach(getProfession() as  $value):	?>
+						 	<li><a href="../Pages/result.php?profession=<?php echo $value["profession"]?>"> <?php echo $value["profession"]?></a></li>
+							
+							<?php endforeach;	?>
+			        <?php endif;	?>
+			            
+			          </ul>
+			        </li>
 				<li class="active"><a href="../Register/signUp.php">Artisan? Sign Up</a> </li>
 				<li class="active"><a href="../Login/Sign_in.php">Sign In</a> </li>
 				<li class="active"><a href="../Pages/About.php">About Us</a> </li>
@@ -63,24 +76,16 @@ http://www.tooplate.com/view/2079-garage
 <br><br><br><br>
 <form style=" position: absolute; margin-top:-1%; left: 30%;  height: 59%;
     width: 45%; padding-top: 15px;  text-align: center;" action="" method="post">
-	<input type="text" id="fNameField" class="form-control name-form" name="conFName" placeholder="First Name" style="border: none; border-bottom: 2px solid darkred;"  ><br>
-	<input type="text" id="lNameField" class="form-control name-form" name="conLName" placeholder="Last Name" style="border: none; border-bottom: 2px solid darkred;"><br>
-	<input type="text" id="email" class="form-control name-form" name="conEmail" placeholder="Email Address" style="border: none; border-bottom: 2px solid darkred;"><br>
-    <textarea rows="4" id="msg" cols="50" name="conMsg" ></textarea><br>
+	<input type="text" id="fNameField" class="form-control name-form" name="fName" placeholder="First Name" style="border: none; border-bottom: 2px solid darkred;"  ><br>
+	<input type="text" id="lNameField" class="form-control name-form" name="lName" placeholder="Last Name" style="border: none; border-bottom: 2px solid darkred;"><br>
+	<input type="text" id="email" class="form-control name-form" name="email" placeholder="Email Address" style="border: none; border-bottom: 2px solid darkred;"><br>
+    <textarea rows="4" cols="50" name="msg" ></textarea><br>
 
-	<input type="Submit" value="Submit" name="conSub" id="btnSignUp"
+	<input type="submit" value="Submit" name="btnSignUp" id="btnSignUp" onclick="validate()"
 	 style="font-size: 16px; background-color: white; color:black; border: 2px solid limegreen">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </form>
 
-
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<script type="text/javascript" src="../JS/bootstrap-3.3.6-dist/js/jquery.js"></script>
-<script type="text/javascript" src="../JS/js/isotope.js"></script>
-<script type="text/javascript" src="../JS/js/myscript.js"></script> 
-<script type="text/javascript" src="../JS/bootstrap-3.3.6-dist/js/jquery.1.11.js"></script>
-<script type="text/javascript" src="../JS/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
-
-<script type="text/javascript">
+<script>
 
 //Capturing desired elements in variables
 	var fName = document.getElementById("fNameField");
@@ -97,32 +102,13 @@ http://www.tooplate.com/view/2079-garage
 		}
 	}
 
-
-	$(document).ready(function(){
-
-		$('#btnSignUp').click(function() {
-			var fNVal = $('#fNameField').val();
-			var lNVal = $('#lNameField').val();
-			var eMVal = $('#email').val();
-			var msg = $('#msg').val();
-
-			var varData = 'Fname' +  fNVal + '&Lname' + lNVal + '&eMVal' + eMVal + '&message' + msg;
-
-			console.log(varData);
-
-			$.ajax({
-				type: 'POST', 
-				url: 'sendmail.php',
-				data: varData,
-				success: function(){
-					alert("We will deal your concern shortly");
-				}
-			});
-		});
-	});
 </script>
 
+
+<script type="text/javascript" src="../JS/bootstrap-3.3.6-dist/js/jquery.js"></script>
+<script type="text/javascript" src="../JS/js/isotope.js"></script>
+<script type="text/javascript" src="../JS/js/myscript.js"></script> 
+<script type="text/javascript" src="../JS/bootstrap-3.3.6-dist/js/jquery.1.11.js"></script>
+<script type="text/javascript" src="../JS/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
 </body>
-
-
 </html>
