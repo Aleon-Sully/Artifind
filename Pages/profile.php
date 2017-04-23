@@ -141,7 +141,6 @@ $id =$_SESSION['artid'];
 						<?php $s->loadName($id); 
 						      $s->loadProfession($id);
 						      $s->loadAboutMe($id);?>
-						<span id="profession2">Carpenter</span>
 						
 				
 					</div>
@@ -156,10 +155,7 @@ $id =$_SESSION['artid'];
 		<div class="skills-info">
 			<h3>Skills</h3>
 			<ul>
-			<li> Skill 1</li>
-			<li> Skill 2</li>
-			<li> Skill 3</li>
-			<li> Skill 4</li>
+            <?php $s->loadSkills($id);?>
 			</ul>
 			<span> </span>
 			</div>
