@@ -74,7 +74,7 @@ http://www.tooplate.com/view/2079-garage
 
 
 	Last Name<input type="text" id="lNameField" class="form-control name-form" name="lName" value =<?php getLName($id)?> style="border: none; border-bottom: 2px solid darkred;"><br> <br>
-	Profession<input type="text" id="prof" class="form-control name-form" name="prof" value =<?php ?> style="border: none; border-bottom: 2px solid darkred;"><br><br>
+	Profession<input type="text" id="prof" class="form-control name-form" name="prof" value =<?php getProfession($id) ?> style="border: none; border-bottom: 2px solid darkred;"><br><br>
 	<p>About Me </p>
 	<textarea rows="4" cols="80" name="msg"><?php getAboutMe($id) ?></textarea><br><br>
 	Skills <br><br><div id=skills>
@@ -95,7 +95,7 @@ http://www.tooplate.com/view/2079-garage
 
 	Location<input type="text" id="emailField" class="form-control name-form" name="email" value =<?php ?> style="border: none; border-bottom: 2px solid darkred;"><br><br>
 
-	Address<input type="text" id="emailField" class="form-control name-form" name="add" value =<?php getAddress($id) ?> style="border: none; border-bottom: 2px solid darkred;"><br><br>
+	Address<textarea rows="4" cols="80" name="area"><?php getLocation($id) ?></textarea><br><br>
 	Portfolio <br><br>
 	<?php $images = getPortfolio($id);
 		$i=0;

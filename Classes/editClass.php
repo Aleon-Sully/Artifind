@@ -93,6 +93,17 @@ public function loadEmail ($artid){
 
 }
 
+public function loadLocation ($artid){
+    $this->connect();
+    $sql = "SELECT location FROM artisan where artisan_id=$artid";
+    $this->query($sql);
+    while ($loc = $this->fetch()) {
+    return $loc['location'];
+    }
+
+
+}
+
 public function loadSkills ($artid){
 	$this->connect();
 	$sql = "SELECT sID, CATEGORY FROM skils where skils.sID IN (SELECT artisan_skill.sID FROM artisan_skill where artisan_skill.aID =$artid)";
@@ -150,6 +161,71 @@ public function updateDetails($id,$fname,$lname,$address,$profession,$contact,$a
     $sql = "UPDATE artisan SET first_name='$fname', last_name='$lname', telephone_Number='$contact', address='$address', about_me='$about', email='$email', password='$password', profession='$profession' WHERE artisan_id=$id";
     $this->query($sql);
 
+}
+
+public function updatePassword($id,$pass){
+    $this->connect();
+    $sql = "UPDATE artisan SET password='$password' WHERE artisan_id=$id";
+    $this->query($sql);
+}
+
+ public function updateEmail($id,$email){
+    $this->connect();
+    $sql = "UPDATE artisan SET email='$email'WHERE artisan_id=$id";
+    $this->query($sql);
+}
+public function insertPortImage($id,$img){
+    $this->connect();
+    $sql = "INSERT INTO portfolio (p_ID,aID,image) VALUES (NULL, $id, '{$img}')";
+    $this->query($sql);
+}
+ public function updateAbout($id,$aboutme){
+    $this->connect();
+    $sql = "UPDATE artisan SET about_me='$aboutme' WHERE artisan_id=$id";
+    $this->query($sql);
+}
+
+ public function updateContact($id,$con){
+    $this->connect();
+    $sql = "UPDATE artisan SET telephone_Number='$con' WHERE artisan_id=$id";
+    $this->query($sql);
+}
+
+ public function updateProfession($id,$prof){
+    $this->connect();
+    $sql = "UPDATE artisan SET profession='$prof' WHERE artisan_id=$id";
+    $this->query($sql);
+}
+
+ public function updateAddress($id,$add){
+    $this->connect();
+    $sql = "UPDATE artisan SET address='$add' WHERE artisan_id=$id";
+    $this->query($sql);
+}
+
+ public function updateFName($id,$fname){
+    $this->connect();
+    $sql = "UPDATE artisan SET first_name='$fname' WHERE artisan_id=$id";
+    $this->query($sql);
+}
+ public function updateLName($id,$lname){
+    $this->connect();
+    $sql = "UPDATE artisan SET last_name='$lname' WHERE artisan_id=$id";
+    $this->query($sql);
+}
+
+ public function addSkill($skill,$id){
+     $this->connect();
+    $sql = "INSERT INTO skils (sID, Category) VALUES (NULL, '$skill')";
+    if ($this->query($sql)) { 
+    $sql = "SELECT sID FROM skils WHERE Category='$skill'";
+    if($this->query($sql)){
+    $skillid = $this->fetch(); 
+    $sid = $skillid['sID'];
+    $sql="INSERT INTO artisan_skill (as_id, aID, sID, competence_level) VALUES (NULL, $id, $sid, '')";
+    $this->query($sql);
+}
+}
 }
 }
 ?>
