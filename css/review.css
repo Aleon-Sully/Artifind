@@ -1,0 +1,14 @@
+/*
+https://code.tutsplus.com/tutorials/building-a-5-star-rating-system-with-jquery-ajax-and-php--net-11541
+*/
+<div class='movie_choice'>
+Give us feedback! Let us know how this artist is doing by leaving your rating.
+    <div id="rate" class="rate_star">
+        <div class="star_1 ratings_stars"></div>
+        <div class="star_2 ratings_stars"></div>
+        <div class="star_3 ratings_stars"></div>
+        <div class="star_4 ratings_stars"></div>
+        <div class="star_5 ratings_stars"></div>
+        <div class="total_votes">vote data</div>
+    </div>
+</div>

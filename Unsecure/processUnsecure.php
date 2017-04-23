@@ -34,6 +34,9 @@ if(isset($_POST['finishBtn'])){
     validrestDetails();
 }
 
+if(isset($_POST['btnReview'])){
+    validatereview();
+}
 /*
 *Function to validate email
 */
