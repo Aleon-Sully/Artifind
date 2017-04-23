@@ -119,7 +119,6 @@ function verifylogin($username, $password){
             $_SESSION['userid']=$row['aID'];
             $_SESSION['uname']=$row['username'];
             header("Location: ../Pages/profile.php");
-            die();
         } else
         {
             echo "<br>User can't be logged in";
