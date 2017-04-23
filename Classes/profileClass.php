@@ -1,10 +1,4 @@
 <?php
-
-<<<<<<< HEAD
-require_once($_SERVER['DOCUMENT_ROOT'].'/Delco/Database/dbConnectionClass.php');
-=======
->>>>>>> d385fe8fc55dda405600c27600ac2635e06cbbd3
-
 require_once($_SERVER['DOCUMENT_ROOT'].'/Artifind/Database/dbConnectionClass.php');
 
 /*

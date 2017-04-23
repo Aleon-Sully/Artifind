@@ -6,7 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
 <?php
-include($_SERVER['DOCUMENT_ROOT'].'/Delco/Classes/profileClass.php');
+include($_SERVER['DOCUMENT_ROOT'].'/Artifind/Classes/profileClass.php');
 session_start();
 //$id = $_SESSION['id'];
 
@@ -47,6 +47,9 @@ session_start();
 <!-- start-smoth-scrolling -->
 </head>
 <body>
+<?php
+require_once('../Unsecure/processUnsecure.php');
+?>
 
 <div class="allcontain">
 	<div class="header">
@@ -113,10 +116,11 @@ session_start();
 
     <br><br><br><br><br><br>
 <form style=" position: absolute; margin-top:-1%; left: 30%;  height: 59%;
-    width: 45%; padding-top: 15px;  text-align: center;" action="" method="post">
+    width: 45%; padding-top: 15px;  text-align: center;" action="" method="post" onsubmit="reviewArtisan()">
     <input type="text" id="fNameField" class="form-control name-form" name="fName" placeholder="First Name" style="border: none; border-bottom: 2px solid darkred;"  ><br>
 	<input type="text" id="lNameField" class="form-control name-form" name="lName" placeholder="Last Name" style="border: none; border-bottom: 2px solid darkred;"><br>
 	<input type="text" id="email" class="form-control name-form" name="email" placeholder="Email Address" style="border: none; border-bottom: 2px solid darkred;"><br>
+	<textarea rows="4" cols="50" id="msg" name="msg" placeholder=" Comments..." ></textarea><br>
 
    
 								<label>	<input type="checkbox" name="rating" value="1" > Poor</label> &nbsp;&nbsp;&nbsp;
@@ -125,7 +129,7 @@ session_start();
 								<label>	<input type="checkbox" name="rating" value="4" > Very Good</label> &nbsp;&nbsp;&nbsp;
 								<label>	<input type="checkbox" name="rating" value="5" > Excellent</label> &nbsp;&nbsp;&nbsp; <br><br>
 
-                                <input type="button" value="Submit Review" style="font-size: 16px; background-color: white; color:black; border: 2px solid darkred" onclick="review()"> 
+                                <input type="submit" id= "SubmitReview" value="SubmitReview" style="font-size: 16px; background-color: white; color:black; border: 2px solid darkred" > 
 
 
 							
@@ -138,15 +142,19 @@ session_start();
     var lName = document.getElementById('lNameField');
     var email = document.getElementById('email');
     
-    function review(){
-        if(fName.value == "" && lName.value == "" && email.value == "")
-            alert('Please fill in the required details');
-        else{
-             alert('Thank you for your review');
-             location.href = "../index.php";
-        }
-    }
+    // function review(){
+    //     if(fName.value == "" && lName.value == "" && email.value == ""){
+    //         alert('Please fill in the required details');
+    //     }
+    //     	// if (fName.value is not in the databse){
+    //     	// 	alert('Thank you for your review');
+    //     	// } 
+    //         else{
+    //         	alert('You cannot review the same artisan more than once.');
+    //         }
+        
 
+    // }
 </script>
 </body>
 </html>

@@ -8,6 +8,12 @@ if(isset($_POST['btnSignUp'])){
  validContactUs();
 }
 
+/*
+When btnSubmit is clicked, store the artisan's username and password
+and then validate login
+@param string $username Takes in the user's username
+@param string $password Takes in the user's password
+*/
 if (isset($_POST['btnSubmit']))
 
 {
@@ -25,8 +31,8 @@ if(isset($_POST['finishBtn'])){
     validrestDetails();
 }
 
-if(isset($_POST['btnReview'])){
-    validateReview();
+if(isset($_POST['SubmitReview'])){
+    reviewArtisan();
 }
 
 /*
@@ -64,25 +70,57 @@ function validContactUs(){
 }
 
 
+/*
+to review the artisan, the user enters their first name, last name, email, ratings and their comment
+*/
 function reviewArtisan(){
-    $reviewArtisan = new dbconnection;
+
+$_POST['first_name']=$GLOBALS['first_name'];
+$_POST['last_name']=$GLOBALS['last_name'];
+$_POST['email'] =$GLOBALS['email'];
+$_POST['ratings'] =$GLOBALS['email'];
+$_POST['comments'] =$GLOBALS['comments'];
+
+$ok = true;
+if (empty($_POST['first_name'])){
+        echo "Please provide your fisrt name. <br>";
+        $ok= false;
+    }
+
+    if (empty($_POST['last_name'])){
+        echo "Please Enter your last. <br>";
+        $ok = false;
+    }
+
+if (empty($_POST['email'])){
+        echo "Please Enter your e-mail address. <br>";
+        $ok = false;
+    }
+
+if (empty($_POST['ratings'])){
+        echo "Please rate the artisan. <br>";
+        $ok = false;
+    }
+
+
+    if($ok){
+$reviewArtisan = new dbconnection;
 
     //Write sql
     $sql1 = "INSERT INTO `artisan_client` (first_name, last_name, email) VALUES
     (\"".$GLOBALS['first_name']."\", \"". $GLOBALS['last_name']."\", \"".$GLOBALS['email']."\")";
-
     $sql2 = "INSERT INTO `review` (ratings, comments) VALUES (\"".$GLOBALS['ratings']."\", \"". $GLOBALS['comments']."\")";
     
 
-    if($reviewArtisan->query($sql1) == true && $reviewArtisan->query($sql2)) {
-       echo "Thanks for your review";
+    if($reviewArtisan->query($sql1) == true && $reviewArtisan->query($sql2) === true) {
+       echo "Thanks for your review!";
        header('Location: ../index.php');
    }else
    {
        echo "Error: " . $sql1 . "<br>";
    }
-
-   $sendContactReq->close();
+}
+   $reviewArtisan ->close();
 }
 
 function validateReview(){
@@ -101,6 +139,7 @@ function validateReview(){
 
 
 function verifyReview(){
+  
     $sql = "SELECT * FROM  artisan_client where last_name = '$lname' && email = '$email'";
 
     $review = new dbconnection;
@@ -109,6 +148,9 @@ function verifyReview(){
 
     if ($executequery) {
         $row = $review -> fetch();
+        return true;
+    }else{
+        return false;
     }
 } 
 
