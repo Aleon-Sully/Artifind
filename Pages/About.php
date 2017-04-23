@@ -23,12 +23,6 @@ http://www.tooplate.com/view/2079-garage
 <!-- Header -->
 <div class="allcontain">
 	<div class="header">
-			<ul class="socialicon">
-				<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-				<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-				<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-				<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-			</ul>
 			<ul class="givusacall">
 				<li>Give us a call : +233 50 121 2329  </li>
 			</ul>

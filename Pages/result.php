@@ -140,12 +140,6 @@ while($row = $obj->fetch())
 	<div class="bottommenu" style="margin-top:150px;">
 		<p style="margin-top:-80px;">"We link you to the best artisans around"</p>
 		 <img src="../image/line.png" alt="line" style="margin-top:10px;"> <br>
-		 <div class="bottomsocial">
-		 	<a href="#"><i class="fa fa-facebook"></i></a>
-			<a href="#"><i class="fa fa-twitter"></i></a>
-			<a href="#"><i class="fa fa-google-plus"></i></a>
-			<a href="#"><i class="fa fa-pinterest"></i></a>
-		</div>
 			<div class="footer">
 				<div class="copyright">
 				  &copy; Copy right 2016 | <a href="#">Privacy </a>| <a href="#">Policy</a>
