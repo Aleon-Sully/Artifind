@@ -12,39 +12,16 @@
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.5.0/css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="../css/slider.css">
 	<link rel="stylesheet" type="text/css" href="../css/mystyle.css">
-<!--
-Template gotten from: 
-Template 2079 Garage
-http://www.tooplate.com/view/2079-garage
--->
-<!--<?php
 
-/*include the database to file
+
+<?php
 include "Database/dbConnectionClass.php";
 
 $obj = new dbconnection;
 
-function getLocation()
-{
- global $obj;	
-$obj->query("Select location from artisan");
-$data = array();
-while($row = $obj->fetch())
-{
-   $data[] = $row;
-
-}
-
-	return $data;
-}*/
 ?>
 </head>
 <body>
-
-<!--<?php
-//require_once('Unsecure/processUnsecure.php');
-?>*/
-<!-- Header -->
 <div class="allcontain">
 	<div class="header">
 			<ul class="givusacall">
@@ -67,7 +44,19 @@ while($row = $obj->fetch())
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
 				<li class="active"><a href="../index.php">Home</a> </li>
-				<li class="active"><a href="../Pages/category.php">Category</a> </li>
+				<li class="dropdown">
+          			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category<span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+			          <?php include "Pages/profession.php"; ?>
+			          	<?php if(getProfession()) :?>
+						 <?php foreach(getProfession() as  $value):	?>
+						 	<li><a href="#"> <?php echo $value["profession"]?></a></li>
+							
+							<?php endforeach;	?>
+			        <?php endif;	?>
+			            
+			          </ul>
+			        </li>
 				<li class="active"><a href="../Register/signUp.php">Artisan? Sign Up</a> </li>
 				<li class="active"><a href="../Login/Sign_in.php">Sign In</a> </li>
 				<li class="active"><a href="../Pages/About.php">About Us</a> </li>

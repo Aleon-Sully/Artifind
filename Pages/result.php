@@ -39,6 +39,28 @@ while($row = $obj->fetch())
 	return $data;
 }
 }
+
+
+function getSearchProfession()
+{
+if(isset($_GET["profession"])){
+	$prof =$_GET["profession"] ;
+ global $obj;	
+$obj->query("
+	SELECT artisan.*, review.ratings FROM artisan 
+	INNER  JOIN review ON artisan.artisan_id = review.au_ID
+	WHERE artisan.profession LIKE '%$prof%'
+	ORDER BY review.ratings");
+$data = array();
+while($row = $obj->fetch())
+{
+   $data[] = $row;
+
+}
+
+	return $data;
+}
+}
 ?>
 </head>
 <body>
@@ -66,7 +88,19 @@ while($row = $obj->fetch())
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
 				<li class="active"><a href="../index.php">Home</a> </li>
-				<li class="active"><a href="../Pages/category.php">Category</a> </li>
+					<li class="dropdown">
+          			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category<span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+			          <?php include "../Pages/profession.php"; ?>
+			          	<?php if(getProfession())  :?>
+						 <?php foreach(getProfession() as  $value):	?>
+						 	<li><a href="result.php"> <?php echo $value["profession"]?></a></li>
+							
+							<?php endforeach;	?>
+			        <?php endif;	?>
+			            
+			          </ul>
+			        </li>
 				<li class="active"><a href="../Register/signUp.php">Artisan? Sign Up</a> </li>
 				<li class="active"><a href="../Login/Sign_in.php">Sign In</a> </li>
 				<li class="active"><a href="../Pages/About.php">About Us</a> </li>
@@ -91,8 +125,10 @@ while($row = $obj->fetch())
 <!-- ________________________Artisans Thumbnail________________-->
 	<div class="grid">
 		<div class="row">
-			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-			<?php if(getResults()) :?>
+			<div>
+
+			 <?php if(isset($_GET["submit"])) :?>
+			 <?php if(getResults()) :?>
 			 <?php foreach(getResults() as  $value):	?>
 				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 				<div class="txthover">
@@ -106,7 +142,7 @@ while($row = $obj->fetch())
 							<div class="simpletxt">
 								<h3 class="name"><?php echo $value["first_name"]  .  " " . $value["last_name"]?></h3>
 								<p><?php echo $value["about_me"]?></p>
-	 							<a href="profile.php"><button>READ MORE</button></a><br>
+	 							<a href="../Pages/userView.php"><button>READ MORE</button></a><br>
 							</div>
 							<div class="stars2">
 								<div class="glyphicon glyphicon-star"></div>
@@ -119,8 +155,36 @@ while($row = $obj->fetch())
 				<?php endforeach;	?>
 				<?php else: ?>
 					<div style="text-align: center;">
-    						<p style="padding-left: 650;" >Sorry, there is no such in our Database. Kindly</p> <navbar-brand> <a href = "../Contact_us/contactUs.php"> Contact us </a>
+    						<p style="padding-left: 650;" >Sorry, there is no such in our Database. Kindly recommend by</p> <navbar-brand> <a href = "../Contact_us/contactUs.php"> Contacting us</a>
 					</div>
+		<?php endif;?>
+		<?php endif;?>
+		</div><div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			<?php if(getSearchProfession()) :?>
+			 <?php foreach(getSearchProfession() as  $value):	?>
+				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+				<div class="txthover">
+					<img src="../image/francis.jpeg" alt="francis">
+						<div class="txtcontent">
+							<div class="stars">
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+							</div>
+							<div class="simpletxt">
+								<h3 class="name"><?php echo $value["first_name"]  .  " " . $value["last_name"]?></h3>
+								<p><?php echo $value["about_me"]?></p>
+	 							<a href="../Pages/userView.php"><button>READ MORE</button></a><br>
+							</div>
+							<div class="stars2">
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+							</div>
+						</div>
+				</div>	 
+			</div>
+				<?php endforeach;	?>
 			<?php endif;	?>
 		</div>
 	</div>
@@ -129,12 +193,6 @@ while($row = $obj->fetch())
 	<div class="bottommenu" style="margin-top:150px;">
 		<p style="margin-top:-80px;">"We link you to the best artisans around"</p>
 		 <img src="../image/line.png" alt="line" style="margin-top:10px;"> <br>
-		 <div class="bottomsocial">
-		 	<a href="#"><i class="fa fa-facebook"></i></a>
-			<a href="#"><i class="fa fa-twitter"></i></a>
-			<a href="#"><i class="fa fa-google-plus"></i></a>
-			<a href="#"><i class="fa fa-pinterest"></i></a>
-		</div>
 			<div class="footer">
 				<div class="copyright">
 				  &copy; Copy right 2016 | <a href="#">Privacy </a>| <a href="#">Policy</a>
