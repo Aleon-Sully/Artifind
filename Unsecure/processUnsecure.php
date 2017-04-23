@@ -1,30 +1,18 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/Delco/Database/dbConnectionClass.php');
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/Delco/Artifind/Database/dbConnectionClass.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/Artifind/Database/dbConnectionClass.php');
 
 
 
 if(isset($_POST['btnSignUp'])){
-   validContactUs();
+ validContactUs();
 }
 
 if (isset($_POST['btnSubmit']))
 
-     {
-        validatelogin();
-     }
-     /*
-
 {
     validatelogin();
 }
-
-
-     if(isset($_POST['conSub'])){
-         sendMail();
-     }
-*/
 if (isset($_POST['SignUpBtn'])){
     validRegister();
 }
@@ -38,7 +26,7 @@ if(isset($_POST['finishBtn'])){
 */
 
 function checkEmail($em){
- if(!filter_var($em, FILTER_VALIDATE_EMAIL)){
+   if(!filter_var($em, FILTER_VALIDATE_EMAIL)){
     echo "Invalid email";
     return false;
 }
@@ -77,23 +65,20 @@ function sentContactRequest(){
     (\"".$GLOBALS['fName']."\", \"". $GLOBALS['lName']."\", \"".$GLOBALS['em']."\", \"". $GLOBALS['msg']."\")";
 
     if($sendContactReq->query($sql) == true){
-       echo "New record created succesfully";
-       header('Location: ../index.php');
-   }else{
-       echo "Error: " . $sql . "<br>";
-   }
+     echo "New record created succesfully";
+     header('Location: ../index.php');
+ }else{
+     echo "Error: " . $sql . "<br>";
+ }
 
-   $sendContactReq->close();
+ $sendContactReq->close();
 }
 
 function validatelogin(){
     $ok = true;
 
 
-    if (empty($_POST['uName'])){
-        echo "Please enter a username";
-
-
+    
     if (empty($_POST['uname'])){
         echo 'alert("Please provide your username")';
 
@@ -102,24 +87,17 @@ function validatelogin(){
 
     if (empty($_POST['pwd'])){
         echo "Please Enter a Password";
-       echo 'alert("Please provide your password")';        
+        echo 'alert("Please provide your password")';        
         $ok = false;
     }
     if($ok){
-verifylogin();
-         }
+        verifylogin();
     }
-
-     echo 'alert("Please provide your password")';        
-     $ok = false;
- }
- if($ok){
-    verifylogin();
+    
 }
-}
-
 
 function verifylogin(){
+
     $username = $_POST['uname'];
     $pwd = $_POST['pwd'];
 
@@ -135,7 +113,7 @@ function verifylogin(){
         if (password_verify($pwd, $row['pwd']))
         {
             session_start();
-            $_SESSION['userid']=$row['aID'];
+            $_SESSION['userid']=$row['artisan_id'];
             $_SESSION['uname']=$row['username'];
 
             header("Location: ../Pages/profile.php");
@@ -214,13 +192,12 @@ function validRegister()
 /*function to check if username entered is unique*/
 function checkusername()
 {
-    $uname = $_POST['username'];
-    
+
     //code to check if username already exist
     //if username does not exist run the register function
 
     $uname = $_POST['username'];
-     
+
 
                 //Write sql query
     $sql = "SELECT * FROM artisan where username = \"$uname\""; 
@@ -241,35 +218,19 @@ function checkusername()
             registeruser();
         }                
         else
+        {
 
-
-/*
-
-function sendMail(){
-    $first = $_POST['Fname'];
-    $last = $_POST['Lname'];
-    $conEM = $_POST['eMVal'];
-    $conMsg = $_POST['message'];
-
-    $myEmail = "ampahleon@gnail.com";
-
-    $subject = $first." ".$last." Sender Email: ".$conEM ;
-
-    mail($myEmail, $subject, $conMsg);
-}
-
-*/
             echo 'Username already exist in the database'; 
-            
+
         }
-           registeruser();
-       }                
-       else
-       {
+        registeruser();
+    }                
+    else
+    {
         echo 'Username already exist in the database'; 
-       }
     }
 }
+
 
 
 
@@ -377,16 +338,16 @@ function addUserDetails(){
 
     if($registration)
     {
-      
-        header("Location: ../Pages/profile.php");
+
+        header("Location: ../Login/Sign_in.php");
 
     }else
     {
 
-       echo $reguser->error();
-    } 
+     echo $reguser->error();
+ } 
 }
-}
+
 
 
 ?>

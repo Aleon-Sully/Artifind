@@ -6,10 +6,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
 <?php
-include($_SERVER['DOCUMENT_ROOT'].'/Delco/classes/profileClass.php');
+include($_SERVER['DOCUMENT_ROOT'].'/Artifind/Classes/profileClass.php');
 session_start();
-$_SESSION['artid'] = '1';
-$id =$_SESSION['artid'];
+$id = $_SESSION['userid'];
 ?>
 <html>
 <head>
@@ -20,20 +19,20 @@ $id =$_SESSION['artid'];
 <meta name="keywords" content="Mungo Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/mystyle.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../css/mystyle.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!--fonts-->
 <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>
 <!--/fonts-->
 <!-- js -->
-<script src="js/jquery.min.js"> </script>
-<script src="js/bootstrap.js"></script>
+<script src="../js/jquery.min.js"> </script>
+<script src="../js/bootstrap.js"></script>
 <!-- //js -->
 <!-- start-smoth-scrolling -->
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript" src="../js/move-top.js"></script>
+<script type="text/javascript" src="../js/easing.js"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event){		
@@ -79,7 +78,7 @@ $id =$_SESSION['artid'];
 				<li><a href = "">My Profile</a></li>
 				<li><a href = "editProfile.php">Edit Profile</a></li>
 				<li>
-					<a  href="index.php">Sign Out</a>
+					<a  href="../index.php">Sign Out</a>
 
 				</li>
 
@@ -168,8 +167,8 @@ $id =$_SESSION['artid'];
 <!--/skills-->
 <!--portfolio-->
 <!--light-box-js -->
-				<script src="js/jquery.chocolat.js"></script>
-				<link rel="stylesheet" href="css/chocolat.css" type="text/css" media="screen" charset="utf-8" />
+				<script src="../js/jquery.chocolat.js"></script>
+				<link rel="stylesheet" href="../css/chocolat.css" type="text/css" media="screen" charset="utf-8" />
 				<!--light-box-files -->
 				<script type="text/javascript" charset="utf-8">
 				$(function() {
