@@ -39,6 +39,28 @@ while($row = $obj->fetch())
 	return $data;
 }
 }
+
+
+function getSearchProfession()
+{
+if(isset($_GET["profession"])){
+	$prof =$_GET["profession"] ;
+ global $obj;	
+$obj->query("
+	SELECT artisan.*, review.ratings FROM artisan 
+	INNER  JOIN review ON artisan.artisan_id = review.au_ID
+	WHERE artisan.profession LIKE '%$prof%'
+	ORDER BY review.ratings");
+$data = array();
+while($row = $obj->fetch())
+{
+   $data[] = $row;
+
+}
+
+	return $data;
+}
+}
 ?>
 </head>
 <body>
@@ -70,7 +92,7 @@ while($row = $obj->fetch())
           			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category<span class="caret"></span></a>
 			          <ul class="dropdown-menu">
 			          <?php include "../Pages/profession.php"; ?>
-			          	<?php if(getProfession()) :?>
+			          	<?php if(getProfession())  :?>
 						 <?php foreach(getProfession() as  $value):	?>
 						 	<li><a href="result.php"> <?php echo $value["profession"]?></a></li>
 							
@@ -103,8 +125,10 @@ while($row = $obj->fetch())
 <!-- ________________________Artisans Thumbnail________________-->
 	<div class="grid">
 		<div class="row">
-			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-			<?php if(getResults()) :?>
+			<div>
+
+			 <?php if(isset($_GET["submit"])) :?>
+			 <?php if(getResults()) :?>
 			 <?php foreach(getResults() as  $value):	?>
 				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 				<div class="txthover">
@@ -131,8 +155,36 @@ while($row = $obj->fetch())
 				<?php endforeach;	?>
 				<?php else: ?>
 					<div style="text-align: center;">
-    						<p style="padding-left: 650;" >Sorry, there is no such in our Database. Kindly</p> <navbar-brand> <a href = "../Contact_us/contactUs.php"> Contact us </a>
+    						<p style="padding-left: 650;" >Sorry, there is no such in our Database. Kindly recommend by</p> <navbar-brand> <a href = "../Contact_us/contactUs.php"> Contacting us</a>
 					</div>
+		<?php endif;?>
+		<?php endif;?>
+		</div><div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			<?php if(getSearchProfession()) :?>
+			 <?php foreach(getSearchProfession() as  $value):	?>
+				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+				<div class="txthover">
+					<img src="../image/francis.jpeg" alt="francis">
+						<div class="txtcontent">
+							<div class="stars">
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+							</div>
+							<div class="simpletxt">
+								<h3 class="name"><?php echo $value["first_name"]  .  " " . $value["last_name"]?></h3>
+								<p><?php echo $value["about_me"]?></p>
+	 							<a href="../Pages/userView.php"><button>READ MORE</button></a><br>
+							</div>
+							<div class="stars2">
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+							</div>
+						</div>
+				</div>	 
+			</div>
+				<?php endforeach;	?>
 			<?php endif;	?>
 		</div>
 	</div>
