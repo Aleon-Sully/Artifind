@@ -5,7 +5,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/Artifind/Database/dbConnectionClass.php
 
 
 if(isset($_POST['btnSignUp'])){
- validContactUs();
+   validContactUs();
 }
 
 if (isset($_POST['btnSubmit']))
@@ -34,7 +34,7 @@ if(isset($_POST['btnReview'])){
 */
 
 function checkEmail($em){
-   if(!filter_var($em, FILTER_VALIDATE_EMAIL)){
+ if(!filter_var($em, FILTER_VALIDATE_EMAIL)){
     echo "Invalid email";
     return false;
 }
@@ -75,14 +75,14 @@ function reviewArtisan(){
     
 
     if($reviewArtisan->query($sql1) == true && $reviewArtisan->query($sql2)) {
-       echo "Thanks for your review";
-       header('Location: ../index.php');
-   }else
-   {
-       echo "Error: " . $sql1 . "<br>";
-   }
+     echo "Thanks for your review";
+     header('Location: ../index.php');
+ }else
+ {
+     echo "Error: " . $sql1 . "<br>";
+ }
 
-   $sendContactReq->close();
+ $sendContactReq->close();
 }
 
 function validateReview(){
@@ -123,13 +123,13 @@ function sentContactRequest(){
     (\"".$GLOBALS['fName']."\", \"". $GLOBALS['lName']."\", \"".$GLOBALS['em']."\", \"". $GLOBALS['msg']."\")";
 
     if($sendContactReq->query($sql) == true){
-     echo "New record created succesfully";
-     header('Location: ../index.php');
- }else{
-     echo "Error: " . $sql . "<br>";
- }
+       echo "New record created succesfully";
+       header('Location: ../index.php');
+   }else{
+       echo "Error: " . $sql . "<br>";
+   }
 
- $sendContactReq->close();
+   $sendContactReq->close();
 }
 
 /*
@@ -303,7 +303,7 @@ function checkusername()
         echo 'Username already exist in the database'; 
 
     }
-
+}
     
 
 
@@ -312,48 +312,48 @@ a function to register a new artisan into the database.
 */
 
 
-    function registeruser()
-    {
+function registeruser()
+{
 
    //variables defined
-        session_start();
+    session_start();
 
-        $_SESSION['uname'] = $_REQUEST['username'];
-        $_SESSION['pword'] =  $_REQUEST['passwd'];
-        $_SESSION['fname'] =  $_REQUEST['fName'];
-        $_SESSION['lname'] =  $_REQUEST['lName'];
-        $_SESSION['email'] =  $_REQUEST['email'];
+    $_SESSION['uname'] = $_REQUEST['username'];
+    $_SESSION['pword'] =  $_REQUEST['passwd'];
+    $_SESSION['fname'] =  $_REQUEST['fName'];
+    $_SESSION['lname'] =  $_REQUEST['lName'];
+    $_SESSION['email'] =  $_REQUEST['email'];
 
-        $f1 = $_SESSION['uname'];
-        $f2 = $_SESSION['pword'];
-        $f3 =  $_SESSION['fname'];
-        $f4 =   $_SESSION['lname'];
-        $f5 = $_SESSION['email'];
+    $f1 = $_SESSION['uname'];
+    $f2 = $_SESSION['pword'];
+    $f3 =  $_SESSION['fname'];
+    $f4 =   $_SESSION['lname'];
+    $f5 = $_SESSION['email'];
 
-        $pword = password_hash($_SESSION['pword'],PASSWORD_DEFAULT);
+    $pword = password_hash($_SESSION['pword'],PASSWORD_DEFAULT);
 
 
               //write query
-        $sql = "INSERT INTO artisan (first_name, last_name, email, password, username) VALUES (\"".$f3."\", \"".$f4."\", \"".$f5."\", \"".$pword."\", \"".$f1."\")";
+    $sql = "INSERT INTO artisan (first_name, last_name, email, password, username) VALUES (\"".$f3."\", \"".$f4."\", \"".$f5."\", \"".$pword."\", \"".$f1."\")";
 
     //create instance of a database class
-        $reguser = new dbconnection;
+    $reguser = new dbconnection;
 
 
                 //execute query 
-        $registration = $reguser->query($sql);
+    $registration = $reguser->query($sql);
 
 
-        if($registration)
-        {
-            header("Location: ../Register/restDetails.php");
+    if($registration)
+    {
+        header("Location: ../Register/restDetails.php");
 
-        }  else 
-        {
-            $GLOBALS['errorregister'] = "User cant be registered" ;
-        } 
+    }  else 
+    {
+        $GLOBALS['errorregister'] = "User cant be registered" ;
+    } 
 
-    }
+}
 
 /*
 a function to validate prefill details for an registered artisan's profile page. Successful validation leads to the addrestdetails that would add the artisans prefill details into te database.
@@ -404,6 +404,10 @@ function addUserDetails(){
     $prof =  $_REQUEST['profession'];
     $gender =  $_REQUEST['gender'];
 
+    if(isset($_FILES['file']) && is_uploaded_file($_FILES['file']['tmp_name'])) 
+    {
+        $imag=addslashes (file_get_contents($_FILES['file']['tmp_name']));
+    } 
     session_start();
 
     $user = $_SESSION['uname'];
@@ -412,7 +416,7 @@ function addUserDetails(){
     echo $user;
 //write query
 
-    $sql = "UPDATE artisan SET address = '$address', telephone_Number = '$telephone', gender = '$gender', location = '$loc', about_me = '$about', profession = '$prof' WHERE username ='$user'";
+    $sql = "UPDATE artisan SET address = '$address', telephone_Number = '$telephone', gender = '$gender', location = '$loc', about_me = '$about', profession = '$prof' , profile_pic = '{$imag}' WHERE username ='$user'";
 
 //create instance of a database class
 
