@@ -6,7 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
 <?php
-include($_SERVER['DOCUMENT_ROOT'].'/Artifind/Classes/profileClass.php');
+include($_SERVER['DOCUMENT_ROOT'].'/Delco/Classes/profileClass.php');
 session_start();
 $id = $_SESSION['id'];
 
@@ -15,6 +15,7 @@ $id = $_SESSION['id'];
 <html>
 <head>
 <title>Delcosite</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -29,7 +30,7 @@ $id = $_SESSION['id'];
 <link href='//fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>
 <!--/fonts-->
 <!-- js -->
-<script src="../JS/jquery.min.js"> </script>
+
 <script src="../JS/bootstrap.js"></script>
 <!-- //js -->
 <!-- start-smoth-scrolling -->
@@ -70,7 +71,7 @@ $id = $_SESSION['id'];
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand logo" href="#"><img src="image/Logo.jpg" alt="logo"></a>
+				<a class="navbar-brand logo" href="#"><img src="Image/Logo.jpg" alt="logo"></a>
 			</div>	 
 		</div>
 		<div class="collapse navbar-collapse" id="upmenu">
@@ -126,6 +127,9 @@ $id = $_SESSION['id'];
 		</div>
 	</div>
 </div>
+
+
+
 <div class="navigation">
 			<nav class="navbar navbar-default">
 				<div class="navbar-header">
