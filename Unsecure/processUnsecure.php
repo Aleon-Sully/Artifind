@@ -118,7 +118,7 @@ function verifylogin($username, $password){
             session_start();
             $_SESSION['userid']=$row['aID'];
             $_SESSION['uname']=$row['username'];
-            header("Location: ../Pages/profile.php");
+            header("Location: ../index.php");
             die();
         } else
         {
