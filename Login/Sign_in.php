@@ -63,7 +63,8 @@ require_once('../Unsecure/processUnsecure.php');
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
 
-					<li  class="active"><a style="margin-right: 10px;" href="../index.php" >HOME</a>
+					<li>
+					<a style="margin-right: 10px;" href="../index.php" >HOME</a>
 				 </li>
 				<li>
 						<a href="../Register/signUp.php">Artisan?Sign Up</a>			

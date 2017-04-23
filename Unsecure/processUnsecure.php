@@ -72,12 +72,12 @@ function validatelogin(){
 
 
     if (empty($_POST['uname'])){
-        echo 'alert("Please provide your username")';
+        echo "Please provide your username";
         $ok= false;
     }
 
     if (empty($_POST['pwd'])){
-       echo 'alert("Please provide your password")';        
+       echo "Please provide your password";        
         $ok = false;
     }
     if($ok){
