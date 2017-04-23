@@ -35,7 +35,7 @@ if(isset($_POST['finishBtn'])){
 }
 
 if(isset($_POST['btnReview'])){
-    validatereview();
+    validateReview();
 }
 /*
 *Function to validate email
@@ -69,7 +69,57 @@ function validContactUs(){
     if(isset($GLOBALS['fName']) && isset( $GLOBALS['lName']) && isset( $GLOBALS['em']) && checkEmail( $GLOBALS['em']) && isset( $GLOBALS['msg'])){
         sentContactRequest();
     }
+}
+
+
+function reviewArtisan(){
+    $reviewArtisan = new dbconnection;
+
+    //Write sql
+    $sql1 = "INSERT INTO `artisan_client` (first_name, last_name, email) VALUES
+    (\"".$GLOBALS['first_name']."\", \"". $GLOBALS['last_name']."\", \"".$GLOBALS['email']."\")";
+
+$sql2 = "INSERT INTO `review` (ratings, comments) VALUES (\"".$GLOBALS['ratings']."\", \"". $GLOBALS['comments']."\")";
+    
+
+    if($reviewArtisan->query($sql1) == true && $reviewArtisan->query($sql2)) {
+       echo "Thanks for your review";
+       header('Location: ../index.php');
+   }else
+   {
+       echo "Error: " . $sql1 . "<br>";
+   }
+
+   $sendContactReq->close();
+}
+
+function validateReview(){
+    $fname = $_POST['first_name'];
+    $lname = $_POST['last_name'];
+    $email = $_POST['email'];
+    $rating = $_POST['ratings'];
+    $comments = $_POST['comments'];
+
+
+    if(isset($fname) && isset($lname) && isset($email) && isset($ratings) && isset($comments)) {
+        verifyReview();
+    }
+}
+
+
+
+function verifyReview(){
+$sql = "SELECT * FROM  artisan_client where last_name = '$lname' && email = '$email'";
+
+    $review = new dbconnection;
+
+    $executequery = $review -> query($sql);
+
+    if ($executequery) {
+        $row = $review -> fetch();
+}
 } 
+
 
 function sentContactRequest(){
 
