@@ -100,6 +100,8 @@ require_once('../Unsecure/processUnsecure.php');
 				<input type="text" id="uname" class="form-control name-form" name="uname" placeholder="Username" style="border:none; border-bottom:2px solid black;">
 				<input type="password" id="pword" class="form-control email-form" name="pwd" placeholder="Password" style="border:none; border-bottom:2px solid black;">
 				<input type="submit" value="Login" name="btnSubmit" id="btnSubmit" data-submit="...Sending"  style="font-size: 16px; background-color: white; color:black; border: 2px  black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="hidden" name="redirecturl" value=" <?php echo $_SERVER['HTTP_REFERER']; ?>" >
+
 	 </form>
 	 </div>
 
