@@ -1,0 +1,20 @@
+<?php
+
+require_once($_SERVER['DOCUMENT_ROOT'].'/test/Artifind/Database/dbConnectionClass.php');
+
+
+class searchClass extends dbconnection {
+	public function getLocation()
+{
+	global $obj;	
+	$obj->query("Select location from artisan");
+	$data = array();
+	while($row = $obj->fetch())
+	{
+		$data[] = $row;
+
+	}
+
+	return $data;
+}
+}
