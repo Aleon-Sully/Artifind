@@ -258,6 +258,6 @@ $id = $_SESSION['id'];
 					</script>
 				<a href="#" id="toTop" style="display: block;"><span id="toTopHover"></span><span id="toTopHover"></span> <span id="toTopHover" style="opacity: 1;"> </span></a>
 </div>
-
+<?php session_destroy(); ?>
 </body>
 </html>
