@@ -1,6 +1,6 @@
 <?php
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/Artifind/Database/dbConnectionClass.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/test/Artifind/Database/dbConnectionClass.php');
 
 
 
@@ -97,21 +97,13 @@ function validatelogin($username, $password){
     $ok = true;
 
 
-    if (empty($_POST['uName'])){
-        echo "Please enter a username";
-        }
-
     if (empty($_POST['uname'])){
         echo "Please provide your username. <br>";
         $ok= false;
     }
 
     if (empty($_POST['pwd'])){
-
-       echo 'alert("Please provide your password")';        
-
        echo "Please provide your password";        
-
         $ok = false;
     }
     if($ok){
@@ -120,22 +112,14 @@ verifylogin($username, $password);
     }
 
 
+
+
 /*
 a function to verify that a users username and password exist
 in the database and match each other.
 @param string $username Takes in the user's username(username should exist in the database) 
 @param string $password Takes in the user's password(password should match username in the database)
 */
-
-  /*   echo 'alert("Please provide your password")';        
-     $ok = false;
- }
- if($ok){
-    verifylogin();
-}
-}
-*/
-
 function verifylogin($username, $password){
  
     $sql = "SELECT * FROM  artisan where username = '$username'";
