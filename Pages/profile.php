@@ -8,8 +8,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <?php
 include($_SERVER['DOCUMENT_ROOT'].'/Artifind/Classes/profileClass.php');
 session_start();
-$_SESSION['artid'] = '1';
 $id =$_SESSION['artid'];
+$s = new profileClass;
 ?>
 <html>
 <head>
@@ -69,7 +69,7 @@ $id =$_SESSION['artid'];
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand logo" href="#"><img src="image/Logo.jpg" alt="logo"></a>
+				<a class="navbar-brand logo" href="#"><img src="../Image/Logo.jpg" alt="logo"></a>
 			</div>	 
 		</div>
 		<div class="collapse navbar-collapse" id="upmenu">
@@ -92,10 +92,10 @@ $id =$_SESSION['artid'];
 </div>
 <div class="banner">
 	<div class="container">
-		<div class="banner-info">
+		<div class="banner-info" style=" background: url(<?php $s->loadProfilePicture($id) ?>) no-repeat 0px 0px;">
 			<div class="banner-text">
 				<?php
-				$s = new profileClass;
+				
 				$s->loadName($id);
 				$s->loadProfession($id);
 				?>
