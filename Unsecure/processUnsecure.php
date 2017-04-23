@@ -1,8 +1,5 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/Delco/Database/dbConnectionClass.php');
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/Delco/Artifind/Database/dbConnectionClass.php');
-
+require_once($_SERVER['DOCUMENT_ROOT'].'/test/Artifind/Database/dbConnectionClass.php');
 
 
 if(isset($_POST['btnSignUp'])){
@@ -12,7 +9,9 @@ if(isset($_POST['btnSignUp'])){
 if (isset($_POST['btnSubmit']))
 
      {
-        validatelogin();
+        $username = $_POST['uname'];
+    $pwd = $_POST['pwd'];
+        validatelogin($username, $pwd);
      }
      /*
 
@@ -86,66 +85,39 @@ function sentContactRequest(){
    $sendContactReq->close();
 }
 
-function validatelogin(){
+function validatelogin($username, $password){
     $ok = true;
-
-
-    if (empty($_POST['uName'])){
-        echo "Please enter a username";
-
-
     if (empty($_POST['uname'])){
-<<<<<<< HEAD
-        echo "Please provide your username";
-=======
-        echo 'alert("Please provide your username")';
-
->>>>>>> e1e30224f5be1efa169d2ad5af55139499d2d6b3
+        echo "Please provide your username. <br>";
         $ok= false;
     }
 
     if (empty($_POST['pwd'])){
-<<<<<<< HEAD
        echo "Please provide your password";        
-=======
-        echo "Please Enter a Password";
-       echo 'alert("Please provide your password")';        
->>>>>>> e1e30224f5be1efa169d2ad5af55139499d2d6b3
         $ok = false;
     }
     if($ok){
-verifylogin();
+verifylogin($username, $password);
          }
     }
 
-     echo 'alert("Please provide your password")';        
-     $ok = false;
- }
- if($ok){
-    verifylogin();
-}
-}
 
-
-function verifylogin(){
-    $username = $_POST['uname'];
-    $pwd = $_POST['pwd'];
-
-    $sql = "SELECT * FROM  artisan where username = $username";
+function verifylogin($username, $password){
+ 
+    $sql = "SELECT * FROM  artisan where username = '$username'";
 
     $login = new dbconnection;
-    $executequery = $login -> query($sql);
 
+    $executequery = $login -> query($sql);
 
     if ($executequery) {
         $row = $login -> fetch();
 
-        if (password_verify($pwd, $row['pwd']))
+        if (password_verify($password, $row['password']))
         {
             session_start();
             $_SESSION['userid']=$row['aID'];
             $_SESSION['uname']=$row['username'];
-
             header("Location: ../Pages/profile.php");
             die();
         } else
@@ -155,7 +127,7 @@ function verifylogin(){
         }
     }
     else{
-
+echo "string";
         die();
 
     }
@@ -272,12 +244,8 @@ function sendMail(){
         }
            registeruser();
        }                
-       else
-       {
-        echo 'Username already exist in the database'; 
-       }
-    }
-}
+    
+
 
 
 
@@ -299,11 +267,11 @@ function registeruser()
     $f4 =   $_SESSION['lname'];
     $f5 = $_SESSION['email'];
 
-    $pword = password_hash($_POST['pword'],PASSWORD_DEFAULT);
+    $pword = password_hash($_SESSION['pword'],PASSWORD_DEFAULT);
 
 
               //write query
-    $sql = "INSERT INTO artisan (first_name, last_name, email, password, username) VALUES (\"".$f3."\", \"".$f4."\", \"".$f5."\", \"".$f2."\", \"".$f1."\")";
+    $sql = "INSERT INTO artisan (first_name, last_name, email, password, username) VALUES (\"".$f3."\", \"".$f4."\", \"".$f5."\", \"".$pword."\", \"".$f1."\")";
 
     //create instance of a database class
     $reguser = new dbconnection;
@@ -394,7 +362,7 @@ function addUserDetails(){
        echo $reguser->error();
     } 
 }
-}
+
 
 
 ?>
