@@ -69,10 +69,10 @@ while($row = $obj->fetch())
 					<li class="dropdown">
           			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category<span class="caret"></span></a>
 			          <ul class="dropdown-menu">
-			          <?php include "Pages/profession.php"; ?>
+			          <?php include "../Pages/profession.php"; ?>
 			          	<?php if(getProfession()) :?>
 						 <?php foreach(getProfession() as  $value):	?>
-						 	<li><a href="#"> <?php echo $value["profession"]?></a></li>
+						 	<li><a href="result.php"> <?php echo $value["profession"]?></a></li>
 							
 							<?php endforeach;	?>
 			        <?php endif;	?>

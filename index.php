@@ -76,7 +76,7 @@ require_once('Unsecure/processUnsecure.php');
 			          <?php include "Pages/profession.php"; ?>
 			          	<?php if(getProfession()) :?>
 						 <?php foreach(getProfession() as  $value):	?>
-						 	<li><a href="#"> <?php echo $value["profession"]?></a></li>
+						 	<li><a href="Pages/result.php"> <?php echo $value["profession"]?></a></li>
 							
 							<?php endforeach;	?>
 			        <?php endif;	?>
