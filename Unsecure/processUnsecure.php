@@ -11,7 +11,9 @@ if(isset($_POST['btnSignUp'])){
 if (isset($_POST['btnSubmit']))
 
      {
-        validatelogin();
+        $username = $_POST['uname'];
+    $pwd = $_POST['pwd'];
+        validatelogin($username, $pwd);
      }
      /*
 
@@ -85,7 +87,7 @@ function sentContactRequest(){
    $sendContactReq->close();
 }
 
-function validatelogin(){
+function validatelogin($username, $password){
     $ok = true;
 
 
@@ -94,19 +96,23 @@ function validatelogin(){
         }
 
     if (empty($_POST['uname'])){
-        echo 'alert("Please provide your username")';
-
+        echo "Please provide your username. <br>";
         $ok= false;
     }
 
     if (empty($_POST['pwd'])){
+
        echo 'alert("Please provide your password")';        
+
+       echo "Please provide your password";        
+
         $ok = false;
     }
     if($ok){
-verifylogin();
+verifylogin($username, $password);
          }
     }
+
 
   /*   echo 'alert("Please provide your password")';        
      $ok = false;
@@ -117,25 +123,22 @@ verifylogin();
 }
 */
 
-function verifylogin(){
-    $username = $_POST['uname'];
-    $pwd = $_POST['pwd'];
-
-    $sql = "SELECT * FROM  artisan where username = $username";
+function verifylogin($username, $password){
+ 
+    $sql = "SELECT * FROM  artisan where username = '$username'";
 
     $login = new dbconnection;
-    $executequery = $login -> query($sql);
 
+    $executequery = $login -> query($sql);
 
     if ($executequery) {
         $row = $login -> fetch();
 
-        if (password_verify($pwd, $row['pwd']))
+        if (password_verify($password, $row['password']))
         {
             session_start();
             $_SESSION['userid']=$row['aID'];
             $_SESSION['uname']=$row['username'];
-
             header("Location: ../Pages/profile.php");
             die();
         } else
@@ -145,7 +148,7 @@ function verifylogin(){
         }
     }
     else{
-
+echo "string";
         die();
 
     }
@@ -259,7 +262,10 @@ function sendMail(){
             
         }
 
+
     }
+              
+    
 
 
 
@@ -282,11 +288,11 @@ function registeruser()
     $f4 =   $_SESSION['lname'];
     $f5 = $_SESSION['email'];
 
-    $pword = password_hash($_POST['pword'],PASSWORD_DEFAULT);
+    $pword = password_hash($_SESSION['pword'],PASSWORD_DEFAULT);
 
 
               //write query
-    $sql = "INSERT INTO artisan (first_name, last_name, email, password, username) VALUES (\"".$f3."\", \"".$f4."\", \"".$f5."\", \"".$f2."\", \"".$f1."\")";
+    $sql = "INSERT INTO artisan (first_name, last_name, email, password, username) VALUES (\"".$f3."\", \"".$f4."\", \"".$f5."\", \"".$pword."\", \"".$f1."\")";
 
     //create instance of a database class
     $reguser = new dbconnection;
@@ -377,6 +383,5 @@ function addUserDetails(){
        echo $reguser->error();
     } 
 }
-
 
 ?>

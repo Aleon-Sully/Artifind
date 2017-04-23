@@ -90,7 +90,7 @@ require_once('../Unsecure/processUnsecure.php');
 	<form style="margin-top:15%; left: 30%; position: absolute; width: 45%;" form id="log" action="" method="post" onsubmit="validatelogin()">
 			<h1>SIGN IN</h1>
 				<input type="text" id="uname" class="form-control name-form" name="uname" placeholder="Username" style="border:none; border-bottom:2px solid black;">
-				<input type="text" id="pword" class="form-control email-form" name="pwd" placeholder="Password" style="border:none; border-bottom:2px solid black;">
+				<input type="password" id="pword" class="form-control email-form" name="pwd" placeholder="Password" style="border:none; border-bottom:2px solid black;">
 				<input type="submit" value="Login" name="btnSubmit" id="btnSubmit" data-submit="...Sending"  style="font-size: 16px; background-color: white; color:black; border: 2px  black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	 </form>
 	 </div>
