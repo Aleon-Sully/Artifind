@@ -112,7 +112,7 @@ $reviewArtisan = new dbconnection;
     $sql2 = "INSERT INTO `review` (ratings, comments) VALUES (\"".$GLOBALS['ratings']."\", \"". $GLOBALS['comments']."\")";
     
 
-<<<<<<< HEAD
+
     if($reviewArtisan->query($sql1) == true && $reviewArtisan->query($sql2)) {
      echo "Thanks for your review";
      header('Location: ../index.php');
@@ -122,7 +122,6 @@ $reviewArtisan = new dbconnection;
  }
 
  $sendContactReq->close();
-=======
     if($reviewArtisan->query($sql1) == true && $reviewArtisan->query($sql2) === true) {
        echo "Thanks for your review!";
        header('Location: ../index.php');
@@ -132,7 +131,6 @@ $reviewArtisan = new dbconnection;
    }
 }
    $reviewArtisan ->close();
->>>>>>> cdd7775c2457cbdd33e7ded6e0dbbd112a3f7828
 }
 
 function validateReview(){
@@ -358,11 +356,6 @@ function checkusername()
 
     }
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> cdd7775c2457cbdd33e7ded6e0dbbd112a3f7828
-    
 
 
 /*
