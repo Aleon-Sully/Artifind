@@ -303,6 +303,7 @@ function checkusername()
         echo 'Username already exist in the database'; 
 
     }
+}
 
     
 
