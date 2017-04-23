@@ -6,10 +6,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
 <?php
-include($_SERVER['DOCUMENT_ROOT'].'/test/Artifind/Classes/profileClass.php');
+include($_SERVER['DOCUMENT_ROOT'].'/Artifind/Classes/profileClass.php');
+
 session_start();
-$_SESSION['artid'] = '1';
+$id = $_SESSION['userid'];
+
+
 $id =$_SESSION['artid'];
+$s = new profileClass;
 ?>
 <html>
 <head>
@@ -20,20 +24,26 @@ $id =$_SESSION['artid'];
 <meta name="keywords" content="Mungo Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/mystyle.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<!--fonts-->
+<link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../css/mystyle.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
+
 <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>
 <!--/fonts-->
 <!-- js -->
-<script src="js/jquery.min.js"> </script>
-<script src="js/bootstrap.js"></script>
+<script src="../js/jquery.min.js"> </script>
+<script src="../js/bootstrap.js"></script>
 <!-- //js -->
 <!-- start-smoth-scrolling -->
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript" src="../js/move-top.js"></script>
+<script type="text/javascript" src="../js/easing.js"></script>
+<script src="../JS/jquery.min.js"> </script>
+<script src="../JS/bootstrap.js"></script>
+<!-- //js -->
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="JS/move-top.js"></script>
+<script type="text/javascript" src="JS/easing.js"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event){		
@@ -69,7 +79,7 @@ $id =$_SESSION['artid'];
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand logo" href="#"><img src="image/Logo.jpg" alt="logo"></a>
+				<a class="navbar-brand logo" href="#"><img src="../Image/Logo.jpg" alt="logo"></a>
 			</div>	 
 		</div>
 		<div class="collapse navbar-collapse" id="upmenu">
@@ -79,7 +89,7 @@ $id =$_SESSION['artid'];
 				<li><a href = "">My Profile</a></li>
 				<li><a href = "editProfile.php">Edit Profile</a></li>
 				<li>
-					<a  href="index.php">Sign Out</a>
+					<a  href="../index.php">Sign Out</a>
 
 				</li>
 
@@ -92,10 +102,10 @@ $id =$_SESSION['artid'];
 </div>
 <div class="banner">
 	<div class="container">
-		<div class="banner-info">
+		<div class="banner-info" style=" background: url(<?php $s->loadProfilePicture($id) ?>) no-repeat 0px 0px;">
 			<div class="banner-text">
 				<?php
-				$s = new profileClass;
+				
 				$s->loadName($id);
 				$s->loadProfession($id);
 				?>
@@ -164,8 +174,8 @@ $id =$_SESSION['artid'];
 <!--/skills-->
 <!--portfolio-->
 <!--light-box-js -->
-				<script src="js/jquery.chocolat.js"></script>
-				<link rel="stylesheet" href="css/chocolat.css" type="text/css" media="screen" charset="utf-8" />
+				<script src="../js/jquery.chocolat.js"></script>
+				<link rel="stylesheet" href="../css/chocolat.css" type="text/css" media="screen" charset="utf-8" />
 				<!--light-box-files -->
 				<script type="text/javascript" charset="utf-8">
 				$(function() {

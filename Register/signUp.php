@@ -5,7 +5,9 @@
 	<title>Sign Up</title>
 	<meta name="description" content="">
 <!--
-
+/*
+"@author Dela Acolatse
+*/
 Template 2079 Garage
 
 http://www.tooplate.com/view/2079-garage
@@ -94,24 +96,19 @@ $obj = new dbconnection;
 	<form style=" position: absolute; margin-top:-1%; left: 30%;  height: 59%;
 	width: 45%; padding-top: 15px;  text-align: center;" id="reg" action="" method="post" onsubmit="validate()"> 
 	<fieldset>
-	<span><?php echo $errorgeneral; ?><br> </span>
 	<input type="text" id="fNameField" class="form-control name-form" name="fName" placeholder="First Name" style="border: none; border-bottom: 2px solid darkred;"  ><br>
-	<span><?php echo $errorfname; ?><br> </span>
     </fieldset>
 
     <fieldset>
     <input type="text" id="lNameField" class="form-control name-form" name="lName" placeholder="Last Name" style="border: none; border-bottom: 2px solid darkred;"><br>
-	<span><?php echo $errorlname; ?><br> </span>
 	</fieldset>
 
     <fieldset>
 	<input type="text" id="usNameField" class="form-control name-form" name="username" placeholder="Username" style="border: none; border-bottom: 2px solid darkred;"><br>
-	<span><?php echo $erroruname; ?><br> </span>
 	</fieldset>
 
     <fieldset> 
 	<input type="password" id="passwordField" class="form-control name-form" name="passwd" placeholder="Password" style="border: none; border-bottom: 2px solid darkred;"><br>
-	<span><?php echo $errorpassword; ?><br> </span>
 	</fieldset>
 
     <fieldset>
@@ -125,7 +122,6 @@ $obj = new dbconnection;
 	style="font-size: 16px; background-color: white; color:black; border: 2px solid red; " onclick=" cancel()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<input type="submit" value="Sign Up" name="SignUpBtn" id="btnSignUp" 
 	style="font-size: 16px; background-color: white; color:black; border: 2px solid limegreen">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<span><?php echo $errorregister; ?><br> </span>
 	
 
 </form>

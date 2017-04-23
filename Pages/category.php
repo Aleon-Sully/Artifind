@@ -5,7 +5,7 @@
 	<title>Category</title>
 	<meta name="description" content="">
 
-	<meta name="author" content="cynthia Gouanfo, Template from: Web Domus Italia">
+	<meta name="author" content="Cynthia Gouanfo, Template from: Web Domus Italia">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
@@ -15,11 +15,19 @@
 
 
 	<?php
-	include "Database/dbConnectionClass.php";
+/*
+ * This file is part of the ArtiFind folder
+ *
+ * (c) Delco developpers
+ * 	@ author Cynthia Gouanfo
+ *
+ */
+	// including the database file 
+include "Database/dbConnectionClass.php";
+	// object of the database
+$obj = new dbconnection;
 
-	$obj = new dbconnection;
-
-	?>
+?>
 </head>
 <body>
 	<div class="allcontain">
@@ -47,14 +55,15 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category<span class="caret"></span></a>
 						<ul class="dropdown-menu">
+							<!-- displaying the professions in the database on the drop down menu item Category-->
 							<?php include "Pages/profession.php"; ?>
 							<?php if(getProfession()) :?>
 								<?php foreach(getProfession() as  $value):	?>
-									<li><a href="#"> <?php echo $value["profession"]?></a></li>
-									
+									<li><a href="Pages/result.php?profession=<?php echo $value["profession"]?>"> <?php echo $value["profession"]?></a></li>
+
 								<?php endforeach;	?>
 							<?php endif;	?>
-							
+
 						</ul>
 					</li>
 					<li class="active"><a href="../Register/signUp.php">Artisan? Sign Up</a> </li>
