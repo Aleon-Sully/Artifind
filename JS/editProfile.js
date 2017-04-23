@@ -5,11 +5,10 @@ function addTextField(div){
 
               var newElement = document.createElement('div');
 
-              newElement.innerHTML = "<br><input type='text' name='s" +i+" class='form-control name-form' style='border:none; border-bottom: 2px solid darkred';><a id=delete href=''>delete</a><br><br>";
-              i++;
+              newElement.innerHTML = "<br><input type='text' id='s"+i+"' name='Skills[]' class='form-control name-form' style='border:none; border-bottom: 2px solid darkred;'><a id=delete href='javascript:removeDelete(s"+i+");'>delete</a><br><br>";
               document.getElementById(div).appendChild(newElement);
 
-        
+              i++
 
     }
 

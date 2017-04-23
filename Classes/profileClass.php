@@ -1,6 +1,6 @@
 <?php
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/Artifind/dbConnectionClass.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/Artifind/Database/dbConnectionClass.php');
 
 
 class profileClass extends dbconnection {
@@ -72,16 +72,16 @@ public function loadEmail ($artid){
 }
 
 public function loadSkills ($artid){
-	$this->connect();
-	$sql = "SELECT email FROM artisan where artisan_id=$artid";
+    $this->connect();
+    $sql = "SELECT sID, CATEGORY FROM skils where skils.sID IN (SELECT artisan_skill.sID FROM artisan_skill where artisan_skill.aID =$artid)";
     $this->query($sql);
-    while ($mail = $this->fetch()) {
-    echo "<li id ='email'>".$mail['email']."</li>";
+    $arr = array();
+    while ($skill = $this->fetch()){
+        echo '<li>'.$skill['CATEGORY'].'</li>';
     }
 
 
 }
-
 public function loadPortfolio ($artid){
 	$this->connect();
 	$sql = "SELECT image FROM portfolio where aID=$artid";
