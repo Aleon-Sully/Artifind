@@ -160,7 +160,7 @@
 					</div>
 				<?php endif;?>
 			<?php endif;?>
-		</div><div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			<!-- <sdiv class="col-xs-12 col-sm-6 col-md-4 col-lg-3"> -->
 		<?php if(getSearchProfession()) :?>
 			<?php foreach(getSearchProfession() as  $value):	?>
 				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
@@ -174,7 +174,7 @@
 							</div>
 							<div class="simpletxt">
 								<h3 class="name"><?php echo $value["first_name"]  .  " " . $value["last_name"]?></h3>
-								<p><?php echo $value["about_me"]?></p>
+								<p><?php echo $value["about_me"]; $_SESSION['id'] = $value["artisan_id"];?></p>
 								<a href="../Pages/userView.php"><button>READ MORE</button></a><br>
 							</div>
 							<div class="stars2">

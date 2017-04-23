@@ -1,6 +1,6 @@
 <?php
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/test/Artifind/Database/dbConnectionClass.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/Artifind/Database/dbConnectionClass.php');
 
 
 
@@ -189,6 +189,9 @@ function verifylogin($username, $password){
             session_start();
             $_SESSION['userid']=$row['artisan_id'];
             $_SESSION['uname']=$row['username'];
+
+            header("Location: ../Pages/profile.php");
+
 
                 if(isset($_REQUEST['redirecturl'])){ 
 

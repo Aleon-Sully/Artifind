@@ -2,9 +2,16 @@
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/test/Artifind/Database/dbConnectionClass.php');
 
-
+/*
+"@author Deborah Attuah
+*This class is the model for the profile page
+*/
 class profileClass extends dbconnection {
 
+/*
+*@param $artid
+*echos the first and last name
+*/
 public function loadName ($artid){
 	$this->connect();
 	$sql = "SELECT first_name, last_name FROM artisan where artisan_id=$artid";
@@ -12,10 +19,33 @@ public function loadName ($artid){
     while ($name = $this->fetch()) {
     echo "<h1>".$name['first_name']. " ".$name['last_name']."</h1>";
     }
-
-
 }
 
+/*
+*@param $artid
+*echos the profile picture
+*/
+public function loadProfilePicture ($artid){
+    $this->connect();
+    $sql = "SELECT profile_picture FROM artisan where artisan_id=$artid";
+    $this->query($sql);
+    while ($image = $this->fetch()) {
+    $img= $image['profile_picture'];
+    }
+    if (empty($img)) {
+        $background = "../Images/default.jpg";
+    }
+    else {
+      $background = 'data:image/*;base64,'.base64_encode($img);  
+    }
+
+      echo $background;
+}
+
+/*
+*@param $artid
+*echos the about me
+*/
 public function loadAboutMe ($artid){
 	$this->connect();
 	$sql = "SELECT about_me FROM artisan where artisan_id=$artid";
@@ -27,6 +57,10 @@ public function loadAboutMe ($artid){
 
 }
 
+/*
+*@param $artid
+*echos the first and last name
+*/
 public function loadProfession ($artid){
 	$this->connect();
 	$sql = "SELECT profession FROM artisan where artisan_id=$artid";
@@ -38,6 +72,10 @@ public function loadProfession ($artid){
 
 }
 
+/*
+*@param $artid
+*echos the telephone number
+*/
 public function loadTel ($artid){
 	$this->connect();
 	$sql = "SELECT telephone_Number FROM artisan where artisan_id=$artid";
@@ -49,6 +87,10 @@ public function loadTel ($artid){
 
 }
 
+/*
+*@param $artid
+*echos the address
+*/
 public function loadAddress ($artid){
 	$this->connect();
 	$sql = "SELECT address FROM artisan where artisan_id=$artid";
@@ -60,6 +102,10 @@ public function loadAddress ($artid){
 
 }
 
+/*
+*@param $artid
+*echos the email
+*/
 public function loadEmail ($artid){
 	$this->connect();
 	$sql = "SELECT email FROM artisan where artisan_id=$artid";
@@ -71,6 +117,10 @@ public function loadEmail ($artid){
 
 }
 
+/*
+*@param $artid
+*echos the skills
+*/
 public function loadSkills ($artid){
     $this->connect();
     $sql = "SELECT sID, CATEGORY FROM skils where skils.sID IN (SELECT artisan_skill.sID FROM artisan_skill where artisan_skill.aID =$artid)";
@@ -82,6 +132,11 @@ public function loadSkills ($artid){
 
 
 }
+
+/*
+*@param $artid
+*echos the portfolio
+*/
 public function loadPortfolio ($artid){
 	$this->connect();
 	$sql = "SELECT image FROM portfolio where aID=$artid";
