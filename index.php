@@ -91,7 +91,6 @@ function getLocation()
 							<?php if(getProfession()) :?>
 								<?php foreach(getProfession() as  $value):	?>
 									<li><a href="Pages/result.php?profession=<?php echo $value["profession"]?>"> <?php echo $value["profession"]?></a></li>
-
 								<?php endforeach;	?>
 							<?php endif;	?>
 
