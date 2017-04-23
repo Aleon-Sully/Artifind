@@ -4,6 +4,8 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
+
+
 html, body{
     font-size: 100%;
 	background:	#fff;
@@ -260,7 +262,6 @@ display: inline-block;
         position: relative;
 }
 .banner-info{
-    background: url(../image/banner-in.jpg)no-repeat 0px 0px;
     width: 500px;
     height: 400px;
     margin: 17.5% auto 0;
