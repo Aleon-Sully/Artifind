@@ -73,13 +73,14 @@ require_once('Unsecure/processUnsecure.php');
 				<li class="dropdown">
           			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category<span class="caret"></span></a>
 			          <ul class="dropdown-menu">
-			            <li><a href="#">Action</a></li>
-			            <li><a href="#">Another action</a></li>
-			            <li><a href="#">Something else here</a></li>
-			            <li role="separator" class="divider"></li>
-			            <li><a href="#">Separated link</a></li>
-			            <li role="separator" class="divider"></li>
-			            <li><a href="#">One more separated link</a></li>
+			          <?php include "Pages/profession.php"; ?>
+			          	<?php if(getProfession()) :?>
+						 <?php foreach(getProfession() as  $value):	?>
+						 	<li><a href="#"> <?php echo $value["profession"]?></a></li>
+							
+							<?php endforeach;	?>
+			        <?php endif;	?>
+			            
 			          </ul>
 			        </li>
 				<li class="active"><a href="Register/signUp.php">Artisan? Sign Up</a> </li>
@@ -141,7 +142,7 @@ require_once('Unsecure/processUnsecure.php');
 					<option>Location</option>
 					<?php if(getLocation()) :?>
 							<?php foreach(getLocation() as  $value):	?>
-								<option value = "<?php echo $value["location"]	?>"><?php echo $value["location"]	?></option>
+								<option style = "color: black"value = "<?php echo $value["location"]	?>"><?php echo $value["location"]	?></option>
 								<li></li>
 							<?php endforeach;	?>
 						<?php else: ?>

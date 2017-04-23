@@ -74,7 +74,7 @@ $id =$_SESSION['artid'];
 		</div>
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
-				<li class="active"><a style="margin-left: 50px;" href="index.php">HOME</a> </li>
+				<li class="active"><a style="margin-left: 50px;" href="index.php">Home</a> </li>
 				</li>
 				<li><a href = "">My Profile</a></li>
 				<li><a href = "editProfile.php">Edit Profile</a></li>

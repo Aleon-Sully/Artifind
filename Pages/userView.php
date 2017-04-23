@@ -9,6 +9,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 include($_SERVER['DOCUMENT_ROOT'].'/Artifind/Classes/profileClass.php');
 session_start();
 $id = $_SESSION['userid'];
+
+include "../Database/dbConnectionClass.php";
+
+		$obj = new dbconnection;
 ?>
 <html>
 <head>
@@ -73,22 +77,34 @@ $id = $_SESSION['userid'];
 		</div>
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
-				<li class="active"><a style="margin-left: 50px;" href="index.php">HOME</a> </li>
-				</li>
+				<li class="active"><a style="margin-left: 50px;" href="../index.php">Home</a> </li>
+				<li class="dropdown">
+          			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category<span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+			          <?php include "../Pages/profession.php"; ?>
+			          	<?php if(getProfession()) :?>
+						 <?php foreach(getProfession() as  $value):	?>
+						 	<li><a href="#"> <?php echo $value["profession"]?></a></li>
+							
+							<?php endforeach;	?>
+			        <?php endif;	?>
+			            
+			          </ul>
+			        </li>
 
 				<li>
-						<a href="signUp.php">Artisan?Sign Up</a>
+						<a href="../Register/signUp.php">Artisan?Sign Up</a>
 				</li>
 				<li>
-					<a href="Sign_in.php">Sign In</a>
+					<a href="../Login/Sign_in.php">Sign In</a>
 
 				</li>
 				<li>
-					<a href="About.php">About Us</a>
+					<a href="../Pages/About.php">About Us</a>
 
 				</li>
 				<li>
-					<a href="contactUs.php">Contact Us</a>
+					<a href="../Contact_us/contactUs.php">Contact Us</a>
 
 				</li>
 

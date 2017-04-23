@@ -12,39 +12,16 @@
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.5.0/css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="../css/slider.css">
 	<link rel="stylesheet" type="text/css" href="../css/mystyle.css">
-<!--
-Template gotten from: 
-Template 2079 Garage
-http://www.tooplate.com/view/2079-garage
--->
-<!--<?php
 
-/*include the database to file
+
+<?php
 include "Database/dbConnectionClass.php";
 
 $obj = new dbconnection;
 
-function getLocation()
-{
- global $obj;	
-$obj->query("Select location from artisan");
-$data = array();
-while($row = $obj->fetch())
-{
-   $data[] = $row;
-
-}
-
-	return $data;
-}*/
 ?>
 </head>
 <body>
-
-<!--<?php
-//require_once('Unsecure/processUnsecure.php');
-?>*/
-<!-- Header -->
 <div class="allcontain">
 	<div class="header">
 			<ul class="givusacall">
@@ -68,15 +45,16 @@ while($row = $obj->fetch())
 			<ul class="nav navbar-nav" id="navbarontop">
 				<li class="active"><a href="../index.php">Home</a> </li>
 				<li class="dropdown">
-          			<a href="../Pages/category.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category<span class="caret"></span></a>
+          			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category<span class="caret"></span></a>
 			          <ul class="dropdown-menu">
-			            <li><a href="#">Action</a></li>
-			            <li><a href="#">Another action</a></li>
-			            <li><a href="#">Something else here</a></li>
-			            <li role="separator" class="divider"></li>
-			            <li><a href="#">Separated link</a></li>
-			            <li role="separator" class="divider"></li>
-			            <li><a href="#">One more separated link</a></li>
+			          <?php include "Pages/profession.php"; ?>
+			          	<?php if(getProfession()) :?>
+						 <?php foreach(getProfession() as  $value):	?>
+						 	<li><a href="#"> <?php echo $value["profession"]?></a></li>
+							
+							<?php endforeach;	?>
+			        <?php endif;	?>
+			            
 			          </ul>
 			        </li>
 				<li class="active"><a href="../Register/signUp.php">Artisan? Sign Up</a> </li>
