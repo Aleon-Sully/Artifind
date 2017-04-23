@@ -68,13 +68,16 @@ http://www.tooplate.com/view/2079-garage
 </div>
 
 <br><br><br><br>
+<?php
+require_once($_SERVER['DOCUMENT_ROOT'].'/Artifind/Controller/processEditForm.php');
+?>
 <form style=" position: absolute; margin-top:-1%; left: 30%;  height: 59%;
-    width: 45%; padding-top: 15px;  text-align: center;" action="../Controller/processEditForm.php">
-	First Name <input type="text" id="fn" class="form-control name-form" name="fName" value =<?php getFName($id)?> style="border: none; border-bottom: 2px solid darkred;"  ><br> <br>
+    width: 45%; padding-top: 15px;  text-align: center;" method="post" action="" enctype="multipart/form-data">
+	First Name <input type="text" id="fn" class="form-control name-form" name="fName" value="<?php getFName($id)?>" style="border: none; border-bottom: 2px solid darkred;"  ><br> <br>
 
 
-	Last Name<input type="text" id="lNameField" class="form-control name-form" name="lName" value =<?php getLName($id)?> style="border: none; border-bottom: 2px solid darkred;"><br> <br>
-	Profession<input type="text" id="prof" class="form-control name-form" name="prof" value =<?php getProfession($id) ?> style="border: none; border-bottom: 2px solid darkred;"><br><br>
+	Last Name<input type="text" id="lNameField" class="form-control name-form" name="lName" value ="<?php getLName($id)?>" style="border: none; border-bottom: 2px solid darkred;"><br> <br>
+	Profession<input type="text" id="prof" class="form-control name-form" name="prof" value ="<?php getProfession($id) ?>" style="border: none; border-bottom: 2px solid darkred;"><br><br>
 	<p>About Me </p>
 	<textarea rows="4" cols="80" name="msg"><?php getAboutMe($id) ?></textarea><br><br>
 	Skills <br><br><div id=skills>
@@ -87,15 +90,15 @@ http://www.tooplate.com/view/2079-garage
 	?>
 	</div> 
 	<input type="button"  value = "Add Skill" onclick="addTextField('skills')" style="font-size: 16px; background-color: white; color:black; border: 2px solid limegreen"><br><br>
-	Password<input type="password" id="passwordField" class="form-control name-form" value =<?php getPassword($id)?> name="passwd" style="border: none; border-bottom: 2px solid darkred;"><br><br>
+	Password<input type="password" id="passwordField" class="form-control name-form" value ="<?php getPassword($id)?>" name="passwd" style="border: none; border-bottom: 2px solid darkred;"><br><br>
 	Verify Password<input type="password" id="verpasswdField" class="form-control name-form" name="verpasswd" style="border: none; border-bottom: 2px solid darkred;"><br><br>
-	Email<input type="text" id="emailField" class="form-control name-form" name="Email"  value =<?php getEmail($id) ?> style="border: none; border-bottom: 2px solid darkred;"><br><br>
+	Email<input type="text" id="emailField" class="form-control name-form" name="Email"  value ="<?php getEmail($id) ?>" style="border: none; border-bottom: 2px solid darkred;"><br><br>
 
-	Contact Number<input type="text" id="emailField" class="form-control name-form" name="num" value =<?php getTel($id) ?> style="border: none; border-bottom: 2px solid darkred;"><br><br>
+	Contact Number<input type="text" id="emailField" class="form-control name-form" name="num" value ="<?php getTel($id) ?>" style="border: none; border-bottom: 2px solid darkred;"><br><br>
 
-	Location<input type="text" id="emailField" class="form-control name-form" name="email" value =<?php ?> style="border: none; border-bottom: 2px solid darkred;"><br><br>
+	Location<input type="text" id="loc" class="form-control name-form" name="location" value ="<?php getLocation($id) ?>" style="border: none; border-bottom: 2px solid darkred;"><br><br>
 
-	Address<textarea rows="4" cols="80" name="area"><?php getLocation($id) ?></textarea><br><br>
+	Address<textarea rows="4" cols="80" name="area"><?php getAddress($id) ?></textarea><br><br>
 	Portfolio <br><br>
 	<?php $images = getPortfolio($id);
 		$i=0;
@@ -112,12 +115,11 @@ http://www.tooplate.com/view/2079-garage
 				</div>';
    }	
 	?>
-	<br><br>
 	Add Image<input type="file" name="img" accept="image/*"><br><br>
 	<input type="button" href="index.html" value="Cancel" name="btnCancel" id="btnCancel" 
 	style="font-size: 16px; background-color: white; color:black; border: 2px solid red; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
      
-	<input type="submit" value="SUBMIT" name="btnSignUp" onclick="getElemCount(document.getElementById('skills'))"
+	<input type="submit" value="SUBMIT" name="btnSignUp"
 	 style="font-size: 16px; background-color: white; color:black; border: 2px solid limegreen">
 </form>
 
