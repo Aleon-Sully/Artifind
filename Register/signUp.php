@@ -5,9 +5,7 @@
 	<title>Sign Up</title>
 	<meta name="description" content="">
 <!--
-/*
-"@author Dela Acolatse
-*/
+
 Template 2079 Garage
 
 http://www.tooplate.com/view/2079-garage
@@ -138,10 +136,15 @@ var email = document.getElementById("emailField");
 
 	//Validate function
 	function validate(){
-		if(fName.value != "" && lName.value != "" && email.value.includes("@") && email.value.includes(".com") && username.value != ""){
+		if(fName.value != "" && lName.value != "" ){
 		}else{
 			
 			alert("Invalid credentials. Make sure all fields are filled with information");
+		}
+		if(email.value.includes("@") && email.value.includes(".com") && username.value != ""){
+
+		}else{
+			 alert("Check email again");
 		}
 	}
 
