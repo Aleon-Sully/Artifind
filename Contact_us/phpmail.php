@@ -41,7 +41,7 @@ $mail = new PHPMailer;
         
             echo "success !!";
             header('Location: ../index.php');
-      }
     
+    }
 }
 ?>
