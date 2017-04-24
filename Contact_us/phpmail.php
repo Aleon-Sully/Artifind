@@ -1,7 +1,6 @@
 <?php
     require '../PHPMailer/PHPMailerAutoload.php';
 
-
 if(isset($_POST['conSub'])){
 
 $first = $_POST['conFName'];
@@ -30,7 +29,7 @@ $mail = new PHPMailer;
       $mail->FromName = $first." ".$last ;
       $mail->addAddress('wearedelco2017@gmail.com', 'Leon Ampah');
       $mail->isHTML(true);
-      $mail->Subject = $conEM;
+      $mail->Subject = "From ".$conEM;
       $mail->Body = $conMsg;
       $mail->AltBody = "This is the plain text version of the email content";
       if(!$mail->send())
@@ -40,11 +39,9 @@ $mail = new PHPMailer;
       else
       {
         
-            echo 'Success!!';
+            echo "success !!";
             header('Location: ../index.php');
       }
-
-     
+    
 }
-
 ?>

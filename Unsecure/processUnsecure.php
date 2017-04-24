@@ -1,6 +1,6 @@
 <?php
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/Artifind/Database/dbConnectionClass.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/Delco/Database/dbConnectionClass.php');
 
 
 
@@ -304,7 +304,7 @@ function checkusername()
 
     }
 
-    
+}
 
 
 /*
