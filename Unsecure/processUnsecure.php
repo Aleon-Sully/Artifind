@@ -235,18 +235,18 @@ function verifylogin($username, $password){
             $_SESSION['userid']=$row['artisan_id'];
             $_SESSION['uname']=$row['username'];
 
-            header("Location: ../Pages/profile.php");
+            header("Location: ../index.php");
 
 
-            if(isset($_REQUEST['redirecturl'])){ 
+            // if(isset($_REQUEST['redirecturl'])){ 
 
-                $previouspage = $_REQUEST['redirecturl']; // holds url for last page visited.
-                echo($previouspage);
-            }else 
-            {
-                $previouspage = "index.php"; // default page for 
-            }
-            header("Location: $previouspage");
+            //     $previouspage = $_REQUEST['redirecturl']; // holds url for last page visited.
+            //     echo($previouspage);
+            // }else 
+            // {
+            //     $previouspage = "index.php"; // default page for 
+            // }
+            // header("Location: $previouspage");
             
         } else
         {
@@ -545,9 +545,9 @@ function addUserDetails(){
     $prof =  $_REQUEST['profession'];
     $gender =  $_REQUEST['gender'];
 
-    if(isset($_FILES['file']) && is_uploaded_file($_FILES['file']['tmp_name'])) 
+    if(isset($_FILES['pic']) && is_uploaded_file($_FILES['pic']['tmp_name'])) 
     {
-        $imag=addslashes (file_get_contents($_FILES['file']['tmp_name']));
+        $imag=addslashes (file_get_contents($_FILES['pic']['tmp_name']));
     } 
     session_start();
 
