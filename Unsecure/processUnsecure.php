@@ -203,7 +203,7 @@ function validatelogin($username, $password){
         $ok = false;
     }
     if($ok){
-        verifylogin();
+        verifylogin($username, $password);
     }
     
 }
