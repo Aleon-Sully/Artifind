@@ -39,7 +39,10 @@ function getResults()
 		$place =$_GET["place"] ;
 		$key =$_GET["key"] ;
 		global $obj;	
-		$obj->query(" SELECT artisan.*, review.ratings FROM artisan INNER  JOIN review ON artisan.artisan_id = review.au_ID WHERE artisan.location = '$place' OR artisan.first_name LIKE '%$key%'  OR artisan.last_name LIKE '%$key%' ORDER BY review.ratings");
+		$obj->query(" SELECT artisan.*, review.ratings FROM artisan 
+			INNER  JOIN review ON artisan.artisan_id = review.au_ID WHERE 
+			artisan.location = '$place' OR artisan.first_name LIKE '%$key%'  
+			OR artisan.last_name LIKE '%$key%' ORDER BY review.ratings");
 		$data = array();
 		while($row = $obj->fetch())
 		{
@@ -146,7 +149,9 @@ function getSearchProfession()
 					<?php foreach(getResults() as  $value):	?>
 						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 							<div class="txthover">
-								<?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $value['profile_pic'] ).'"/>';?>
+								<?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $value['profile_pic'] ).'"/>';
+									$_SESSION["id"] = $value["artisan_id"];
+								?>
 								<div class="txtcontent">
 									<div class="stars">
 										<div class="glyphicon glyphicon-star"></div>
@@ -157,7 +162,13 @@ function getSearchProfession()
 										<!-- displays the artisans' details accordingly on their picture while collecting the session id-->
 										<h3 class="name"><?php echo $value["first_name"]  .  " " . $value["last_name"]?></h3>
 										<p><?php echo $value["about_me"];?></p>
-										<a href="../Pages/userView.php"><button onclick="<?php $_SESSION['id'] = $value['artisan_id']; ?>">READ MORE</button></a><br>
+										<form action="../Pages/userView.php" method="post">
+										<input type = "submit" value = "READ MORE" name = "rm" ><br>
+										<?php
+											if(isset($_POST['rm']))
+										 		 
+										 	?>
+										</form>
 									</div>
 									<div class="stars2">
 										<div class="glyphicon glyphicon-star"></div>

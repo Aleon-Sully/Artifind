@@ -5,7 +5,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/Artifind/Database/dbConnectionClass.php
 
 
 if(isset($_POST['btnSignUp'])){
- validContactUs();
+   validContactUs();
 }
 
 /*
@@ -40,7 +40,7 @@ if(isset($_POST['SubmitReview'])){
 */
 
 function checkEmail($em){
-   if(!filter_var($em, FILTER_VALIDATE_EMAIL)){
+ if(!filter_var($em, FILTER_VALIDATE_EMAIL)){
     echo "Invalid email";
     return false;
 }
@@ -70,6 +70,84 @@ function validContactUs(){
 }
 
 
+/*
+to review the artisan, the user enters their first name, last name, email, ratings and their comment
+*/
+function reviewArtisan(){
+
+$_POST['first_name']=$GLOBALS['first_name'];
+$_POST['last_name']=$GLOBALS['last_name'];
+$_POST['email'] =$GLOBALS['email'];
+$_POST['ratings'] =$GLOBALS['email'];
+$_POST['comments'] =$GLOBALS['comments'];
+
+$ok = true;
+if (empty($_POST['first_name'])){
+        echo "Please provide your fisrt name. <br>";
+        $ok= false;
+    }
+
+    if (empty($_POST['last_name'])){
+        echo "Please Enter your last. <br>";
+        $ok = false;
+    }
+
+if (empty($_POST['email'])){
+        echo "Please Enter your e-mail address. <br>";
+        $ok = false;
+    }
+
+if (empty($_POST['ratings'])){
+        echo "Please rate the artisan. <br>";
+        $ok = false;
+    }
+
+
+    if($ok){
+$reviewArtisan = new dbconnection;
+
+    //Write sql
+    $sql1 = "INSERT INTO `artisan_client` (first_name, last_name, email) VALUES
+    (\"".$GLOBALS['first_name']."\", \"". $GLOBALS['last_name']."\", \"".$GLOBALS['email']."\")";
+    $sql2 = "INSERT INTO `review` (ratings, comments) VALUES (\"".$GLOBALS['ratings']."\", \"". $GLOBALS['comments']."\")";
+    
+
+
+    if($reviewArtisan->query($sql1) == true && $reviewArtisan->query($sql2)) {
+     echo "Thanks for your review";
+     header('Location: ../index.php');
+ }else
+ {
+     echo "Error: " . $sql1 . "<br>";
+ }
+
+    if($reviewArtisan->query($sql1) == true && $reviewArtisan->query($sql2) === true) {
+       echo "Thanks for your review!";
+       header('Location: ../index.php');
+   }else
+   {
+       echo "Error: " . $sql1 . "<br>";
+   }
+}
+   $reviewArtisan ->close();
+}
+
+function validateReview(){
+    $fname = $_POST['first_name'];
+    $lname = $_POST['last_name'];
+    $email = $_POST['email'];
+    $rating = $_POST['ratings'];
+    $comments = $_POST['comments'];
+
+
+    if(isset($fname) && isset($lname) && isset($email) && isset($ratings) && isset($comments)) {
+        verifyReview();
+    }
+}
+
+
+
+>>>>>>> f4cb0b90fc1af14b0bc1c89236a723c922f47336
 function verifyReview(){
   
     $sql = "SELECT * FROM  artisan_client where last_name = '$lname' && email = '$email'";
@@ -97,13 +175,13 @@ function sentContactRequest(){
     (\"".$GLOBALS['fName']."\", \"". $GLOBALS['lName']."\", \"".$GLOBALS['em']."\", \"". $GLOBALS['msg']."\")";
 
     if($sendContactReq->query($sql) == true){
-     echo "New record created succesfully";
-     header('Location: ../index.php');
- }else{
-     echo "Error: " . $sql . "<br>";
- }
+       echo "New record created succesfully";
+       header('Location: ../index.php');
+   }else{
+       echo "Error: " . $sql . "<br>";
+   }
 
- $sendContactReq->close();
+   $sendContactReq->close();
 }
 
 /*
@@ -279,56 +357,54 @@ function checkusername()
     }
 }
 
-    
-
 
 /*
 a function to register a new artisan into the database. 
 */
 
 
-    function registeruser()
-    {
+function registeruser()
+{
 
    //variables defined
-        session_start();
+    session_start();
 
-        $_SESSION['uname'] = $_REQUEST['username'];
-        $_SESSION['pword'] =  $_REQUEST['passwd'];
-        $_SESSION['fname'] =  $_REQUEST['fName'];
-        $_SESSION['lname'] =  $_REQUEST['lName'];
-        $_SESSION['email'] =  $_REQUEST['email'];
+    $_SESSION['uname'] = $_REQUEST['username'];
+    $_SESSION['pword'] =  $_REQUEST['passwd'];
+    $_SESSION['fname'] =  $_REQUEST['fName'];
+    $_SESSION['lname'] =  $_REQUEST['lName'];
+    $_SESSION['email'] =  $_REQUEST['email'];
 
-        $f1 = $_SESSION['uname'];
-        $f2 = $_SESSION['pword'];
-        $f3 =  $_SESSION['fname'];
-        $f4 =   $_SESSION['lname'];
-        $f5 = $_SESSION['email'];
+    $f1 = $_SESSION['uname'];
+    $f2 = $_SESSION['pword'];
+    $f3 =  $_SESSION['fname'];
+    $f4 =   $_SESSION['lname'];
+    $f5 = $_SESSION['email'];
 
-        $pword = password_hash($_SESSION['pword'],PASSWORD_DEFAULT);
+    $pword = password_hash($_SESSION['pword'],PASSWORD_DEFAULT);
 
 
               //write query
-        $sql = "INSERT INTO artisan (first_name, last_name, email, password, username) VALUES (\"".$f3."\", \"".$f4."\", \"".$f5."\", \"".$pword."\", \"".$f1."\")";
+    $sql = "INSERT INTO artisan (first_name, last_name, email, password, username) VALUES (\"".$f3."\", \"".$f4."\", \"".$f5."\", \"".$pword."\", \"".$f1."\")";
 
     //create instance of a database class
-        $reguser = new dbconnection;
+    $reguser = new dbconnection;
 
 
                 //execute query 
-        $registration = $reguser->query($sql);
+    $registration = $reguser->query($sql);
 
 
-        if($registration)
-        {
-            header("Location: ../Register/restDetails.php");
+    if($registration)
+    {
+        header("Location: ../Register/restDetails.php");
 
-        }  else 
-        {
-            $GLOBALS['errorregister'] = "User cant be registered" ;
-        } 
+    }  else 
+    {
+        $GLOBALS['errorregister'] = "User cant be registered" ;
+    } 
 
-    }
+}
 
 
 function loadArtisan(){
@@ -470,6 +546,10 @@ function addUserDetails(){
     $prof =  $_REQUEST['profession'];
     $gender =  $_REQUEST['gender'];
 
+    if(isset($_FILES['file']) && is_uploaded_file($_FILES['file']['tmp_name'])) 
+    {
+        $imag=addslashes (file_get_contents($_FILES['file']['tmp_name']));
+    } 
     session_start();
 
     $user = $_SESSION['uname'];
@@ -478,7 +558,7 @@ function addUserDetails(){
     echo $user;
 //write query
 
-    $sql = "UPDATE artisan SET address = '$address', telephone_Number = '$telephone', gender = '$gender', location = '$loc', about_me = '$about', profession = '$prof' WHERE username ='$user'";
+    $sql = "UPDATE artisan SET address = '$address', telephone_Number = '$telephone', gender = '$gender', location = '$loc', about_me = '$about', profession = '$prof' , profile_pic = '{$imag}' WHERE username ='$user'";
 
 //create instance of a database class
 
