@@ -87,6 +87,18 @@ class dbconnection
         return mysqli_fetch_assoc($this->dbresult);
      }
 
+     public function fetchAll()
+     {
+        //check if results has contents
+        if($this->dbresult == false)
+        {
+            return false;
+        }
+
+        // return result
+        return mysqli_fetch_all($this->dbresult);
+     }
+
      public function error(){
        return mysqli_error($this->dbcon);
      }
