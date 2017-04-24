@@ -235,7 +235,7 @@ function verifylogin($username, $password){
             $_SESSION['userid']=$row['artisan_id'];
             $_SESSION['uname']=$row['username'];
 
-            header("Location: ../index.php");
+            header("Location: ../Pages/userView.php");
 
 
             // if(isset($_REQUEST['redirecturl'])){ 
