@@ -1,6 +1,6 @@
 <?php
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/Artifind/Database/dbConnectionClass.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/Delco/Database/dbConnectionClass.php');
 
 
 
@@ -354,6 +354,10 @@ function checkusername()
         echo 'Username already exist in the database'; 
 
     }
+<<<<<<< HEAD
+
+=======
+>>>>>>> f6fd18bc55f62748eda42da5e40b91a61e1067f0
 }
 
 
