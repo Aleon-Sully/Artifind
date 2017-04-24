@@ -455,9 +455,9 @@ function addUserDetails(){
     $prof =  $_REQUEST['profession'];
     $gender =  $_REQUEST['gender'];
 
-    if(isset($_FILES['file']) && is_uploaded_file($_FILES['file']['tmp_name'])) 
+    if(isset($_FILES['pic']) && is_uploaded_file($_FILES['pic']['tmp_name'])) 
     {
-        $imag=addslashes (file_get_contents($_FILES['file']['tmp_name']));
+        $imag=addslashes (file_get_contents($_FILES['pic']['tmp_name']));
     } 
     session_start();
 
