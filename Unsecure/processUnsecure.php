@@ -4,10 +4,6 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/Artifind/Database/dbConnectionClass.php
 
 
 
-if(isset($_POST['btnSignUp'])){
-   validContactUs();
-}
-
 /*
 When btnSubmit is clicked, store the artisan's username and password
 and then validate login
@@ -40,7 +36,7 @@ if(isset($_POST['SubmitReview'])){
 */
 
 function checkEmail($em){
- if(!filter_var($em, FILTER_VALIDATE_EMAIL)){
+   if(!filter_var($em, FILTER_VALIDATE_EMAIL)){
     echo "Invalid email";
     return false;
 }
@@ -75,14 +71,14 @@ to review the artisan, the user enters their first name, last name, email, ratin
 */
 function reviewArtisan(){
 
-$_POST['first_name']=$GLOBALS['first_name'];
-$_POST['last_name']=$GLOBALS['last_name'];
-$_POST['email'] =$GLOBALS['email'];
-$_POST['ratings'] =$GLOBALS['email'];
-$_POST['comments'] =$GLOBALS['comments'];
+    $_POST['first_name']=$GLOBALS['first_name'];
+    $_POST['last_name']=$GLOBALS['last_name'];
+    $_POST['email'] =$GLOBALS['email'];
+    $_POST['ratings'] =$GLOBALS['email'];
+    $_POST['comments'] =$GLOBALS['comments'];
 
-$ok = true;
-if (empty($_POST['first_name'])){
+    $ok = true;
+    if (empty($_POST['first_name'])){
         echo "Please provide your fisrt name. <br>";
         $ok= false;
     }
@@ -92,45 +88,45 @@ if (empty($_POST['first_name'])){
         $ok = false;
     }
 
-if (empty($_POST['email'])){
+    if (empty($_POST['email'])){
         echo "Please Enter your e-mail address. <br>";
         $ok = false;
     }
 
-if (empty($_POST['ratings'])){
+    if (empty($_POST['ratings'])){
         echo "Please rate the artisan. <br>";
         $ok = false;
     }
 
 
     if($ok){
-$reviewArtisan = new dbconnection;
+        $reviewArtisan = new dbconnection;
 
     //Write sql
-    $sql1 = "INSERT INTO `artisan_client` (first_name, last_name, email) VALUES
-    (\"".$GLOBALS['first_name']."\", \"". $GLOBALS['last_name']."\", \"".$GLOBALS['email']."\")";
-    $sql2 = "INSERT INTO `review` (ratings, comments) VALUES (\"".$GLOBALS['ratings']."\", \"". $GLOBALS['comments']."\")";
-    
+        $sql1 = "INSERT INTO `artisan_client` (first_name, last_name, email) VALUES
+        (\"".$GLOBALS['first_name']."\", \"". $GLOBALS['last_name']."\", \"".$GLOBALS['email']."\")";
+        $sql2 = "INSERT INTO `review` (ratings, comments) VALUES (\"".$GLOBALS['ratings']."\", \"". $GLOBALS['comments']."\")";
+        
 
 
-    if($reviewArtisan->query($sql1) == true && $reviewArtisan->query($sql2)) {
-     echo "Thanks for your review";
-     header('Location: ../index.php');
- }else
- {
-     echo "Error: " . $sql1 . "<br>";
+        if($reviewArtisan->query($sql1) == true && $reviewArtisan->query($sql2)) {
+           echo "Thanks for your review";
+           header('Location: ../index.php');
+       }else
+       {
+           echo "Error: " . $sql1 . "<br>";
+       }
+
+       $sendContactReq->close();
+       if($reviewArtisan->query($sql1) == true && $reviewArtisan->query($sql2) === true) {
+         echo "Thanks for your review!";
+         header('Location: ../index.php');
+     }else
+     {
+         echo "Error: " . $sql1 . "<br>";
+     }
  }
-
- $sendContactReq->close();
-    if($reviewArtisan->query($sql1) == true && $reviewArtisan->query($sql2) === true) {
-       echo "Thanks for your review!";
-       header('Location: ../index.php');
-   }else
-   {
-       echo "Error: " . $sql1 . "<br>";
-   }
-}
-   $reviewArtisan ->close();
+ $reviewArtisan ->close();
 }
 
 function validateReview(){
@@ -175,13 +171,13 @@ function sentContactRequest(){
     (\"".$GLOBALS['fName']."\", \"". $GLOBALS['lName']."\", \"".$GLOBALS['em']."\", \"". $GLOBALS['msg']."\")";
 
     if($sendContactReq->query($sql) == true){
-       echo "New record created succesfully";
-       header('Location: ../index.php');
-   }else{
-       echo "Error: " . $sql . "<br>";
-   }
+     echo "New record created succesfully";
+     header('Location: ../index.php');
+ }else{
+     echo "Error: " . $sql . "<br>";
+ }
 
-   $sendContactReq->close();
+ $sendContactReq->close();
 }
 
 /*
@@ -341,19 +337,12 @@ function checkusername()
 
             registeruser();
         }                
+        
         else
         {
-
             echo 'Username already exist in the database'; 
 
         }
-
-        registeruser();
-    }                
-    else
-    {
-        echo 'Username already exist in the database'; 
-
     }
 }
 
@@ -455,16 +444,17 @@ function addUserDetails(){
     $prof =  $_REQUEST['profession'];
     $gender =  $_REQUEST['gender'];
 
-    if(isset($_FILES['pic']) && is_uploaded_file($_FILES['pic']['tmp_name'])) 
-    {
-        $imag=addslashes (file_get_contents($_FILES['pic']['tmp_name']));
-    } 
     session_start();
 
     $user = $_SESSION['uname'];
     session_destroy();
 
-    echo $user;
+    
+    if(isset($_FILES['pic']) && is_uploaded_file($_FILES['pic']['tmp_name'])) 
+    {
+        $imag=addslashes (file_get_contents($_FILES['pic']['tmp_name']));
+    } 
+    
 //write query
 
     $sql = "UPDATE artisan SET address = '$address', telephone_Number = '$telephone', gender = '$gender', location = '$loc', about_me = '$about', profession = '$prof' , profile_pic = '{$imag}' WHERE username ='$user'";
