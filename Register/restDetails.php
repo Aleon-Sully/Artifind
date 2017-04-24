@@ -82,7 +82,7 @@ $obj = new dbconnection;
 	 <?php  require_once('../Unsecure/processUnsecure.php'); ?>
 
 	<form style=" position: absolute; margin-top:-1%; left: 30%;  height: 59%;
-	width: 45%; padding-top: 15px;  text-align: center;" id="reg" action="" method="post" > 
+	width: 45%; padding-top: 15px;  text-align: center;" id="reg" action="" method="post" enctype="multipart/form-data"> 
 	<fieldset>
 	<input type="text" id="address" class="form-control name-form" name="address" placeholder="Address" style="border: none; border-bottom: 2px solid darkred;"  ><br>
     </fieldset>
