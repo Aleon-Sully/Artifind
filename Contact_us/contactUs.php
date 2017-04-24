@@ -75,13 +75,13 @@ http://www.tooplate.com/view/2079-garage
 
 <br><br><br><br>
 <form style=" position: absolute; margin-top:-1%; left: 30%;  height: 59%;
-    width: 45%; padding-top: 15px;  text-align: center;" action="" method="post">
-	<input type="text" id="fNameField" class="form-control name-form" name="fName" placeholder="First Name" style="border: none; border-bottom: 2px solid darkred;"  ><br>
-	<input type="text" id="lNameField" class="form-control name-form" name="lName" placeholder="Last Name" style="border: none; border-bottom: 2px solid darkred;"><br>
-	<input type="text" id="email" class="form-control name-form" name="email" placeholder="Email Address" style="border: none; border-bottom: 2px solid darkred;"><br>
-    <textarea rows="4" cols="50" name="msg" ></textarea><br>
+    width: 45%; padding-top: 15px;  text-align: center;" action="phpmail.php" method="post">
+	<input type="text" id="fNameField" class="form-control name-form" name="conFName" placeholder="First Name" style="border: none; border-bottom: 2px solid darkred;"  ><br>
+	<input type="text" id="lNameField" class="form-control name-form" name="conLName" placeholder="Last Name" style="border: none; border-bottom: 2px solid darkred;"><br>
+	<input type="text" id="email" class="form-control name-form" name="conEmail" placeholder="Email Address" style="border: none; border-bottom: 2px solid darkred;"><br>
+    <textarea rows="4" cols="50" name="conMsg" ></textarea><br>
 
-	<input type="submit" value="Submit" name="btnSignUp" id="btnSignUp" onclick="validate()"
+	<input type="submit" value="Submit" name="conSub" id="btnSignUp" onclick="validate()"
 	 style="font-size: 16px; background-color: white; color:black; border: 2px solid limegreen">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </form>
 
@@ -95,7 +95,7 @@ http://www.tooplate.com/view/2079-garage
 	//Validate function
 	function validate(){
 		if(fName.value != "" && lName != "" && email.value.includes("@") && email.value.includes(".com")){
-			// location.href = "../index.html";
+			alert("We have recieved your message. we will get back to shortly.")
 		}else{
 			
 		alert("Invalid credentials");

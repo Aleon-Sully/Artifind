@@ -41,10 +41,9 @@ function getResults()
 		$place =$_GET["place"] ;
 		$key =$_GET["key"] ;
 		global $obj;	
-		$obj->query(" SELECT artisan.*, review.ratings FROM artisan 
-			INNER  JOIN review ON artisan.artisan_id = review.au_ID WHERE 
+		$obj->query(" SELECT artisan.* FROM artisan WHERE 
 			artisan.location = '$place' OR artisan.first_name LIKE '%$key%'  
-			OR artisan.last_name LIKE '%$key%' ORDER BY review.ratings");
+			OR artisan.last_name LIKE '%$key%'");
 		$data = array();
 		
 		$i = 0;
@@ -68,10 +67,7 @@ function getSearchProfession()
 		$prof =$_GET["profession"] ;
 		global $obj;	
 		$obj->query("
-			SELECT artisan.*, review.ratings FROM artisan 
-			INNER  JOIN review ON artisan.artisan_id = review.au_ID
-			WHERE artisan.profession LIKE '%$prof%'
-			ORDER BY review.ratings");
+			SELECT artisan.* FROM artisan WHERE artisan.profession LIKE '%$prof%'");
 		$data = array();
 		while($row = $obj->fetch())
 		{
@@ -104,7 +100,7 @@ function getSearchProfession()
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand logo" href="#"><img src="../image/Logo.jpg" alt="logo"></a>
-			</div>	 
+			</div>	 d
 		</div>
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">

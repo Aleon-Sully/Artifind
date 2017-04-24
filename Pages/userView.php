@@ -6,7 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
 <?php
-include($_SERVER['DOCUMENT_ROOT'].'/ArtiFind/Classes/profileClass.php');
+include($_SERVER['DOCUMENT_ROOT'].'/Artifind/Classes/profileClass.php');
 session_start();
 $id = $_GET['id'];
 
@@ -71,7 +71,7 @@ $id = $_GET['id'];
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand logo" href="#"><img src="Image/Logo.jpg" alt="logo"></a>
+				<a class="navbar-brand logo" href="#"><img src="../Image/Logo.jpg" alt="logo"></a>
 			</div>	 
 		</div>
 		<div class="collapse navbar-collapse" id="upmenu">
