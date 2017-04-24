@@ -73,81 +73,80 @@ function validContactUs(){
 /*
 to review the artisan, the user enters their first name, last name, email, ratings and their comment
 */
-function reviewArtisan(){
+// function reviewArtisan(){
 
-$_POST['first_name']=$GLOBALS['first_name'];
-$_POST['last_name']=$GLOBALS['last_name'];
-$_POST['email'] =$GLOBALS['email'];
-$_POST['ratings'] =$GLOBALS['email'];
-$_POST['comments'] =$GLOBALS['comments'];
+// $_POST['first_name']=$GLOBALS['first_name'];
+// $_POST['last_name']=$GLOBALS['last_name'];
+// $_POST['email'] =$GLOBALS['email'];
+// $_POST['ratings'] =$GLOBALS['email'];
+// $_POST['comments'] =$GLOBALS['comments'];
 
-$ok = true;
-if (empty($_POST['first_name'])){
-        echo "Please provide your fisrt name. <br>";
-        $ok= false;
-    }
+// $ok = true;
+// if (empty($_POST['first_name'])){
+//         echo "Please provide your fisrt name. <br>";
+//         $ok= false;
+//     }
 
-    if (empty($_POST['last_name'])){
-        echo "Please Enter your last. <br>";
-        $ok = false;
-    }
+//     if (empty($_POST['last_name'])){
+//         echo "Please Enter your last. <br>";
+//         $ok = false;
+//     }
 
-if (empty($_POST['email'])){
-        echo "Please Enter your e-mail address. <br>";
-        $ok = false;
-    }
+// if (empty($_POST['email'])){
+//         echo "Please Enter your e-mail address. <br>";
+//         $ok = false;
+//     }
 
-if (empty($_POST['ratings'])){
-        echo "Please rate the artisan. <br>";
-        $ok = false;
-    }
+// if (empty($_POST['ratings'])){
+//         echo "Please rate the artisan. <br>";
+//         $ok = false;
+//     }
 
 
-    if($ok){
-$reviewArtisan = new dbconnection;
+//     if($ok){
+// $reviewArtisan = new dbconnection;
 
-    //Write sql
-    $sql1 = "INSERT INTO `artisan_client` (first_name, last_name, email) VALUES
-    (\"".$GLOBALS['first_name']."\", \"". $GLOBALS['last_name']."\", \"".$GLOBALS['email']."\")";
-    $sql2 = "INSERT INTO `review` (ratings, comments) VALUES (\"".$GLOBALS['ratings']."\", \"". $GLOBALS['comments']."\")";
+//     //Write sql
+//     $sql1 = "INSERT INTO `artisan_client` (first_name, last_name, email) VALUES
+//     (\"".$GLOBALS['first_name']."\", \"". $GLOBALS['last_name']."\", \"".$GLOBALS['email']."\")";
+//     $sql2 = "INSERT INTO `review` (ratings, comments) VALUES (\"".$GLOBALS['ratings']."\", \"". $GLOBALS['comments']."\")";
     
 
 
-    if($reviewArtisan->query($sql1) == true && $reviewArtisan->query($sql2)) {
-     echo "Thanks for your review";
-     header('Location: ../index.php');
- }else
- {
-     echo "Error: " . $sql1 . "<br>";
- }
+//     if($reviewArtisan->query($sql1) == true && $reviewArtisan->query($sql2)) {
+//      echo "Thanks for your review";
+//      header('Location: ../index.php');
+//  }else
+//  {
+//      echo "Error: " . $sql1 . "<br>";
+//  }
 
-    if($reviewArtisan->query($sql1) == true && $reviewArtisan->query($sql2) === true) {
-       echo "Thanks for your review!";
-       header('Location: ../index.php');
-   }else
-   {
-       echo "Error: " . $sql1 . "<br>";
-   }
-}
-   $reviewArtisan ->close();
-}
+//     if($reviewArtisan->query($sql1) == true && $reviewArtisan->query($sql2) === true) {
+//        echo "Thanks for your review!";
+//        header('Location: ../index.php');
+//    }else
+//    {
+//        echo "Error: " . $sql1 . "<br>";
+//    }
+// }
+//    $reviewArtisan ->close();
+// }
 
-function validateReview(){
-    $fname = $_POST['first_name'];
-    $lname = $_POST['last_name'];
-    $email = $_POST['email'];
-    $rating = $_POST['ratings'];
-    $comments = $_POST['comments'];
-
-
-    if(isset($fname) && isset($lname) && isset($email) && isset($ratings) && isset($comments)) {
-        verifyReview();
-    }
-}
+// function validateReview(){
+//     $fname = $_POST['first_name'];
+//     $lname = $_POST['last_name'];
+//     $email = $_POST['email'];
+//     $rating = $_POST['ratings'];
+//     $comments = $_POST['comments'];
 
 
+//     if(isset($fname) && isset($lname) && isset($email) && isset($ratings) && isset($comments)) {
+//         verifyReview();
+//     }
+// }
 
->>>>>>> f4cb0b90fc1af14b0bc1c89236a723c922f47336
+
+
 function verifyReview(){
   
     $sql = "SELECT * FROM  artisan_client where last_name = '$lname' && email = '$email'";
