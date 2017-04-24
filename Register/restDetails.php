@@ -84,22 +84,22 @@ $obj = new dbconnection;
 	<form style=" position: absolute; margin-top:-1%; left: 30%;  height: 59%;
 	width: 45%; padding-top: 15px;  text-align: center;" id="reg" action="" method="post" enctype="multipart/form-data"> 
 	<fieldset>
-	<input type="text" id="address" class="form-control name-form" name="address" placeholder="Address" style="border: none; border-bottom: 2px solid darkred;"  ><br>
+	<input type="text" id="address" class="form-control name-form" name="address" placeholder="Address" value="<?php if(isset($_POST['fName'])) echo $_POST['address'];?>" style="border: none; border-bottom: 2px solid darkred;"  ><br>
     </fieldset>
 
     <fieldset>
-    <input type="text" id="telephone" class="form-control name-form" name="telephone" placeholder="Telephone number" style="border: none; border-bottom: 2px solid darkred;"><br>
+    <input type="text" id="telephone" class="form-control name-form" name="telephone" placeholder="Telephone number" value="<?php if(isset($_POST['fName'])) echo $_POST['telephone'];?>" style="border: none; border-bottom: 2px solid darkred;"><br>
 	</fieldset>
 
     <fieldset>
-	<textarea row="4"  col="50" id="aboutme" class="form-control name-form" name="aboutMe" placeholder="About me" style="border: none; border-bottom: 2px solid darkred;"></textarea><br>
+	<textarea row="4"  col="50" id="aboutme" class="form-control name-form" name="aboutMe" placeholder="About me" value="<?php if(isset($_POST['fName'])) echo $_POST['aboutMe'];?>" style="border: none; border-bottom: 2px solid darkred;"></textarea><br>
 	</fieldset>
 	<fieldset>
-    <input type="text" id="location" class="form-control name-form" name="location" placeholder="Location" style="border: none; border-bottom: 2px solid darkred;"><br>
+    <input type="text" id="location" class="form-control name-form" name="location" placeholder="Location" value="<?php if(isset($_POST['fName'])) echo $_POST['location'];?>" style="border: none; border-bottom: 2px solid darkred;"><br>
 	</fieldset>
 
 	<fieldset>
-    <input type="text" id="Profession" class="form-control name-form" name="profession" placeholder="Profession" style="border: none; border-bottom: 2px solid darkred;"><br>
+    <input type="text" id="Profession" class="form-control name-form" name="profession" placeholder="Profession" value="<?php if(isset($_POST['fName'])) echo $_POST['profession'];?>" style="border: none; border-bottom: 2px solid darkred;"><br>
 	</fieldset>
 	<fieldset>
  	Gender: 
@@ -110,7 +110,7 @@ $obj = new dbconnection;
 	<fieldset>
 	<br>
 	Upload your profile pic:
-    <input type="file" id="file" class="form-control name-form" name="pic" placeholder="pic" accept="image/*" style="border: none; border-bottom: 2px solid darkred;"><br>
+    <input type="file" id="file" class="form-control name-form" name="pic" placeholder="pic" accept="image/*" value="<?php if(isset($_POST['fName'])) echo $_POST['pic'];?>" style="border: none; border-bottom: 2px solid darkred;"><br>
 	</fieldset>	
 	<input type="button" href="index.html" value="Cancel" name="btnCancel" id="btnCancel" 
 	style="font-size: 16px; background-color: white; color:black; border: 2px solid red; " onclick=" cancel()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

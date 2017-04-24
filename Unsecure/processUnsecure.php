@@ -106,7 +106,7 @@ function reviewArtisan(){
         $sql1 = "INSERT INTO `artisan_client` (first_name, last_name, email) VALUES
         (\"".$GLOBALS['first_name']."\", \"". $GLOBALS['last_name']."\", \"".$GLOBALS['email']."\")";
         $sql2 = "INSERT INTO `review` (ratings, comments) VALUES (\"".$GLOBALS['ratings']."\", \"". $GLOBALS['comments']."\")";
-        
+
 
 
         if($reviewArtisan->query($sql1) == true && $reviewArtisan->query($sql2)) {
@@ -145,7 +145,7 @@ function validateReview(){
 
 
 function verifyReview(){
-  
+
     $sql = "SELECT * FROM  artisan_client where last_name = '$lname' && email = '$email'";
 
     $review = new dbconnection;
@@ -268,7 +268,7 @@ function validRegister()
     $validuname = preg_match( '/[a-zA-Z]+$/', $_REQUEST['username']);
     $validfname = preg_match( '/[a-zA-Z]+$/', $_REQUEST['fName']);
     $validlname = preg_match( '/[a-zA-Z]+$/', $_REQUEST['lName']); 
-    $validpword = preg_match('/^(?=.*?[a-zA-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/', $_REQUEST['passwd']);
+    $validpword = preg_match('/^(?=.*?[a-zA-Z])(?=.*?[0-9]).{6,}$/', $_REQUEST['passwd']);
     $validemail = preg_match('/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/', $_REQUEST['email']);
     $okay = true;
 
@@ -337,7 +337,7 @@ function checkusername()
 
             registeruser();
         }                
-        
+
         else
         {
             echo 'Username already exist in the database'; 
@@ -448,6 +448,7 @@ function addUserDetails(){
 
     $user = $_SESSION['uname'];
     session_destroy();
+    
 
     
     if(isset($_FILES['pic']) && is_uploaded_file($_FILES['pic']['tmp_name'])) 
