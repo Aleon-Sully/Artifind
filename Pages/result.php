@@ -33,17 +33,26 @@ $obj = new dbconnection;
  * This function returns the results from the search
  *	@return $data an artisan's details searched
  */
+
+$ids = array();
 function getResults()
 {
 	if(isset($_GET["key"]) || isset($_GET["place"])){
 		$place =$_GET["place"] ;
 		$key =$_GET["key"] ;
 		global $obj;	
-		$obj->query(" SELECT artisan.*, review.ratings FROM artisan INNER  JOIN review ON artisan.artisan_id = review.au_ID WHERE artisan.location = '$place' OR artisan.first_name LIKE '%$key%'  OR artisan.last_name LIKE '%$key%' ORDER BY review.ratings");
+		$obj->query(" SELECT artisan.*, review.ratings FROM artisan 
+			INNER  JOIN review ON artisan.artisan_id = review.au_ID WHERE 
+			artisan.location = '$place' OR artisan.first_name LIKE '%$key%'  
+			OR artisan.last_name LIKE '%$key%' ORDER BY review.ratings");
 		$data = array();
+		
+		$i = 0;
 		while($row = $obj->fetch())
 		{
 			$data[] = $row;
+			$GLOBALS['ids'][$i] = $row["artisan_id"];
+			$i++;
 		}
 		return $data;
 	}
@@ -103,6 +112,7 @@ function getSearchProfession()
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category<span class="caret"></span></a>
 					<ul class="dropdown-menu">
+
 						<!-- displaying the professions in the database on the drop down menu item Category-->
 						<?php include "../Pages/profession.php"; ?>
 						<?php if(getProfession())  :?>
@@ -140,47 +150,18 @@ function getSearchProfession()
 	<div class="row">
 		<div>
 			<!-- Checks if the search button was clicked on the previous page-->
+
 			<!-- If it was, gets the results from the previous page and displays the search accordingly-->
 			<?php if(isset($_GET["submit"])) :?>
-				<?php if(getResults()) :?>
-					<?php foreach(getResults() as  $value):	?>
-						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-							<div class="txthover">
-								<?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $value['profile_pic'] ).'"/>';?>
-								<div class="txtcontent">
-									<div class="stars">
-										<div class="glyphicon glyphicon-star"></div>
-										<div class="glyphicon glyphicon-star"></div>
-										<div class="glyphicon glyphicon-star"></div>
-									</div>
-									<div class="simpletxt">
-										<!-- displays the artisans' details accordingly on their picture while collecting the session id-->
-										<h3 class="name"><?php echo $value["first_name"]  .  " " . $value["last_name"]?></h3>
-										<p><?php echo $value["about_me"];?></p>
-										<a href="../Pages/userView.php"><button onclick="<?php $_SESSION['id'] = $value['artisan_id']; ?>">READ MORE</button></a><br>
-									</div>
-									<div class="stars2">
-										<div class="glyphicon glyphicon-star"></div>
-										<div class="glyphicon glyphicon-star"></div>
-										<div class="glyphicon glyphicon-star"></div>
-									</div>
-								</div>
-							</div>	 
-						</div>
-					<?php endforeach;	?>
-				<?php else: ?>
-					<div style="text-align: center;">
-						<p style="padding-left: 650;" >Sorry, there is no such in our Database. Kindly recommend by</p> <navbar-brand> <a href = "../Contact_us/contactUs.php"> Contacting us</a>
-					</div>
-				<?php endif;?>
-			<?php endif;?>
-			<!-- If search icon was not clicked, then search was made from the category menu-->
-			<?php if(getSearchProfession()) :?>
-				<!-- Paste every artisan with the profession that was selected on the category menu-->
-				<?php foreach(getSearchProfession() as  $value):	?>
+				<?php if(getResults()):?>
+					<?php 
+					$rss  = getResults();
+					foreach($rss as  $value):	?>
 					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 						<div class="txthover">
-							<?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $value['profile_pic'] ).'"/>';?>
+							<?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $value['profile_pic'] ).'"/>';
+							$link = "../Pages/userView.php?id=".$value['artisan_id'];
+							?>
 							<div class="txtcontent">
 								<div class="stars">
 									<div class="glyphicon glyphicon-star"></div>
@@ -190,8 +171,10 @@ function getSearchProfession()
 								<div class="simpletxt">
 									<!-- displays the artisans' details accordingly on their picture while collecting the session id-->
 									<h3 class="name"><?php echo $value["first_name"]  .  " " . $value["last_name"]?></h3>
-									<p><?php echo $value["about_me"]; $_SESSION['id'] = $value["artisan_id"];?></p>
-									<a href="../Pages/userView.php"><button>READ MORE</button></a><br>
+									<p><?php echo $value["about_me"];?></p>
+									<form action="../Pages/userView.php" method="post">
+										<a href="<?php echo $link;?>"><input type = "button" value = "READ MORE" name = "rm" ></a> <br>
+									</form>
 								</div>
 								<div class="stars2">
 									<div class="glyphicon glyphicon-star"></div>
@@ -202,9 +185,50 @@ function getSearchProfession()
 						</div>	 
 					</div>
 				<?php endforeach;	?>
-			<?php endif;	?>
-		</div>
-	</div>
+			<?php else: ?>
+				<div style="text-align: center;">
+					<p style="padding-left: 650;" >Sorry, there is no such in our Database. Kindly recommend by</p> <navbar-brand> <a href = "../Contact_us/contactUs.php"> Contacting us</a>
+				</div>
+			<?php endif;?>
+		<?php endif;?>
+
+
+		<!-- If search icon was not clicked, then search was made from the category menu-->
+		<?php if(getSearchProfession()) :?>
+			<!-- Paste every artisan with the profession that was selected on the category menu-->
+			<?php $rss  = getSearchProfession();
+			foreach($rss as  $value):	?>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+				<div class="txthover">
+					<?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $value['profile_pic'] ).'"/>';?>
+					<?php $link = "../Pages/userView.php?id=".$value['artisan_id']; ?>
+					<div class="txtcontent">
+						<div class="stars">
+							<div class="glyphicon glyphicon-star"></div>
+							<div class="glyphicon glyphicon-star"></div>
+							<div class="glyphicon glyphicon-star"></div>
+						</div>
+						<div class="simpletxt">
+
+							<!-- displays the artisans' details accordingly on their picture while collecting the session id-->
+							<h3 class="name"><?php echo $value["first_name"]  .  " " . $value["last_name"]?></h3>
+							<p><?php echo $value["about_me"];?></p>
+							<form action="../Pages/userView.php" method="post">
+								<a href="<?php echo $link;?>"><input type = "button" value = "READ MORE" name = "rm" ></a> <br>
+							</form>
+						</div>
+						<div class="stars2">
+							<div class="glyphicon glyphicon-star"></div>
+							<div class="glyphicon glyphicon-star"></div>
+							<div class="glyphicon glyphicon-star"></div>
+						</div>
+					</div>
+				</div>	 
+			</div>
+		<?php endforeach;	?>
+	<?php endif;	?>
+</div>
+</div>
 </div>
 <!-- ______________________________________________________Bottom Menu ______________________________-->
 <div class="bottommenu" style="margin-top:150px;">
