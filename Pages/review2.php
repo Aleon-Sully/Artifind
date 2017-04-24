@@ -117,19 +117,19 @@ require_once('../Unsecure/processUnsecure.php');
     <br><br><br><br><br><br>
 <form style=" position: absolute; margin-top:-1%; left: 30%;  height: 59%;
     width: 45%; padding-top: 15px;  text-align: center;" action="" method="post" onsubmit="reviewArtisan()">
-    <input type="text" id="fNameField" class="form-control name-form" name="fName" placeholder="First Name" style="border: none; border-bottom: 2px solid darkred;"  ><br>
-	<input type="text" id="lNameField" class="form-control name-form" name="lName" placeholder="Last Name" style="border: none; border-bottom: 2px solid darkred;"><br>
+    <input type="text" id="first_name" class="form-control name-form" name="first_name" placeholder="First Name" style="border: none; border-bottom: 2px solid darkred;"  ><br>
+	<input type="text" id="last_name" class="form-control name-form" name="last_name" placeholder="Last Name" style="border: none; border-bottom: 2px solid darkred;"><br>
 	<input type="text" id="email" class="form-control name-form" name="email" placeholder="Email Address" style="border: none; border-bottom: 2px solid darkred;"><br>
-	<textarea rows="4" cols="50" id="msg" name="msg" placeholder=" Comments..." ></textarea><br>
+	<textarea rows="4" cols="50" id="comments" name="comments" placeholder=" Comments..." ></textarea><br>
 
-   
-								<label>	<input type="checkbox" name="rating" value="1" > Poor</label> &nbsp;&nbsp;&nbsp;
-  								<label>	<input type="checkbox" name="rating" value="2" > Satisfactory</label> &nbsp;&nbsp;&nbsp;
-								<label>	<input type="checkbox" name="rating" value="3" > Good</label> &nbsp;&nbsp;&nbsp;
-								<label>	<input type="checkbox" name="rating" value="4" > Very Good</label> &nbsp;&nbsp;&nbsp;
-								<label>	<input type="checkbox" name="rating" value="5" > Excellent</label> &nbsp;&nbsp;&nbsp; <br><br>
-
-                                <input type="submit" id= "SubmitReview" value="SubmitReview" style="font-size: 16px; background-color: white; color:black; border: 2px solid darkred" > 
+   <fieldset>
+								<label>	<input type="radio" name="ratings" value="1" > Poor</label> &nbsp;&nbsp;&nbsp;
+  								<label>	<input type="radio" name="ratings" value="2" > Satisfactory</label> &nbsp;&nbsp;&nbsp;
+								<label>	<input type="radio" name="ratings" value="3" > Good</label> &nbsp;&nbsp;&nbsp;
+								<label>	<input type="radio" name="ratings" value="4" > Very Good</label> &nbsp;&nbsp;&nbsp;
+								<label>	<input type="radio" name="ratings" value="5" > Excellent</label> &nbsp;&nbsp;&nbsp; <br><br>
+	</fieldset>
+    <input type="submit" id= "SubmitReview" name= "SubmitReview" value="Submit" style="font-size: 16px; background-color: white; color:black; border: 2px solid darkred" > 
 
 
 							

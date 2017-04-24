@@ -70,74 +70,6 @@ function validContactUs(){
 }
 
 
-/*
-to review the artisan, the user enters their first name, last name, email, ratings and their comment
-*/
-function reviewArtisan(){
-
-$_POST['first_name']=$GLOBALS['first_name'];
-$_POST['last_name']=$GLOBALS['last_name'];
-$_POST['email'] =$GLOBALS['email'];
-$_POST['ratings'] =$GLOBALS['email'];
-$_POST['comments'] =$GLOBALS['comments'];
-
-$ok = true;
-if (empty($_POST['first_name'])){
-        echo "Please provide your fisrt name. <br>";
-        $ok= false;
-    }
-
-    if (empty($_POST['last_name'])){
-        echo "Please Enter your last. <br>";
-        $ok = false;
-    }
-
-if (empty($_POST['email'])){
-        echo "Please Enter your e-mail address. <br>";
-        $ok = false;
-    }
-
-if (empty($_POST['ratings'])){
-        echo "Please rate the artisan. <br>";
-        $ok = false;
-    }
-
-
-    if($ok){
-$reviewArtisan = new dbconnection;
-
-    //Write sql
-    $sql1 = "INSERT INTO `artisan_client` (first_name, last_name, email) VALUES
-    (\"".$GLOBALS['first_name']."\", \"". $GLOBALS['last_name']."\", \"".$GLOBALS['email']."\")";
-    $sql2 = "INSERT INTO `review` (ratings, comments) VALUES (\"".$GLOBALS['ratings']."\", \"". $GLOBALS['comments']."\")";
-    
-
-    if($reviewArtisan->query($sql1) == true && $reviewArtisan->query($sql2) === true) {
-       echo "Thanks for your review!";
-       header('Location: ../index.php');
-   }else
-   {
-       echo "Error: " . $sql1 . "<br>";
-   }
-}
-   $reviewArtisan ->close();
-}
-
-function validateReview(){
-    $fname = $_POST['first_name'];
-    $lname = $_POST['last_name'];
-    $email = $_POST['email'];
-    $rating = $_POST['ratings'];
-    $comments = $_POST['comments'];
-
-
-    if(isset($fname) && isset($lname) && isset($email) && isset($ratings) && isset($comments)) {
-        verifyReview();
-    }
-}
-
-
-
 function verifyReview(){
   
     $sql = "SELECT * FROM  artisan_client where last_name = '$lname' && email = '$email'";
@@ -397,6 +329,97 @@ a function to register a new artisan into the database.
         } 
 
     }
+
+
+function loadArtisan(){
+//create a new instance of the database
+    $loadArtisan = new dbconnection;
+
+    //write sql
+    $sql = 'SELECT * FROM `artisan`';
+
+    //query the sql
+    $artisanName = $loadArtisan->query($sql);
+
+
+//check if results were returned
+    if($artisanName)
+    {
+        while ($row = $loadArtisan->fetch())
+         {
+        echo "<option value ='".$row['firstname']."'>".$row['lastname']."</option>";
+        }
+    }
+
+}
+
+/*
+to review the artisan, the user enters their first name, last name, email, ratings and their comment
+*/
+function reviewArtisan(){
+
+$firstname=$_POST['first_name'];
+$lastname=$_POST['last_name'];
+$email =$_POST['email'];
+$ratings =$_POST['ratings'];
+$comments =$_POST['comments'];
+
+$ok = true;
+if (empty($firstname)){
+        echo "Please provide your first name. <br>";
+        $ok= false;
+    }
+
+    if (empty($_POST['last_name'])){
+        echo "Please Enter your last name. <br>";
+        $ok = false;
+    }
+
+if (empty($_POST['email'])){
+        echo "Please Enter your e-mail address. <br>";
+        $ok = false;
+    }
+
+if (empty($_POST['ratings'])){
+        echo "Please rate the artisan. <br>";
+        $ok = false;
+    }
+
+
+
+    if($ok){
+validateReview();
+    }
+}
+
+
+function validateReview()
+    {
+    
+    //Write sql
+    $sql1 = "INSERT INTO `artisan_client` (first_name, last_name, email) VALUES (\"".$_POST['first_name']."\", \"". $_POST['last_name']."\", \"".$_POST['email']."\")";
+    $sql2 = "INSERT INTO `review` (ratings, comments) VALUES (\"".$_POST['ratings']."\", \"". $_POST['comments']."\")";
+    
+    $reviewArtisan = new dbconnection;
+
+
+$review1 = $reviewArtisan -> query($sql1);
+$review2= $reviewArtisan -> query($sql2);
+
+if ($review1 && $review2){
+echo "Thanks for your Review!";
+header("Location: ../Register/restDetails.php");
+
+}
+
+   else
+   {
+       echo "Error: " . $sql1 . "<br>";
+   }
+}
+
+
+
 
 /*
 a function to validate prefill details for an registered artisan's profile page. Successful validation leads to the addrestdetails that would add the artisans prefill details into te database.
