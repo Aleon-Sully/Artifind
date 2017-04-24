@@ -151,7 +151,8 @@ function verifylogin($username, $password){
                 {
                 $previouspage = "index.php"; // default page for 
             }
-                header("Location: $previouspage");
+                session_start();
+                header("Location: ../Pages/profile.php");
             
         } else
         {
@@ -385,7 +386,11 @@ function addUserDetails(){
 
     if($registration)
     {
-      
+        session_start();
+        $an = "SELECT artisan_id FROM artisan where username='$user'";
+        $reguser->query($sql);
+        $id=$reguser->fetch();
+        $_SESSION['artid'] = $id['artisan_id'];
         header("Location: ../Pages/profile.php");
 
     }else

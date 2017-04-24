@@ -9,7 +9,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 include($_SERVER['DOCUMENT_ROOT'].'/Artifind/Classes/profileClass.php');
 
 session_start();
-$id =$_SESSION['artid'];
+$id =$_SESSION['userid'];
 $s = new profileClass;
 ?>
 <html>
