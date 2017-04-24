@@ -16,7 +16,7 @@ public function loadName ($artid){
 	$sql = "SELECT first_name, last_name FROM artisan where artisan_id=$artid";
     $this->query($sql);
     while ($name = $this->fetch()) {
-    echo "<h1>".$name['first_name']. " ".$name['last_name']."</h1>";
+        echo "<h1>".$name['first_name']. " ".$name['last_name']."</h1>";
     }
 }
 
@@ -29,16 +29,16 @@ public function loadProfilePicture ($artid){
     $sql = "SELECT profile_picture FROM artisan where artisan_id=$artid";
     $this->query($sql);
     while ($image = $this->fetch()) {
-    $img= $image['profile_picture'];
+        $img= $image['profile_picture'];
     }
     if (empty($img)) {
         $background = "../Images/default.jpg";
     }
     else {
       $background = 'data:image/*;base64,'.base64_encode($img);  
-    }
+  }
 
-      echo $background;
+  echo $background;
 }
 
 /*
@@ -50,7 +50,7 @@ public function loadAboutMe ($artid){
 	$sql = "SELECT about_me FROM artisan where artisan_id=$artid";
     $this->query($sql);
     while ($about = $this->fetch()) {
-    echo "<p>".$about['about_me']."</p>";
+        echo "<p>".$about['about_me']."</p>";
     }
 
 
@@ -65,7 +65,7 @@ public function loadProfession ($artid){
 	$sql = "SELECT profession FROM artisan where artisan_id=$artid";
     $this->query($sql);
     while ($occupation = $this->fetch()) {
-    echo "<h2>".$occupation['profession']."</h2>";
+        echo "<h2>".$occupation['profession']."</h2>";
     }
 
 
@@ -80,7 +80,7 @@ public function loadTel ($artid){
 	$sql = "SELECT telephone_Number FROM artisan where artisan_id=$artid";
     $this->query($sql);
     while ($number = $this->fetch()) {
-    echo "<li>".$number['telephone_Number']."</li>";
+        echo "<li>".$number['telephone_Number']."</li>";
     }
 
 
@@ -95,7 +95,7 @@ public function loadAddress ($artid){
 	$sql = "SELECT address FROM artisan where artisan_id=$artid";
     $this->query($sql);
     while ($add = $this->fetch()) {
-    echo "<li id='contact'>".$add['address']."</li>";
+        echo "<li id='contact'>".$add['address']."</li>";
     }
 
 
@@ -110,7 +110,7 @@ public function loadEmail ($artid){
 	$sql = "SELECT email FROM artisan where artisan_id=$artid";
     $this->query($sql);
     while ($mail = $this->fetch()) {
-    echo "<li id ='email'>".$mail['email']."</li>";
+        echo "<li id ='email'>".$mail['email']."</li>";
     }
 
 
@@ -141,17 +141,16 @@ public function loadPortfolio ($artid){
 	$sql = "SELECT image FROM portfolio where aID=$artid";
     $this->query($sql);
     while ($image = $this->fetch()) {
-    echo '<div class="col-md-4 galry-grids moments-bottom">
-    <a class="b-link-stripe b-animate-go" href="image/img9.jpg">
-    <img src="data:image/jpg;base64,' . base64_encode($image['image']) . '" class="img-responsive" alt="" >
-    <div class="b-wrapper">
-    <span class="b-animate b-from-left    b-delay03 ">
-    <img class="img-responsive" src="image/e.png" alt=""/> </span>					
-						</div>
-					</a>				
-				</div>';
+        echo "<div class=\"col-md-4 galry-grids moments-bottom\">";
+        echo " <a class=\"b-link-stripe b-animate-go\" href=\"image/img9.jpg\">";
+       // echo "<img src= data:image/jpg;base64,' . base64_encode($image['image']) . '" class="img-responsive">";
+        echo "<div class=\"b-wrapper\">";
+        echo "<span class=\"b-animate b-from-left    b-delay03 \">";
+        echo "<img class=\"img-responsive\" src=\"image/e.png\"/> </span>";				
+        echo "</div>";
+        echo "</a>";				
+        echo "</div>";
     }
-
 
 }
 }

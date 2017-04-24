@@ -7,7 +7,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <?php
 include($_SERVER['DOCUMENT_ROOT'].'/Artifind/Classes/profileClass.php');
-include($_SERVER['DOCUMENT_ROOT'].'/ArtiFind/Classes/profileClass.php');
 session_start();
 $id = $_GET['id'];
 
