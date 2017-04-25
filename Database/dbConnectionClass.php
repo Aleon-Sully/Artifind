@@ -107,5 +107,10 @@ class dbconnection
         mysqli_close($this->dbcon);
      }
 
+     public function getLastInsertID()
+     {
+        return $this->dbcon->insert_id;
+     }
+
 }
 ?>

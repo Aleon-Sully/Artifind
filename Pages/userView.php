@@ -123,10 +123,16 @@ $id = $_GET['id'];
 				$s->loadName($id);
 				$s->loadProfession($id);
 				?>
+
+				<form method="get" action="review2.php">
+				    <input type="hidden" name="id" value=<?php echo $id ?>>
+ 					<input type="submit" value="Review" style="font-size: 16px; background-color: white; color:black; border: 2px solid black">
+				</form>
 			</div>
 		</div>
 	</div>
 </div>
+
 
 
 

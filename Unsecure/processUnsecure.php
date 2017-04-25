@@ -164,24 +164,6 @@ function verifyReview(){
 } 
 
 
-function sentContactRequest(){
-
-    //Creating am instance of the Database Connection Class
-    $sendContactReq = new dbconnection;
-
-    //Write sql
-    $sql = "INSERT INTO `feedback` (FName, LName, Email, message) VALUES
-    (\"".$GLOBALS['fName']."\", \"". $GLOBALS['lName']."\", \"".$GLOBALS['em']."\", \"". $GLOBALS['msg']."\")";
-
-    if($sendContactReq->query($sql) == true){
-       echo "New record created succesfully";
-       header('Location: ../index.php');
-   }else{
-       echo "Error: " . $sql . "<br>";
-   }
-
-   $sendContactReq->close();
-}
 
 /*
 a function to validate login. Successful validation leads to verification.
@@ -439,6 +421,8 @@ $lastname=$_POST['last_name'];
 $email =$_POST['email'];
 $ratings =$_POST['ratings'];
 $comments =$_POST['comments'];
+$id = $_POST['aid'];
+
 
 $ok = true;
 if (empty($firstname)){
@@ -464,33 +448,58 @@ if (empty($_POST['ratings'])){
 
 
     if($ok){
-validateReview();
+validateReview($id);
     }
 }
 
 
-function validateReview()
+function validateReview($aid)
     {
-    
+    $firstname = $_POST['first_name'];
+    $lastname = $_POST['last_name'];
+    $email = $_POST['email'];
+
+    $rate = $_POST['ratings'];
+    $comm = $_POST['comments'];
+    $l_ID = 0;
     //Write sql
-    $sql1 = "INSERT INTO `artisan_client` (first_name, last_name, email) VALUES (\"".$_POST['first_name']."\", \"". $_POST['last_name']."\", \"".$_POST['email']."\")";
-    $sql2 = "INSERT INTO `review` (ratings, comments) VALUES (\"".$_POST['ratings']."\", \"". $_POST['comments']."\")";
+    
     
     $reviewArtisan = new dbconnection;
 
 
-$review1 = $reviewArtisan -> query($sql1);
-$review2= $reviewArtisan -> query($sql2);
+$sql1 = "INSERT INTO artisan_client (first_name, last_name, email) VALUES ('$firstname', '$lastname', '$email')";
 
-if ($review1 && $review2){
+$review1 = $reviewArtisan -> query($sql1);
+
+if($review1){
+    $l_ID =  $reviewArtisan->getLastInsertID();
+    $sql2 = "INSERT INTO artisanuser (aID, u_ID) VALUES ('$aid', '$l_ID')";
+}
+
+
+$review2 = $reviewArtisan -> query($sql2);
+
+if($review2){
+    $l_ID =  $reviewArtisan->getLastInsertID();
+    
+}
+
+$sql3 = "INSERT INTO review (ratings, comments, au_ID) VALUES ('$rate', '$comm', '$l_ID ')";
+$review3= $reviewArtisan -> query($sql3);
+
+var_dump($review3);
+
+if ($review2){
 echo "Thanks for your Review!";
-header("Location: ../Register/restDetails.php");
+$reviewAverage = "SELECT AVG(ratings) AS ratings FROM review";
+header("Location: ../index.php");
 
 }
 
    else
    {
-       echo "Error: " . $sql1 . "<br>";
+       echo "Error: " . $sql2 . "<br>";
    }
 }
 
