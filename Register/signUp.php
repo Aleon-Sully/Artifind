@@ -5,9 +5,7 @@
 	<title>Sign Up</title>
 	<meta name="description" content="">
 <!--
-/*
-"@author Dela Acolatse
-*/
+
 Template 2079 Garage
 
 http://www.tooplate.com/view/2079-garage
@@ -96,27 +94,27 @@ $obj = new dbconnection;
 	<form style=" position: absolute; margin-top:-1%; left: 30%;  height: 59%;
 	width: 45%; padding-top: 15px;  text-align: center;" id="reg" action="" method="post" onsubmit="validate()"> 
 	<fieldset>
-	<input type="text" id="fNameField" class="form-control name-form" name="fName" placeholder="First Name" style="border: none; border-bottom: 2px solid darkred;"  ><br>
+	<input type="text" id="fNameField" class="form-control name-form" name="fName" placeholder="First Name" value="<?php if(isset($_POST['fName'])) echo $_POST['fName'];?>" style="border: none; border-bottom: 2px solid darkred;"  ><br>
     </fieldset>
 
     <fieldset>
-    <input type="text" id="lNameField" class="form-control name-form" name="lName" placeholder="Last Name" style="border: none; border-bottom: 2px solid darkred;"><br>
+    <input type="text" id="lNameField" class="form-control name-form" name="lName" placeholder="Last Name" value="<?php if(isset($_POST['lName'])) echo $_POST['lName'];?>" style="border: none; border-bottom: 2px solid darkred;"><br>
 	</fieldset>
 
     <fieldset>
-	<input type="text" id="usNameField" class="form-control name-form" name="username" placeholder="Username" style="border: none; border-bottom: 2px solid darkred;"><br>
+	<input type="text" id="usNameField" class="form-control name-form" name="username" placeholder="Username" value="<?php if(isset($_POST['username'])) echo $_POST['username'];?>" style="border: none; border-bottom: 2px solid darkred;"><br>
 	</fieldset>
 
     <fieldset> 
-	<input type="password" id="passwordField" class="form-control name-form" name="passwd" placeholder="Password" style="border: none; border-bottom: 2px solid darkred;"><br>
+	<input type="password" id="passwordField" class="form-control name-form" name="passwd" placeholder="Password"  style="border: none; border-bottom: 2px solid darkred;"><br>
 	</fieldset>
 
     <fieldset>
-	<input type="password" id="verpasswdField" class="form-control name-form" name="verpasswd" placeholder="Verify Password" style="border: none; border-bottom: 2px solid darkred;"><br>
+	<input type="password" id="verpasswdField" class="form-control name-form" name="verpasswd" placeholder="Verify Password" value="" style="border : none; border-bottom: 2px solid darkred;"><br>
     </fieldset>
 
     <fieldset>
-	<input type="text" id="emailField" class="form-control name-form" name="email" placeholder="Email" style="border: none; border-bottom: 2px solid darkred;"><br>
+	<input type="text" id="emailField" class="form-control name-form" name="email" placeholder="Email" value="<?php if(isset($_POST['email'])) echo $_POST['email'];?>" style="border: none; border-bottom: 2px solid darkred;"><br>
     </fieldset>
     <input type="button" href="index.html" value="Cancel" name="btnCancel" id="btnCancel" 
 	style="font-size: 16px; background-color: white; color:black; border: 2px solid red; " onclick=" cancel()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -138,10 +136,15 @@ var email = document.getElementById("emailField");
 
 	//Validate function
 	function validate(){
-		if(fName.value != "" && lName.value != "" && email.value.includes("@") && email.value.includes(".com") && username.value != ""){
+		if(fName.value != "" && lName.value != "" ){
 		}else{
 			
 			alert("Invalid credentials. Make sure all fields are filled with information");
+		}
+		if(email.value.includes("@") && email.value.includes(".com") && username.value != ""){
+
+		}else{
+			 alert("Check email again");
 		}
 	}
 

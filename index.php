@@ -109,14 +109,14 @@ function getLocation()
 		<div id="carousel-up" class="carousel slide" data-ride="carousel">
 			<div class="carousel-inner " role="listbox">
 				<div class="item active">
-					<img src="image/electrician.jpg" alt="oldcar">
+					<img src="image/newimage1.jpg" alt="oldcar">
 					<div class="carousel-caption">
 						<h2>DELCO</h2>
 						<p>We link you to the best artisans in the country </p>
 					</div>
 				</div>
 				<div class="item">
-					<img src="image/alapa.jpg" alt="porche">
+					<img src="image/boilerimage.jpg" alt="porche">
 					<div class="carousel-caption">
 						<h2>EXPLORE</h2>
 						<p>Our artisans are trustworthy, reliable <br>
@@ -124,7 +124,7 @@ function getLocation()
 						</div>
 					</div>
 					<div class="item">
-						<img src="image/francis.jpg" alt="benz">
+						<img src="image/carpenter.jpg" alt="benz">
 						<div class="carousel-caption">
 							<h2>CONNECTING PEOPLE</h2>
 							<p>Whether in the city, village or town <br>
@@ -142,9 +142,10 @@ function getLocation()
 								<span class="icon-bar"></span>
 							</button>
 						</div>
+						<br>
 						<div class="collapse navbar-collapse" id="navbarmidle" style="margin-bottom:3%;">
-							<div class="searchtxt">
-								<h1>SEARCH</h1>
+							<div class="searchtxt" style="margin-bottom:  -120px; ">
+								<h1 style="margin-bottom:  120px; ">SEARCH</h1>
 							</div>
 							<form class="navbar-form navbar-left searchformmargin" role="search" action="Pages/result.php" method = "GET">
 								<div class="form-group">

@@ -100,7 +100,7 @@ function getSearchProfession()
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand logo" href="#"><img src="../image/Logo.jpg" alt="logo"></a>
-			</div>	 
+			</div>	 d
 		</div>
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
